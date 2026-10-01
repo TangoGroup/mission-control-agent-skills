@@ -35,7 +35,7 @@ Goal: leave the user with everything they need to create the agent in the deskto
 ## Stage 4 — Memory and wiki
 
 1. Should it remember anything across conversations? What exactly is worth keeping, and what isn't?
-2. Who should be able to read that memory? This decides the space: its own space, a project space, a named space, or `shared/`.
+2. Who should be able to read that memory? This decides the space. Default to the agent's own space. Use a project space for one project's knowledge. Propose a named space only when a different audience should read it, several agents or a team share it, or it should outlive the agent (guide: "Own space or a named space?"). Use `shared/` only for facts the whole workspace needs.
 3. Does it need to read existing knowledge? Which spaces? Do those spaces have space instructions yet?
 4. Is any of the content sensitive (pay, health, HR, client confidential)? Decide restricted spaces and access mode together.
 

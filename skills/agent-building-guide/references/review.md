@@ -34,6 +34,7 @@ Mark each finding High, Medium, or Low.
 - Space layout repeated in the system prompt or wiki instructions instead of space instructions.
 - Permissions described in prose ("you can write to shared/").
 - Wiki content pasted into the prompt, which goes stale.
+- A named space created for one agent whose audience matches the agent's own space, and that no other agent or team uses. Use the own space instead.
 - Projects attached that it doesn't need, or several unrelated projects sharing one agent's memory.
 - System prompt so long that the important rules are buried. Aim for 300–1,500 words.
 - A long procedure or reference material in the system prompt that only some requests need. Move it into a skill.
