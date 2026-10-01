@@ -16,7 +16,7 @@ Mission Control has two other kinds of agent that this guide doesn't cover:
 ### What you need
 
 - **The Mission Control desktop app.** Agents can also be edited in the web console and on mobile, but only the desktop app has every tab, including the full Wiki settings and the Wiki pane.
-- **Permission to manage agents** (`workspace.agents.manage`). Workspace admins usually have it. Without it you'll see View and Message on agents, but not Manage.
+- **Permission to manage agents** (`workspace.agents.manage`). Workspace admins usually have it. Without it, an agent's ⋯ menu on the Agents screen shows View instead of Manage, and you can't create agents.
 - **Permission to manage the wiki** (`workspace.wiki.manage`). This is only needed to create named wiki spaces and write space instructions. If you don't have it, ask someone who does to handle those steps.
 - **Overdrive mode turned on.** The Agents screen is hidden until you turn it on in Settings › Profile › Overdrive mode. This only changes what you see in the app. It doesn't grant any permissions.
 
@@ -160,7 +160,7 @@ The hub files are `index.md` (the map of people, topics, decisions, resources, a
 
 ## Build the agent, step by step
 
-Start in the desktop app: Agents › New public agent. The editor opens in the main pane with tabs along the top. After you save the profile the first time, the editor stays open so you can continue through the other tabs.
+Start in the desktop app: Agents › New public agent. To edit an existing agent later, click the ⋯ icon on its row and choose Manage. The editor opens in the main pane with tabs along the top. After you save the profile the first time, the editor stays open so you can continue through the other tabs.
 
 1.  ### Fill in the Profile tab
 
@@ -264,9 +264,9 @@ Start in the desktop app: Agents › New public agent. The editor opens in the m
 
 9.  ### Test it
 
-    Agents › Message
+    Messages › New › Message
 
-    Open a DM with Message and follow the [test plan below](#test).
+    Start a DM with the agent and follow the [test plan below](#test).
 
 ## Building skills
 
@@ -842,7 +842,7 @@ Notice there's no repetition. The prompt says *when* to use the handbook. The wi
 
 ### First test
 
-1.  Open a DM from Agents › Message. You should see a banner saying the agent remembers what's shared in the wiki and that other members may read it.
+1.  Open a DM: in Messages, click New, choose Message, search for the agent's name, and select it. You should see a banner saying the agent remembers what's shared in the wiki and that other members may read it.
 2.  Ask something inside its job. Check the format, tone, and whether it used the wiki when it should have.
 3.  Ask something outside its job. It should decline or redirect the way the prompt says.
 4.  Tell it a fact worth remembering. When it replies, open Wiki and check that the page landed in the space you expected, with a sensible title.
