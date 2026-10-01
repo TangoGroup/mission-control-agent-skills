@@ -32,7 +32,7 @@ If it's mixed, say so: a Public Agent for the team part, SuperGloo for the perso
 
 You can't reach anyone's Mac, so you can't create folder agents. Tell the user:
 
-1. In SuperGloo's **Manage › Skills**, add `TangoGroup/mission-control-agent-skills@supergloo-agent-folders`.
+1. Add the skill to SuperGloo: open **Agents**, click the **⋯** icon on the SuperGloo row, open the **Skills** tab, paste `TangoGroup/mission-control-agent-skills@supergloo-agent-folders`, click **Add**, then **Save skills**.
 2. Create an empty folder for their agents (for example `Documents/Agents`). Grant and select it in the SuperGloo message box on desktop.
 3. Message SuperGloo: "Help me build a folder agent for {job}." Offer a short summary of what you've learned so far for them to paste in, so SuperGloo can skip those questions.
 
