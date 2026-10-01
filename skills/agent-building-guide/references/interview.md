@@ -18,6 +18,8 @@ Goal: leave the user with everything they need to create the agent in the deskto
 4. What are the three most common requests it will get? Ask for real examples.
 5. What should it refuse or redirect, and to whom?
 
+Then check `supergloo.md`. If the answers describe one person's own work (their inbox, calendar, files, or accounts), recommend SuperGloo with a folder agent, explain why in two or three sentences, and offer the handoff steps. Continue with a Public Agent only if the user still wants one or the job is for a team.
+
 ## Stage 2 — Output
 
 1. What does a great answer look like? Ask them to paste or describe one.
