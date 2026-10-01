@@ -43,6 +43,8 @@ Mark each finding High, Medium, or Low.
 - No output format or destination.
 - No out-of-scope or handoff guidance.
 
+- A Public Agent that only one person uses, for their own accounts or files. Suggest SuperGloo with a folder agent (see `supergloo.md`).
+
 **Low — polish**
 - Vague tone words with no example.
 - Missing title or avatar.

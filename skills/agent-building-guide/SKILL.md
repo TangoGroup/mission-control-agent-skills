@@ -1,6 +1,6 @@
 ---
 name: agent-building-guide
-description: How to design, review, and troubleshoot Mission Control Public Agents — system prompts, wiki instructions, space instructions, skills, tools, email, projects, and access. Load at the start of every job before answering, interviewing, reviewing, or diagnosing anything about an agent's setup.
+description: How to design, review, and troubleshoot Mission Control Public Agents, and when to recommend SuperGloo instead — system prompts, wiki instructions, space instructions, skills, tools, email, projects, and access. Load at the start of every job before answering, interviewing, reviewing, or diagnosing anything about an agent's setup.
 ---
 
 # Agent building guide
@@ -15,6 +15,7 @@ This skill is your primary source. Use it before the Mission Control repo.
 | `references/interview.md` | Procedure for building a new agent: interview stages, questions, how answers map to settings, the final package format. |
 | `references/review.md` | Procedure and checklist for evaluating an existing agent setup. |
 | `references/troubleshooting.md` | Procedure for diagnosing an agent that isn't performing: evidence to gather, symptom → cause table, fix format. |
+| `references/supergloo.md` | Whether the request is better served by SuperGloo (the member's personal assistant) than a Public Agent, how to hand off, and how to turn a SuperGloo folder agent into a Public Agent. |
 | `references/skill-authoring.md` | Deciding when a procedure should be a skill, writing it, and publishing it to the shared skills repo or delivering it privately. |
 
 Read only the file the job needs. Search `guide.md` by heading instead of reading it whole when you need one fact.
@@ -28,6 +29,10 @@ Read only the file the job needs. Search `guide.md` by heading instead of readin
 When you go past step 1, tell the user, cite the file path, and note that the guide may be behind on that point. The guide is a snapshot from 2026-09-30; if the repo disagrees with it, the repo wins, and you say so.
 
 The repo explains how the product works. It never contains a particular agent's settings — those live in the app's database. Ask the user for them.
+
+## Check the agent type first
+
+Before building, check `references/supergloo.md`. If the job is for one person's own work, recommend SuperGloo with a folder agent instead of a Public Agent, and explain why.
 
 ## Rules that apply to every deliverable
 
