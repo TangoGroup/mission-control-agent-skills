@@ -133,6 +133,16 @@ Being a workspace admin doesn't let you read every page. Admins can manage struc
 - **Writing.** By default the agent writes to the space closest to the current job. That's the conversation it's in, or the project if there's no conversation, or its own space if neither applies. It can write to other spaces only where it has write access.
 - **Sensitive content stays put.** Pages about people (`people/`) and anything marked `sensitivity: restricted` must stay in the conversation's space, or the project's space if there's no conversation, and the server enforces this. The built-in procedure treats performance, pay, health, conflicts, HR matters, and anything someone calls confidential as restricted.
 
+### Own space or a named space?
+
+Start with the agent's **own space**. Turning it on creates it, its audience matches whoever can use the agent, and people who can see it can read and edit its pages in the Wiki pane. Only create a **named space** when at least one of these is true:
+
+- **A different audience should read it.** For example, the agent is restricted to a few admins, but the knowledge it maintains is for the whole team.
+- **It's a shared resource, not one agent's notes.** Several agents or a team curate it, like a team handbook or a client knowledge base.
+- **It should outlive the agent.** Turning off an agent's own space hides it for everyone, so knowledge the team relies on long-term belongs in a named space.
+
+If none of these apply, a named space only adds a second place to look.
+
 ### How pages are organized
 
 Every space has three hub files and a fixed set of folders. You don't need to learn the format to use the wiki, since agents handle it, but it helps when writing space instructions.
@@ -248,7 +258,7 @@ Start in the desktop app: Agents › New public agent. The editor opens in the m
 
     Wiki pane › Manage spaces · Space instructions
 
-    If the agent needs a dedicated shared space, such as a handbook or a client knowledge base, someone with wiki manage permission creates it: Wiki › Manage spaces. Give it a name, a description, and an access mode (*Workspace* or *Restricted*). The slug is set once and can't be renamed. Then grant the space to the agent on its Wiki tab.
+    Most agents only need their own space (see [Own space or a named space?](#wiki)). If the agent needs a named space, such as a team handbook or a client knowledge base, someone with wiki manage permission creates it: Wiki › Manage spaces. Give it a name, a description, and an access mode (*Workspace* or *Restricted*). The slug is set once and can't be renamed. Then grant the space to the agent on its Wiki tab.
 
     To tell agents how a space is organized, select the space in the Wiki pane and open Space instructions in its sidebar. Up to 8,000 characters. Spaces with instructions show an *Instructions* mark. Use the [template below](#space-instructions).
 
@@ -745,7 +755,7 @@ Agents can't edit space instructions. Only people with wiki manage permission ca
 
 ## Worked example: an Ops Desk agent
 
-A 12-person team wants one agent that answers questions about internal policies and keeps a handbook current. Here's how the plan maps to settings:
+A 12-person team wants one agent that answers questions about internal policies and keeps a handbook current. The handbook gets a named space rather than living in the agent's own space, because it's the team's resource: the Ops lead curates it, other agents may need it later, and it should survive if the agent is replaced. Here's how the plan maps to settings:
 
 |  |  |
 |----|----|
