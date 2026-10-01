@@ -87,7 +87,7 @@ description: {What it does}. Read when {situation}.
 {What the result looks like.}
 ```
 
-Folder skills aren't loaded automatically like SuperGloo's Manage › Skills. They're read only because `AGENTS.md` points to them.
+Folder skills aren't loaded automatically like skills added in SuperGloo's settings (Agents › ⋯ on the SuperGloo row › Skills). They're read only because `AGENTS.md` points to them.
 
 ## memory/notes.md
 

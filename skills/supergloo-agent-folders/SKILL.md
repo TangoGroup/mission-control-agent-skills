@@ -35,7 +35,7 @@ Folder agents are for **the user's own work**. If several people need the same h
 - **You can't change Mission Control settings.** For the Personalization snippet, give the user the text and tell them where to paste it: Settings › Agent › Personalization › Custom instructions. Remind them those instructions apply to every agent run they start, and that the field holds 4,000 characters.
 - **Keep files small and plain.** `AGENTS.md` should fit on a page or two. Move long procedures into `skills/<name>/SKILL.md` and examples into `reference/`, and say in `AGENTS.md` when to read each.
 - **Write steps you can actually do.** Name sources the way you'd find them: "my tasks on my board", "my calendar this week", "my Gmail" (only if that account is connected), "files in reference/". Don't write steps that need tools you don't have: the workspace wiki, Linear, browser automation, scheduled runs, or transcription.
-- **No secrets in folder files.** API keys belong in SuperGloo's Manage › Secrets.
+- **No secrets in folder files.** API keys belong in SuperGloo's settings (Agents › ⋯ on the SuperGloo row › Secrets).
 
 ## After a build or fix
 

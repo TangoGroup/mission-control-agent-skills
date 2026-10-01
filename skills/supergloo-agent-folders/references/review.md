@@ -21,7 +21,7 @@
 - `AGENTS.md` longer than a page or two. Move procedures to `skills/` and examples to `reference/`.
 - Files the agent must read on every run that are large or numerous. Each read counts against the 24 tool steps per turn.
 - Memory written to the folder on every run, which means a confirmation every time. Keep everyday facts in SuperGloo's own notes.
-- Secrets or API keys in the folder. Move them to Manage › Secrets.
+- Secrets or API keys in the folder. Move them to SuperGloo's settings (Agents › ⋯ on the SuperGloo row › Secrets).
 
 **Should it still be a folder agent?**
 - Other people now want it, it should run on a schedule, or the team should see its memory. Recommend turning it into a Public Agent with Agent Builder; the folder's files are a good starting point.
