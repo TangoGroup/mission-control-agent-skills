@@ -33,4 +33,4 @@ templates/
 - **Reserved:** `workspace-wiki` is built into Mission Control and can't be used.
 - **Description:** up to 1,024 characters. Say what the skill does *and when to load it*. The agent sees only names and descriptions until it loads a skill.
 - **Size:** keep `SKILL.md` under 128 KB. Move long material into `references/` and tell the agent when to read each file.
-- **Changes:** open a pull request. Someone who manages agents reviews it before it merges, since a merge changes every agent that uses the skill.
+- **Changes:** open a pull request. `main` is protected: direct pushes are blocked, and a pull request needs an approval or a repo admin to merge it. Review carefully, because a merge changes every agent that uses the skill on its next run.
