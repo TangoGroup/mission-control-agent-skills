@@ -10,7 +10,8 @@ Some requests are better served by SuperGloo, each member's personal assistant, 
 - Desktop, mobile, voice, and iMessage all reach the same SuperGloo.
 - It can work in folders the member grants on their Mac.
 - It has no system prompt. Members shape it with Settings › Agent › Personalization, skills (public GitHub only), and **folder agents**: files on their Mac that define a job SuperGloo works as.
-- It has no wiki, scheduled or event triggers, email address, Linear, GitHub App, huddles, or project-channel @mentions.
+- It has no wiki, scheduled or event triggers, email address, browser, Linear, GitHub App, huddles, or project-channel @mentions. It can check back on long work with watches.
+- Workspace-wide Public Agents can message a member through their SuperGloo when an admin turns that on (guide: "Reaching people through SuperGloo"). Recommend this when a team agent needs one person's decision.
 
 ## Recommend SuperGloo when
 
