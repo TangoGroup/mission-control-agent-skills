@@ -20,10 +20,14 @@ Before diagnosing, check the playbook space for a matching known issue.
 | Writes wiki pages in the wrong place | Wiki instructions don't say where each kind of fact goes. Default space is the conversation, so DM facts stay in the DM's space. `people/` and restricted pages are pinned to the conversation by design. |
 | Wiki writes fail | Lint errors; job has no writable space (own space off, read-only grants, no conversation or project). |
 | Tool missing or not used | The requester lacks access to that MCP server, so its tools were dropped. The server failed to connect or its OAuth expired. Project-only MCP used outside the project. The prompt names the wrong tool (server renamed). The prompt never says when to use it. |
-| Can't see a project's board, files, or channels | Not attached to the project, or the requester isn't a project member. |
+| Can't see a project's board, files, or channels | It isn't that project's agent (or, if workspace-wide, isn't attached there), or the requester isn't a project member. |
+| Someone can't find or DM the agent | It's a project agent and they aren't a home-project member (admins included). |
+| Can't attach the agent to another project or channel | Project agents stay in their home project. Create a project agent there, or use a workspace-wide agent. |
 | Forgets something said earlier in a long thread | Only ~30 recent messages are visible. The prompt should tell it to use `search_messages` for older context, or the fact should be in the wiki. |
 | Different answers for different people | MCP access differs by person. Different conversations have different wiki spaces. |
-| Email or trigger didn't run | Filters don't all match. Agent paused. Trigger posts to a channel in a project it's no longer attached to. |
+| Email or trigger didn't run | Filters don't all match. Agent paused. Trigger posts to a channel outside the agent's scope (paused with reason `scope`), or in a project it's no longer attached to. |
+| A wiki save fails on a space with custom page types | Wrong folder for the type, missing sections or required fields, or an unknown `type:`. Check the space's SCHEMA.md. |
+| Stopped while signing up for a service | CAPTCHA, phone check, single sign-on, payment, or terms that forbid automation. A person finishes that step. |
 | A procedure isn't followed, or a skill is never used | The skill's description doesn't match how people phrase the request. Folder name and `name:` don't match. Repo skill not merged to `main`. Skill not on the agent's Skills tab. |
 | Format, length, or tone is wrong | No output section, or no example of the desired output. |
 | Overreaches (acts without asking) | No approval rule for write, send, or delete tools. |

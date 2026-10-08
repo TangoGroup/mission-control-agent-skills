@@ -1,35 +1,42 @@
 # Building an agent in Mission Control
 
-_Snapshot of the Mission Control agent-building guide, current as of 2026-10-01._
+_Snapshot of the Mission Control agent-building guide, current as of 2026-10-08._
 
 A start-to-finish guide for people creating their first agent. It covers the settings on each tab, how the workspace wiki works, and how to write the three pieces of text that shape the agent: the system prompt, the wiki instructions, and the space instructions.
 
 ## Before you start
 
-This guide is about **Public Agents**. A Public Agent is an AI member of your workspace. It has a name, title, and avatar, runs in the cloud, and people talk to it in Messages, by @-mentioning it in channels, or from triggers you schedule. "Public" means everyone in the workspace can reach it, not that it's public on the internet. You can restrict it to specific people.
+This guide is about **Public Agents**. A Public Agent is an AI member of your workspace. It has a name, title, and avatar, runs in the cloud, and people talk to it in Messages, by @-mentioning it in channels and on tasks, or from triggers you set up. "Public" means it's shared with other people, not that it's public on the internet.
 
-Mission Control has two other kinds of agent that this guide doesn't cover:
+There are two kinds:
 
-- **SuperGloo**, your Personal Assistant. Every member gets one. It acts as you, with your permissions, and has no wiki.
+- **Project agents** (the usual choice). Created inside one project, its *home project*, and only that project's members can see and use it. It works in that project's channels, tasks, files, and wiki space. The home project is permanent.
+- **Workspace-wide agents.** Belong to no single project. They can be used by the whole workspace or a chosen group, join workspace channels and group DMs, and be attached to several projects. Your workspace's built-in PM agent, and any agent created before project agents existed, are workspace-wide.
+
+[Project agent or workspace-wide?](#projects) explains how to choose. Mission Control has two other kinds of agent that this guide doesn't cover:
+
+- **SuperGloo**, your Personal Assistant. Every member gets one. It acts as you, with your permissions, and has no wiki. See the separate SuperGloo guide.
 - **Custom private agents**, which run on one person's Mac. Creating new ones may be turned off in your workspace.
 
 ### What you need
 
-- **The Mission Control desktop app.** Agents can also be edited in the web console and on mobile, but only the desktop app has every tab, including the full Wiki settings and the Wiki pane.
-- **Permission to manage agents** (`workspace.agents.manage`). Workspace admins usually have it. Without it, an agent's ⋯ menu on the Agents screen shows View instead of Manage, and you can't create agents.
-- **Permission to manage the wiki** (`workspace.wiki.manage`). This is only needed to create named wiki spaces and write space instructions. If you don't have it, ask someone who does to handle those steps.
-- **Overdrive mode turned on.** The Agents screen is hidden until you turn it on in Settings › Profile › Overdrive mode. This only changes what you see in the app. It doesn't grant any permissions.
+- **The Mission Control desktop app.** Agents can also be managed in the web console and on mobile, but only the desktop app has every tab and the Wiki pane.
+- **The right role:**
+  - **For a project agent:** be a manager of that project, or a workspace owner or admin.
+  - **For a workspace-wide agent:** permission to manage agents (`workspace.agents.manage`). Workspace admins usually have it. This permission doesn't let you manage project agents in projects you don't manage.
+- **Permission to manage the wiki** (`workspace.wiki.manage`), only if you'll create named wiki spaces or edit a space's settings (instructions and page types). If you don't have it, ask someone who does.
 
 ### Decide these first
 
 Ten minutes of planning saves a lot of rewriting. Write down short answers to these questions:
 
 1.  **What is the agent's job?** One sentence. "Answers staff questions about our policies and keeps the handbook current" is a job. "Helps with stuff" isn't.
-2.  **Who uses it, and where?** In DMs, in one project's channels, on board tasks, or on a schedule.
-3.  **What should it remember?** Decisions, owners, recurring questions, or nothing at all.
-4.  **Where should that memory live, and who can read it?** Everyone, one project team, or a small group. This decides which wiki spaces the agent gets.
-5.  **Which tools and projects does it need?** The outside services it uses, the projects it works in, and whether email or other systems should be able to start it.
-6.  **What must it never do?** Hard limits and when to hand off to a person.
+2.  **Which project is its home, or does it need to be workspace-wide?** A project agent can never move to another project. Pick workspace-wide only if it must work across projects, in workspace channels or group DMs, or for people outside one project.
+3.  **Who uses it, and where?** In its DM, in project channels, on board tasks, on a schedule, or by email.
+4.  **What should it remember?** Decisions, owners, recurring questions, or nothing at all.
+5.  **Where should that memory live, and who can read it?** This decides which wiki spaces it gets.
+6.  **Which tools does it need?** The outside services it uses, and whether email or other systems should be able to start it.
+7.  **What must it never do?** Hard limits and when to hand off to a person.
 
 ## How instructions reach the agent
 
@@ -39,9 +46,9 @@ You shape an agent's behavior with three pieces of text. They reach the agent in
 |----|----|----|----|
 | **System prompt** | Agent editor › Profile | This agent | Inserted into the system prompt on **every job**, under the heading *Agent instructions (from your workspace admin)*. |
 | **Wiki instructions** | Agent editor › Wiki › Instructions | This agent | Written into a file named `WIKI.md` in the agent's cloud workspace, under *Per-agent instructions*. **Not** in the system prompt. |
-| **Space instructions** | Wiki pane › pick a space › Space instructions | One wiki space, shared by every agent that can read it | Written into `wiki/<space>/SCHEMA.md` for that space, under *Space instructions*. **Not** in the system prompt. |
+| **Space instructions** | Wiki pane › pick a space › Space settings | One wiki space, shared by every agent that can read it | Written into `wiki/<space>/SCHEMA.md` for that space, under *Space instructions*. **Not** in the system prompt. |
 
-**So are the wiki and space instructions extra context sent with the system prompt? No.** Only the system prompt is sent on every job. The system prompt Mission Control builds contains one line about the wiki, which tells the agent that `WIKI.md` and `wiki/` are a read-only copy of the workspace wiki and that it should load the built-in `workspace-wiki` skill before reading or writing there. That skill tells the agent to read `WIKI.md` before its first wiki write, and `WIKI.md` tells it to read the space's `SCHEMA.md` before writing to that space. The agent reads your wiki and space instructions only when it decides to use the wiki.
+**So are the wiki and space instructions extra context sent with the system prompt? No.** Only the system prompt is sent on every job. The system prompt Mission Control builds contains one line about the wiki, which tells the agent that `WIKI.md` and `wiki/` are a read-only copy of the workspace wiki and that it should load the built-in `workspace-wiki` skill before reading or writing there. That skill tells the agent to read `WIKI.md` before its first wiki write, and to read a space's `SCHEMA.md` before its first write to that space. The agent reads your wiki and space instructions only when it decides to use the wiki.
 
 #### The system prompt
 
@@ -59,9 +66,9 @@ Sent on every job, in this order
 Read only when the agent uses the wiki
 
 1.  built-in skill — `workspace-wiki`: how to read, write, and check wiki pages
-2.  generated — `WIKI.md`: which spaces it can use, its default space, and the page rules
+2.  generated — `WIKI.md`: which spaces it can use, its default space, and the rules every page follows
 3.  your Wiki instructions — The *Per-agent instructions* section of `WIKI.md`
-4.  generated, one per space — `wiki/<space>/SCHEMA.md`: who can read the space and whether the agent can write to it
+4.  generated, one per space — `wiki/<space>/SCHEMA.md`: who can read the space, whether the agent can write to it, and the space's page types
 5.  your Space instructions — The *Space instructions* section of each `SCHEMA.md`
 
 ### What this means in practice
@@ -110,11 +117,11 @@ The wiki is split into **spaces**, which are top-level folders. A page's space d
 <tr>
 <td><code>projects/&lt;slug&gt;/</code></td>
 <td>Project members</td>
-<td>Automatic for projects the agent is attached to. You can also grant it.</td>
+<td>Automatic for a project agent's home project, and for projects a workspace-wide agent is attached to. You can also grant it.</td>
 </tr>
 <tr>
 <td><code>agents/&lt;slug&gt;/</code></td>
-<td>Whoever can see the agent</td>
+<td>Whoever can see the agent (for a project agent, its home project's members)</td>
 <td>The agent's <strong>own space</strong>, if turned on. Other agents need a grant.</td>
 </tr>
 <tr>
@@ -129,9 +136,9 @@ Being a workspace admin doesn't let you read every page. Admins can manage struc
 
 ### What the agent can read and where it writes
 
-- **Reading.** An agent reads the same set of spaces on every job: its own space (if on), every attached project, every conversation it belongs to, and every space granted to it. This means an agent can use something it learned in one person's DM while replying to someone else. Mission Control tells people this with a banner in every agent DM.
+- **Reading.** An agent reads the same set of spaces on every job: its own space (if on), its home project (or every attached project, for a workspace-wide agent), every conversation it belongs to, and every space granted to it. This means an agent can use something it learned in one person's DM while replying to someone else. Mission Control says so in each agent DM's info panel on desktop, and in a banner on mobile.
 - **Writing.** By default the agent writes to the space closest to the current job. That's the conversation it's in, or the project if there's no conversation, or its own space if neither applies. It can write to other spaces only where it has write access.
-- **Sensitive content stays put.** Pages about people (`people/`) and anything marked `sensitivity: restricted` must stay in the conversation's space, or the project's space if there's no conversation, and the server enforces this. The built-in procedure treats performance, pay, health, conflicts, HR matters, and anything someone calls confidential as restricted.
+- **Sensitive content stays put.** Pages of a *pinned* page type (the built-in `person` type, or any custom type marked pinned) and anything marked `sensitivity: restricted` must stay in the conversation's space, or the project's space if there's no conversation, and the server enforces this. The built-in procedure treats performance, pay, health, conflicts, HR matters, and anything someone calls confidential as restricted.
 
 ### Own space or a named space?
 
@@ -145,26 +152,50 @@ If none of these apply, a named space only adds a second place to look.
 
 ### How pages are organized
 
-Every space has three hub files and a fixed set of folders. You don't need to learn the format to use the wiki, since agents handle it, but it helps when writing space instructions.
+Every space has three hub files at its root: `index.md` (the map), `inventory.md` (the running list), and `log.md` (the changelog). Every other page has a **page type**, set by the `type:` line at the top of the page. The type decides the page's sections, required fields, and which hub lists it. The folder doesn't.
 
-| Folder | Holds | Created when |
+Unless someone changes it, a space uses six built-in types, and new pages go at the space root. Pages already in the older `notes/`, `people/`, `topics/`, `decisions/`, `resources/`, and `syntheses/` folders still work.
+
+| Built-in type | Holds | Created when |
 |----|----|----|
-| `notes/` | Dated notes from conversations and work. These are the main pages. | Every time something worth remembering happens |
-| `people/` | People mentioned in notes | Mentioned in 2+ notes, or linked from another page |
-| `topics/` | Recurring subjects, concepts, and systems | Mentioned in 2+ notes, or linked from another page |
-| `decisions/` | Decision records. These are never rewritten; a new decision replaces an old one. | Mentioned in 1+ note |
-| `resources/` | External documents, links, and tools | Mentioned in 2+ notes, or linked from another page |
-| `syntheses/` | Summaries that span many notes | 4+ notes over 2+ months |
+| `note` | Dated notes from conversations and work. These are the main pages. | Every time something worth remembering happens |
+| `person` | People mentioned in notes. Always kept in the conversation's (or project's) space. | Mentioned in 2+ notes |
+| `topic` | Recurring subjects, concepts, and systems | Mentioned in 2+ notes |
+| `decision` | Decision records. Never rewritten; a new decision replaces an old one. | Mentioned in 1+ note |
+| `resource` | External documents, links, and tools | Mentioned in 2+ notes |
+| `synthesis` | Summaries that span many notes | 4+ notes over 2+ months |
 
-The hub files are `index.md` (the map of people, topics, decisions, resources, and syntheses), `inventory.md` (every note, newest first), and `log.md` (the changelog). Each page ends with a *Connections* section that links it to related pages. Every save is checked automatically, and a save that breaks the rules doesn't go through. In the Wiki pane you can view History, restore earlier versions, view the Graph, and run Health checks.
+### Custom page types
+
+A space can define its own page types instead, such as a `policy` type in a `policies/` folder with Summary, Rules, and Exceptions sections. Someone with wiki manage permission sets them in Wiki › select the space › Space settings › Page types. To keep the old folder layout, choose *Start from built-in types with classic folders*. For each type you set:
+
+- **Its folder** (up to 2 levels deep).
+- **Its sections and required fields.**
+- **Its role:** *primary* (listed in `inventory.md`), *indexed* (listed in `index.md`), or *standalone* (not listed).
+- **Whether it's pinned** (agents may only write it in the conversation's or project's space).
+- **Whether it's locked once complete.**
+
+A space can have up to 20 types. Saving shows a preview first, and Mission Control won't save types that would break existing pages. Agents read a space's types in its `SCHEMA.md` before writing there.
+
+Each page ends with a *Connections* section that links it to related pages. Every save is checked automatically, and a save that breaks the rules doesn't go through. In the Wiki pane you can view History, restore earlier versions, view the Graph, and run Health checks.
 
 ## Build the agent, step by step
 
-Start in the desktop app: Agents › New public agent. To edit an existing agent later, click the ⋯ icon on its row and choose Manage. The editor opens in the main pane with tabs along the top. After you save the profile the first time, the editor stays open so you can continue through the other tabs.
+Start in the desktop app:
+
+- **Project agent:** open the project, go to its Agents tab, and click New agent.
+- **Workspace-wide agent:** Settings › Workspace › Agents › New workspace-wide agent.
+
+To edit an agent later, find it in the same list, click the ⋯ icon on its row, and choose Manage (View if you can't edit it). The editor opens with tabs along the top. After you save the profile the first time, it stays open so you can continue through the other tabs.
+
+| Agent | Tabs |
+|----|----|
+| Project agent | Profile · Skills · Secrets · Harnesses · MCP · Triggers · Connections · Wiki |
+| Workspace-wide agent | Profile · Skills · Secrets · Harnesses · MCP · Triggers · Connections · Projects · Access · Wiki |
 
 1.  ### Fill in the Profile tab
 
-    Agents › New public agent › Profile
+    Profile tab
 
     Picture  
     An avatar people will recognize in the roster and in threads.
@@ -174,6 +205,9 @@ Start in the desktop app: Agents › New public agent. To edit an existing agent
 
     Title  
     Optional, and shown next to the name, like "Operations assistant". Also used in the agent's sense of who it is.
+
+    Project  
+    Project agents only, read-only: the home project.
 
     Model  
     The cloud model it thinks with. A stronger model helps with open-ended work. A faster one is fine for simple lookups.
@@ -193,7 +227,7 @@ Start in the desktop app: Agents › New public agent. To edit an existing agent
     System prompt  
     Who the agent is and how it behaves, up to 20,000 characters. Use the [template below](#prompt).
 
-    Save. The agent now exists, and Mission Control gives it its own email address (like `ops-desk-x7k2@missioncontrol.is`), shown on this tab with a copy button. Mail sent there doesn't do anything until you set up an email trigger. See [The agent's email address](#email).
+    Save. The agent now exists, and Mission Control gives it its own email address (like `ops-desk-x7k2@missioncontrol.is`), shown on this tab with a copy button. See [The agent's email address](#email).
 
 2.  ### Add skills
 
@@ -201,35 +235,43 @@ Start in the desktop app: Agents › New public agent. To edit an existing agent
 
     Skills are instruction packs the agent loads only when a request needs them, such as a multi-step procedure, a template, or reference material. Add skills from your team's shared repo by pasting `TangoGroup/mission-control-agent-skills@<skill-name>`, or from any public GitHub repo or skills.sh link. You can also upload a skill folder from your Mac. Most agents need at least one skill written for their job. [Building skills](#skills) covers when to write one, how, and how to get it onto the agent.
 
-    The built-in `workspace-wiki` skill is added automatically whenever the wiki is on. It shows as Managed, and you can't remove or replace it.
+    Two built-in skills are added automatically and show as Managed. You can't remove them:
+
+    - `workspace-wiki`, whenever the wiki is on.
+    - `external-accounts`, which lets the agent sign up for services (see [Connecting tools and services](#connections)).
 
 3.  ### Connect the tools and services it needs
 
     MCP · Secrets · Connections · Harnesses tabs
 
-    An agent can work with almost any outside service. Most services connect as **MCP servers**: your workspace sets each one up once, and you attach it to any agent that needs it. For services without an MCP server, use **secrets** (API keys the agent uses from the command line). The **Connections** tab is only for GitHub and Linear, where the agent gets its own account. [Connecting tools and services](#connections) explains each option and when to use it.
+    An agent can work with almost any outside service. Most services connect as **MCP servers**. For services without one, use **secrets** (API keys the agent uses from the command line). The **Connections** tab covers GitHub, Linear, and accounts the agent has signed up for itself. [Connecting tools and services](#connections) explains each option.
 
     Secrets and Harnesses are unavailable until the profile is saved.
 
-4.  ### Attach it to projects
+4.  ### Projects
 
-    Project ⋯ › Agents
+    Project agents: nothing to do · Workspace-wide agents: project › Agents tab
 
-    Attaching is done from the project, not from the agent. A project manager opens the project's ⋯ menu, chooses Agents, and attaches the agent. In the same dialog they can add MCP servers and secrets that apply only to that project. The agent's Projects tab shows where it's attached.
-
-    Without an attachment, the agent can't be @mentioned in the project's channels, can't use its board, files, or calendar, and can't run triggers on project activity. [Why attach it to projects](#projects) covers what attaching gives the agent and when to use separate agents instead.
+    A project agent already belongs to its home project and can't be added to others. A workspace-wide agent only works in a project after it's attached there. A manager of that project opens the project's Agents tab, clicks the ⋯ next to New agent, and chooses Attach workspace-wide agent…. The agent's row then has a Project config button for MCP servers and secrets that apply only in that project. [Project agent or workspace-wide?](#projects) covers the details.
 
 5.  ### Add triggers (optional)
 
     Triggers tab
 
-    Triggers run the agent on a schedule, when something happens (an event), or when an external system calls a webhook. Results post into a workspace channel or an attached project's channel. People can also ask the agent in chat to set up a recurring task; it posts an approval card first.
+    Triggers run the agent on a schedule, when something happens (an event), when an email arrives, or when an external system calls a webhook. Schedules use a simple picker or, under advanced, a five-field cron editor (minute, hour, day of month, month, weekday).
+
+    - **Project agents** post results only to a channel in their home project, or to their own DM for triggers they set up themselves.
+    - **Workspace-wide agents** can also post to public workspace channels and to channels of the projects they're attached to.
+
+    People can also ask the agent in chat to set up a recurring task, and it posts an approval card first. Separately, they can ask it to **watch** something long-running ("check on this later"). A watch isn't a trigger. It expires on its own and reports back in the same conversation.
 
 6.  ### Set who can use it
 
-    Access tab
+    Project agents: project membership · Workspace-wide agents: Access tab
 
-    **Workspace** (the default) lets every member DM and mention it. **Restricted** limits it to listed people and roles. Everyone else doesn't see it at all, including its wiki space. A restricted agent can't be added to a channel where anyone lacks access.
+    A **project agent** is visible only to its home project's members (plus workspace owners and admins). To give someone access, add them to the project.
+
+    A **workspace-wide agent** has an Access tab with two modes. **Workspace** (the default) lets every member DM and mention it. **Restricted** limits it to listed people and roles, and everyone else doesn't see it at all. A restricted agent can't be added to a channel where anyone lacks access. The Access tab also has the Can message members through SuperGloo switch (see [Reaching people through SuperGloo](#relay)).
 
 7.  ### Configure its wiki access
 
@@ -242,7 +284,7 @@ Start in the desktop app: Agents › New public agent. To edit an existing agent
     Conversation and project spaces on jobs: *Read and write* (default) or *Read only*. Controls whether the agent can save notes into the conversations and projects it works in.
 
     Granted spaces  
-    Add space grants `shared`, a named space, a project space, or another agent's space, each set to read-only or read-write. Create space makes a new named space here, if you have wiki manage permission.
+    Add space grants `shared`, a named space, a project space, or another agent's space, each set to read-only or read-write. New agents start with read-write on `shared`. Change it to read-only, or remove it, if the agent shouldn't write workspace-wide notes. For a project agent with no grants, the tab suggests read-write on its home project's space. Create space makes a new named space here, if you have wiki manage permission.
 
     Instructions  
     This agent's wiki instructions, up to 8,000 characters. They go into `WIKI.md`. Use the [template below](#wiki-instructions).
@@ -251,20 +293,25 @@ Start in the desktop app: Agents › New public agent. To edit an existing agent
 
     
     Watch for this warning — 
-    If you grant a **restricted** space to an agent everyone can use, the tab warns you. The agent could repeat that content in any conversation, to anyone. Either restrict the agent to the same people or don't grant the space.
+    If you grant a **restricted** space to an agent with wider access, the tab warns that the agent could repeat that content in any conversation it joins. For a workspace-wide agent, either restrict the agent to the same people or don't grant the space. For a project agent, the warning appears even though only project members can reach it. Make sure every project member should see that space's content.
 
     
 8.  ### Set up the spaces it uses
 
-    Wiki pane › Manage spaces · Space instructions
+    Wiki pane › Manage spaces · Space settings
 
-    Most agents only need their own space (see [Own space or a named space?](#wiki)). If the agent needs a named space, such as a team handbook or a client knowledge base, someone with wiki manage permission creates it: Wiki › Manage spaces. Give it a name, a description, and an access mode (*Workspace* or *Restricted*). The slug is set once and can't be renamed. Then grant the space to the agent on its Wiki tab.
+    Most agents only need their own space and their project's space (see [Own space or a named space?](#wiki)). If the agent needs a named space, such as a team handbook or a client knowledge base, someone with wiki manage permission creates it: Wiki › Manage spaces. Give it a name, a description, and an access mode (*Workspace* or *Restricted*). The slug is set once and can't be renamed. Then grant the space to the agent on its Wiki tab.
 
-    To tell agents how a space is organized, select the space in the Wiki pane and open Space instructions in its sidebar. Up to 8,000 characters. Spaces with instructions show an *Instructions* mark. Use the [template below](#space-instructions).
+    To set up a space for agents, select it in the Wiki pane and open Space settings in its sidebar. It has two parts:
+
+    - **Page types,** optional, for when the space needs its own folders or page structure.
+    - **Instructions,** up to 8,000 characters, saying how to use the space. Use the [template below](#space-instructions).
+
+    Spaces with instructions or custom types show an *Instructions* mark.
 
 9.  ### Test it
 
-    Messages › New › Message
+    Messages › New › Message, or Message on the agent's row
 
     Start a DM with the agent and follow the [test plan below](#test).
 
@@ -288,7 +335,7 @@ A useful test: if a section of the system prompt runs longer than a few paragrap
 
 ### Writing a good skill
 
-- **Name it clearly.** Lowercase letters, numbers, and single hyphens, up to 64 characters, such as `invoice-intake`. The folder name must match the `name:` in `SKILL.md`. `workspace-wiki` is reserved.
+- **Name it clearly.** Lowercase letters, numbers, and single hyphens, up to 64 characters, such as `invoice-intake`. The folder name must match the `name:` in `SKILL.md`. `workspace-wiki` and `external-accounts` are reserved.
 - **Write the description for the agent.** It's all the agent sees before deciding to load the skill. Say what the skill does and when to use it, using the words people actually type. Up to 1,024 characters. "Process vendor invoices: extract amount and due date, create an approval task. Load for any invoice, receipt, or bill" works. "Invoice helper" doesn't.
 - **Keep the instructions focused.** When to use it, the steps, and what the finished result looks like. Keep `SKILL.md` under 128 KB.
 - **Move long material into reference files**, and say in `SKILL.md` when to read each one.
@@ -344,10 +391,10 @@ The Connections tab is just one way to connect a service. An agent can reach alm
 
 | Route | Use it for | Where you set it up |
 |----|----|----|
-| **Built-in tools** | Mission Control itself: messages and channels, boards and tasks, Library and project files, calendar, the Feed, slide decks, the wiki. | Nothing to set up. Project tools need the agent [attached to the project](#projects). |
-| **MCP servers** | Any service that has an MCP server. For example Notion, Slack, Google Drive, a CRM, a database, Gloo Communications, or an internal API your team built. | Settings › Workspace › MCP Servers, then attach on the agent's MCP tab or a project's Agents dialog |
-| **Secrets** | Services with an API or command-line tool but no MCP server. The agent runs commands in its cloud workspace with the key. | Agent's Secrets tab, or a project's Agents dialog. Shell commands must be allowed. |
-| **Connections tab** | **GitHub**: install the Mission Control GitHub App on selected repos so the agent can work in them and react to repo events. **Linear**: the agent becomes a Linear user people can @mention and assign issues to. | Agent's Connections tab |
+| **Built-in tools** | Mission Control itself: messages and channels, boards and tasks, Library and project files, calendar, the Feed, slide decks, the wiki. Also a web browser and the agent's own email inbox. | Nothing to set up. A project agent always has its home project's tools. A workspace-wide agent needs to be [attached to a project](#projects). |
+| **MCP servers** | Any service that has an MCP server. For example Notion, Slack, Google Drive, a CRM, a database, Gloo Communications, or an internal API your team built. | Settings › Workspace › MCP Servers, then attach on the agent's MCP tab (or, for a workspace-wide agent, under Project config on a project's Agents tab) |
+| **Secrets** | Services with an API or command-line tool but no MCP server. The agent runs commands in its cloud workspace with the key. | Agent's Secrets tab (or Project config for a workspace-wide agent in one project). Shell commands must be allowed. |
+| **Connections tab** | **GitHub**: install the Mission Control GitHub App on selected repos so the agent can work in them and react to repo events. **Linear**: the agent becomes a Linear user people can @mention and assign issues to. **External accounts**: services the agent signed up for itself, with Reveal and Revoke. | Agent's Connections tab |
 | **Harnesses** | Coding work. The agent hands it to Claude Code, Codex, OpenCode, or Cursor. | Agent's Harnesses tab |
 | **Skills** | Know-how, not access: procedures, checklists, house style. | Agent's Skills tab |
 | **Email and webhooks** | Letting outside systems *start* work: mail to the agent's address, or a webhook from another app. | Triggers tab. See [the agent's email address](#email). |
@@ -358,8 +405,8 @@ Someone with permission to manage MCP servers adds the server once for the whole
 
 1.  Open Settings › Workspace › MCP Servers and add a server. Give it a name and either a URL (for hosted servers) or a command (for servers that run as a program). Gloo Communications has its own guided Connect button.
 2.  Add its credentials. Store API keys as secrets on the server and reference them as `{{secret:NAME}}` in headers or settings. For servers that sign in with OAuth, click Log in.
-3.  Choose who can use it: **Everyone on workspace**, or **Restricted** to chosen roles and members. New servers start as Restricted. Workspace owners and admins always have access.
-4.  Attach it on the agent's MCP tab to use it everywhere, or in a project's Agents dialog to use it only on that project's work.
+3.  Choose who can use it: **Everyone on workspace**, or **Restricted** to chosen roles and members. New servers start as Restricted. Workspace owners and admins always have access. A server tied to a project (for example, one created by a project template) can also be used by that project's members, and its managers can manage its secrets and sign-in.
+4.  Attach it on the agent's MCP tab. For a workspace-wide agent, you can instead attach it under Project config on a project's Agents tab, so it's used only on that project's work.
 
 ### Finding out which tools a server gives the agent
 
@@ -441,8 +488,10 @@ Example
 ### Things to know
 
 - **The tool's access follows whoever asked.** When someone without access to an MCP server messages the agent, that server's tools are left out of the run, and the agent is told they're unavailable. Scheduled, event, and webhook runs get every attached server.
-- **Project-only tools stay in the project.** MCP servers and secrets attached to a project are only used on that project's jobs, not in DMs or other conversations.
-- **Your own connected accounts aren't shared with the agent.** The services you connect under Settings › Agent › Connections belong to you and your Personal Assistant. A Public Agent acts as itself, so it needs its own MCP server or secret.
+- **Project-only tools stay in the project.** MCP servers and secrets attached under a project's Project config are only used on that project's jobs. A project agent's DM counts as its home project, so its tools work there too.
+- **Your own connected accounts aren't shared with the agent.** The services you connect under Settings › Agent › Connections belong to you and SuperGloo. A Public Agent acts as itself, so it needs its own MCP server, secret, or account.
+- **The agent can sign itself up.** Invite the agent's email address to a product, or ask it in chat to sign up. It reads the invite in its inbox, joins using its built-in browser, and saves the account. If the product has an MCP server or API keys, it can register those for itself too. It stops and tells you when it hits a CAPTCHA, phone verification, single sign-on, a payment step, or terms that forbid automation. New tools appear on its next run. Manage these under Connections › External accounts, where Revoke also removes the server and secret it created. An MCP server the agent creates for itself is available to everyone in the workspace, so review it.
+- **Don't name an MCP server `browser`.** It replaces the agent's built-in browser.
 - **Mission Control data goes through the built-in tools.** The agent can't use an MCP server or shell commands to get around project or channel permissions.
 
 ## The agent's email address
@@ -473,16 +522,16 @@ Use it to connect outside systems, and people outside Mission Control, to an age
 
 ### What it does
 
-- **Keeps an inbox.** Every message sent to the address is saved for the agent, including the body and attachments. This happens even if nothing runs and even if the agent is paused.
+- **Keeps an inbox.** Every message sent to the address is saved for the agent, including the body and attachments. This happens even if nothing runs and even if the agent is paused. The agent can read saved mail during any run.
 - **Starts work when an email matches a trigger.** An *Email received* trigger runs the agent when a matching message arrives, and the result posts to a channel.
+- **Lets the agent join products.** Invite the address to a tool like Linear or Notion, then ask the agent in chat to accept. It reads the invite and signs up in its browser (see [Connecting tools and services](#connections)).
 - **Gives outside systems somewhere to send things.** Use it for alert emails, reports, newsletters, vendor messages, form notifications, or any tool that can only send email.
 
 ### What it doesn't do
 
 - **It can't send.** The address only receives, so the agent can't reply by email. Results go to a Mission Control channel.
-- **Mail with no matching trigger does nothing.** It's saved, but no run starts and nobody is notified. (Experimental journal agents are the exception. They read incoming mail without a trigger.)
-- **Attachments stay in the inbox.** The run gets the email text but not its attachments.
-- **It doesn't accept invitations.** You can give the address to another product, and the invite email is saved, but the agent won't click the link to join.
+- **Mail with no matching trigger doesn't start anything.** It's saved, but no run starts and nobody is notified. (Experimental journal agents are the exception. They read incoming mail without a trigger.)
+- **Attachments aren't posted into chat.** The agent can open the full email and download its attachments with its inbox tools, but they stay in the inbox.
 
 ### How to run the agent from email
 
@@ -496,7 +545,7 @@ Use it to connect outside systems, and people outside Mission Control, to an age
 
     Agent editor › Triggers › add an event trigger › Email received
 
-    Choose the channel where results should post: a public workspace channel or a channel in a project the agent is attached to.
+    Choose the channel where results should post. For a project agent, that's a channel in its home project. A workspace-wide agent can also use a public workspace channel or a channel in a project it's attached to.
 
 3.  ### Filter which emails count (optional)
 
@@ -512,7 +561,7 @@ Use it to connect outside systems, and people outside Mission Control, to an age
     
 4.  ### Write the trigger prompt
 
-    The prompt tells the agent what to do with the email. Each run gets your prompt plus the email's sender, recipients, subject, and the first 4,000 characters of the body. The full email stays in the inbox.
+    The prompt tells the agent what to do with the email. Each run gets your prompt plus the email's sender, recipients, subject, a short excerpt of the body, and the email's ID. The agent can open the full email and its attachments with its inbox tools when it needs them.
 
     
     
@@ -539,33 +588,53 @@ Anyone can email the address —
 
 Anyone who learns the address can send it mail. Use the From filter to limit which senders start a run. Write the trigger prompt so the agent reports what it received rather than acting on requests inside the email.
 
-## Why attach it to projects
+## Reaching people through SuperGloo
 
-A **project** is a group's shared area: invite-only channels, a Files folder, task boards, and a wiki space, for one team or piece of work. Attaching an agent makes it a working member of that project. Without the attachment, the agent can't see or act on any of it.
+A Public Agent can send a member a message **through that member's SuperGloo**, for example "The vendor contract is ready for your signature." SuperGloo rewrites it and delivers it in the member's private SuperGloo conversation. If the member has turned them on, SuperGloo also sends a push notification or an iMessage. The member can reply to SuperGloo, which passes the answer back to the agent.
 
-### What attaching gives the agent
+- **Turning it on:** someone with `workspace.agents.manage` switches on Can message members through SuperGloo on the agent's Access tab. It's off by default. Today that switch is only on workspace-wide agents, because project agents have no Access tab.
+- **Who it can reach:** members who can see the agent. For an agent attached to projects, only members of one of those projects.
+- **What the agent sends:** a short *update* or a *question*, up to 2,000 characters.
+- **Limits:** 3 per run, 4 per hour and 12 per day to the same person. Each person gets at most 30 a day from all agents combined.
+- **The member stays in control.** In SuperGloo's Agent messages settings, they choose push, desktop, and iMessage alerts (all off by default), set quiet hours, and mute specific agents. The agent only learns whether the message was queued, never whether it was muted or read.
+- **When to use it:** say so in the system prompt, for example "When a request needs a specific person's decision, message them through SuperGloo with one clear question." The agent decides when to send.
+
+## Project agent or workspace-wide?
+
+A **project** is a group's shared area: invite-only channels, a Files folder, task boards, and a wiki space, for one team or piece of work. Most agents should be **project agents**, created inside the project they serve.
+
+### What a project agent gets automatically
 
 | Capability | What it means |
 |----|----|
 | **@mentions in the project** | Project members can @mention the agent in project channels and in a task's Activity on the board. It replies in the thread or on the task. |
-| **Project tools** | It can read and post in project channels, search past project messages, read and write project Files, create and update board tasks, and use the project calendar. |
-| **Project memory** | It can read the project's wiki space (`projects/<slug>/`) and, if allowed, write to it. Notes from project work land there by default, and only project members can see them. |
-| **Triggers on project activity** | It can run when a task is created, when a task's status changes, or when a message is posted, and scheduled triggers can post to project channels. Activity triggers only fire for attached projects. |
-| **Project-only tools and keys** | MCP servers and secrets attached in the project's Agents dialog, such as a client's API key that should never be used outside that project. |
-| **Project help from DMs** | When a project member asks about the project in a DM or another channel, the agent can use the project's tools there. If some people in that conversation aren't project members, it asks for permission first. |
+| **Project tools** | It can read and post in project channels, search past project messages, read and write project Files, create and update board tasks, and use the project calendar, including from its own DM. |
+| **Project memory** | It can read the project's wiki space (`projects/<slug>/`) and, if allowed, write to it. Only project members can see it. |
+| **Triggers on project activity** | It can run when a task is created or changes status, or when a message is posted, and post scheduled results to project channels. |
+| **Access by membership** | Only the project's members (plus workspace owners and admins) can see it, DM it, or mention it. Add or remove people by changing the project's membership. |
+| **Managed by the project** | The project's managers create, edit, pause, and archive it from the project's Agents tab. |
 
-### When to attach, and when not to
+### What a project agent can't do
 
-- **Attach** when the agent should work on a team's tasks, files, or channels, react to project activity, or keep that team's memory.
-- **Don't attach** an agent that only answers questions in DMs or workspace-wide channels. It doesn't need project access for that.
-- **Add it to a channel instead** if people only need to mention it in one channel. Channel members can mention it there without an attachment.
+- **Move.** Its home project is permanent. To use the agent elsewhere, archive it and create a new one in the other project.
+- **Leave the project.** It can't join workspace channels, group DMs, or other projects' channels.
+- **Outlive the project.** Archiving the project archives its agents.
+
+### When to make it workspace-wide instead
+
+- It must work **across several projects**, or in workspace channels and group DMs.
+- It serves **everyone in the workspace**, or a group that isn't one project, like a help desk.
+- It should **message people through SuperGloo** (the switch is on the Access tab).
+
+Workspace-wide agents are created in Settings › Workspace › Agents, and only work in a project after a manager of that project attaches them. Attaching happens on the project's Agents tab: click the ⋯ next to New agent and choose Attach workspace-wide agent…. The Project config button on the agent's row holds MCP servers and secrets for that project only. Detaching deletes that project's config and pauses the agent's triggers in that project's channels.
 
 ### Things to know
 
-- **Access follows the person asking.** The agent only uses a project's tools for people who are members of that project. Being a workspace admin doesn't count.
-- **One agent shares memory across all its projects.** It can read every attached project's wiki space, so something it learned in one project can come up in another. If projects must stay strictly separate (for example, two clients), create a separate agent for each.
-- **Detaching cleans up.** Detaching deletes that project's MCP servers and secrets for the agent and pauses its triggers on that project's channels.
-- **The workspace PM agent is different.** Your workspace's built-in PM agent can work on any project the person asking belongs to, without being attached.
+- **Access follows the person asking.** An agent only uses a project's tools for people who are members of that project. Being a workspace admin doesn't count.
+- **Separate projects get separate memory automatically.** A project agent reads only its own project's space and the spaces you grant it. A workspace-wide agent reads every attached project's space, so use project agents when projects must stay apart, such as two clients.
+- **The workspace PM agent is workspace-wide.** It can work on any project the person asking belongs to, without being attached. It appears in each project under "Workspace-wide agents in this project".
+- **Projects can create agents for you.** A project template can include agents, skills, and MCP servers. A project can also name an onboarding agent, one of its own project agents, which helps the project's creator with setup and welcomes new members.
+- **Agents created before project agents existed** stayed workspace-wide and keep working as before.
 
 ## What goes where
 
@@ -576,8 +645,9 @@ Most weak agents repeat the same guidance in several places, and then the copies
 | Who the agent is, its job, tone, output format, hard limits, handoffs | **System prompt** |
 | *When* to check or update the wiki as part of the job | **System prompt**, in one or two lines |
 | What *this agent* should remember, which space it files each kind of thing in, which spaces it reads first | **Wiki instructions** |
-| How *one space* is organized: its purpose, topic list, naming, what doesn't belong there. The same for every agent. | **Space instructions** |
-| Page format, required fields, links, indexes, checks | **Nowhere.** Already built into `WIKI.md` and the wiki skill. |
+| How *one space* is used: its purpose, when to use each page type, naming, what doesn't belong there. The same for every agent. | **Space instructions** |
+| How pages in one space are structured: folders, sections, required fields, pinned types | **Space settings › Page types.** Instructions can't enforce structure. |
+| Rules every page follows: links, indexes, checks | **Nowhere.** Already built into `WIKI.md` and the wiki skill. |
 | Which spaces the agent can read or write | **Wiki tab settings.** Access comes from settings, not from text. |
 | A multi-step procedure, template, or reference material needed for some requests, not all | **A skill**, plus one line in the system prompt saying when to load it |
 | The actual knowledge: policies, facts, decisions | **Wiki pages.** Never pasted into the prompt. |
@@ -706,23 +776,25 @@ Agent editor › Wiki › Instructions
 
 ## Space instructions template
 
-Space instructions describe **one space** to every agent that uses it. They appear in that space's `SCHEMA.md`, below a generated header saying who can read the space and whether the current agent can write to it. Write them for any agent, not one in particular. People who can read the space can see them too.
+Space instructions describe **one space** to every agent that uses it. They appear in that space's `SCHEMA.md`, after a generated header (who can read the space, whether the current agent can write to it) and the space's page types. Write them for any agent, not one in particular. People who can read the space can see them too.
 
-Wiki pane › space › Space instructions
+If the space needs its own folders or page sections, set those up first under Space settings › Page types. Instructions say how to *use* the types, not how pages are built.
+
+Wiki pane › space › Space settings › Instructions
 
 ```
 ## Purpose
 This space holds {what} for {audience}. It is the source of truth for
 {x}. {y} lives in {somewhere else}, not here.
 
-## What goes in each folder
-- topics/: one page per {policy area / system / client}.
-- decisions/: {what counts as a decision here, and who approves it}.
-- resources/: {links to source documents, e.g. the signed PDF in Library}.
-- notes/: {what a note in this space records}.
+## When to use each page type
+- {type}: {what counts as one here, e.g. "one page per policy area"}.
+- decision: {what counts as a decision here, and who approves it}.
+- resource: {e.g. "a link to the signed PDF in Library"}.
+- note: {what a note in this space records}.
 
 ## Naming
-- Topic names: {pattern and examples, e.g. expense-policy, pto-policy}.
+- Page names: {pattern and examples, e.g. expense-policy, pto-policy}.
 - Put these tags on notes: {tags}.
 
 ## Sources and trust
@@ -741,27 +813,28 @@ This space holds {what} for {audience}. It is the source of truth for
 #### Include
 
 - What the space is for, and what isn't
-- What each folder means here, and the topic list
+- When to use each page type, and the page list
 - Naming and tagging
 - Which sources count, and who owns the space
 
 #### Leave out
 
 - Anything specific to one agent (wiki instructions)
-- General page rules (built in)
+- Folders, sections, required fields, and pinning (Page types)
+- Rules every page follows (built in)
 - Who can read the space (set by the space's access mode)
 
-Agents can't edit space instructions. Only people with wiki manage permission can.
+Agents can't edit space instructions or page types. Only people with wiki manage permission can.
 
 ## Worked example: an Ops Desk agent
 
-A 12-person team wants one agent that answers questions about internal policies and keeps a handbook current. The handbook gets a named space rather than living in the agent's own space, because it's the team's resource: the Ops lead curates it, other agents may need it later, and it should survive if the agent is replaced. Here's how the plan maps to settings:
+A 12-person team wants one agent that answers questions about internal policies for everyone and keeps a handbook current. Because it serves the whole team rather than one project, it's a **workspace-wide** agent, created in Settings › Workspace › Agents. (If only one project's members needed it, it would be a project agent in that project.) The handbook gets a named space rather than living in the agent's own space, because it's the team's resource: the Ops lead curates it, other agents may need it later, and it should survive if the agent is replaced. Here's how the plan maps to settings:
 
 |  |  |
 |----|----|
 | Profile | Name *Ops Desk*, title *Operations assistant* |
-| Access | Workspace. Everyone can ask it. |
-| Named space | `spaces/handbook/`, Workspace mode, created in Manage spaces |
+| Access | Workspace-wide agent, Access: Workspace. Everyone can ask it. |
+| Named space | `spaces/handbook/`, Workspace mode, created in Manage spaces, using the built-in page types |
 | Wiki tab | Own space on · Job spaces *Read and write* · Grants: `spaces/handbook/` read-write, `shared` read-only |
 
 Ops Desk · System prompt
@@ -819,11 +892,11 @@ spaces/handbook/ · Space instructions
 The team handbook: current policies and how-to steps for all staff. It is the
 source of truth for policy. Signed contracts live in Library, not here.
 
-## What goes in each folder
-- topics/: one page per policy area (expense-policy, pto-policy,
+## When to use each page type
+- topic: one page per policy area (expense-policy, pto-policy,
   travel-policy, equipment-policy, vendor-requests).
-- decisions/: a policy change approved by Priya, with the date it takes effect.
-- resources/: links to the source document in Library.
+- decision: a policy change approved by Priya, with the date it takes effect.
+- resource: a link to the source document in Library.
 
 ## Sources and trust
 - Cite the approving message or the Library document.
@@ -842,56 +915,62 @@ Notice there's no repetition. The prompt says *when* to use the handbook. The wi
 
 ### First test
 
-1.  Open a DM: in Messages, click New, choose Message, search for the agent's name, and select it. You should see a banner saying the agent remembers what's shared in the wiki and that other members may read it.
+1.  Open a DM: click Message on the agent's row, or in Messages click New, choose Message, and search for the agent. On desktop, the conversation's info panel explains that the agent remembers what's shared in the wiki and that other members may read it. A project agent only opens for members of its home project.
 2.  Ask something inside its job. Check the format, tone, and whether it used the wiki when it should have.
 3.  Ask something outside its job. It should decline or redirect the way the prompt says.
 4.  Tell it a fact worth remembering. When it replies, open Wiki and check that the page landed in the space you expected, with a sensible title.
 5.  In a new conversation, ask about that fact. It should find it.
-6.  If it's attached to a project, @mention it in a project channel and check that it can use that project's space.
+6.  @mention it in a project channel (its home project, or one it's attached to) and check that it can use that project's tools and space.
 
 ### Ongoing
 
 - Read the wiki regularly at first. Where pages are messy or misfiled, fix the wiki or space instructions, not the pages one by one.
 - Use Health and Repair in the Wiki pane to catch broken links. Use History to undo a bad edit, or roll a whole space back to a point in time (needs wiki manage permission).
 - Use Move to space to promote a useful page to a wider space. Pages marked restricted can't leave a conversation until that mark is removed.
-- Use Pause to take the agent out of service without losing its setup, and Archive to retire it.
+- Use Pause to take the agent out of service without losing its setup, and Archive to retire it. Both are in the ⋯ menu on its row (the project's Agents tab, or Settings › Workspace › Agents).
 
 ## Troubleshooting
 
 | What you see | Likely cause and fix |
 |----|----|
-| No Agents screen in the sidebar | Turn on Settings › Profile › Overdrive mode. |
-| No *New public agent* or *Manage* button | You need permission to manage agents. Ask a workspace admin. |
+| No New agent button on a project's Agents tab | Only that project's managers (and workspace owners and admins) can create project agents. Ask a project manager. |
+| No Manage in an agent's ⋯ menu | Project agent: you need to be a manager of its home project. Workspace-wide agent: you need `workspace.agents.manage`. |
+| You can't find or DM an agent | It's a project agent and you aren't a member of its home project (this applies to admins too). Ask to be added to the project. |
+| An agent can't be attached to another project, or added to a channel | Project agents stay in their home project. Create a project agent in the other project, or use a workspace-wide agent. |
 | The agent can't find pages in `shared/` or a named space | Agents only see those spaces through a grant. Add it on the Wiki tab. |
 | The agent ignores its wiki or space instructions | It only reads them when it uses the wiki. Add a when-to line to the system prompt. Also check the instructions don't conflict with the system prompt, which wins. |
 | An instructions change doesn't show up | The wiki files are rebuilt when the agent starts working and every few minutes. Try again in a new conversation after a few minutes. |
-| The agent says a wiki save failed | The automatic check found a problem (a missing link, a page not in the index). The agent usually fixes it and retries. Health in the Wiki pane shows what's wrong. |
+| The agent says a wiki save failed | The automatic check found a problem: a missing link, a page not in its hub, a page in the wrong folder for its type, missing sections or required fields, or an unknown `type:`. The agent usually fixes it and retries. Health in the Wiki pane shows what's wrong. |
 | Your wiki edit conflicts with an agent's | Someone saved first. Reload the page and apply your change again. |
 | The agent can't write anywhere | Its own space is off, it has only read-only grants, and the job has no conversation or project. Turn on its own space or give it a read-write grant. |
 | The agent never uses a skill | The skill's description doesn't match how people phrase the request. Rewrite it with the words they use. Also check the folder name matches `name:` in `SKILL.md`, and that a repo skill is merged to `main`. |
 | An email to the agent did nothing | Mail only starts a run when it matches an active Email received trigger. Check the filters (all of them must match) and wait about a minute. Paused agents keep the mail but don't run. |
 | A tool works for some people but not others | That MCP server is set to Restricted. Add those people or their role to its access list in Settings › Workspace › MCP Servers. |
-| The agent can't see a project's board, files, or channels | It isn't attached to the project, or the person asking isn't a member of it. |
-| A restricted agent can't be added to a channel | Everyone in the channel must be on the agent's access list. |
+| The agent can't see a project's board, files, or channels | It isn't that project's agent (or, if workspace-wide, isn't attached there), or the person asking isn't a member of it. |
+| A restricted workspace-wide agent can't be added to a channel | Everyone in the channel must be on the agent's access list. |
+| The agent stopped at a sign-up | It hit a CAPTCHA, phone check, single sign-on, payment, or terms that forbid automation. Finish that step yourself, or connect the service another way. Its status shows under Connections › External accounts. |
 | Other people can't see a page the agent wrote | It's in a conversation space, which only members of that conversation can see. Use Move to space to promote it. |
 
 ## Limits and permissions
 
-| Field                          | Limit               |
-|--------------------------------|---------------------|
-| Agent name                     | 64 characters       |
-| Agent title                    | 64 characters       |
-| System prompt                  | 20,000 characters   |
-| Wiki instructions (per agent)  | 8,000 characters    |
-| Space instructions (per space) | 8,000 characters    |
-| Named space name / description | 80 / 500 characters |
+| Field                                           | Limit                  |
+|-------------------------------------------------|------------------------|
+| Agent name                                      | 64 characters          |
+| Agent title                                     | 64 characters          |
+| System prompt                                   | 20,000 characters      |
+| Wiki instructions (per agent)                   | 8,000 characters       |
+| Space instructions (per space)                  | 8,000 characters       |
+| Named space name / description                  | 80 / 500 characters    |
+| Page types per space                            | 20                     |
+| Sections / required fields per page type        | 12 / 10                |
+| SuperGloo messages from one agent to one person | 4 per hour, 12 per day |
 
 | Who | Can |
 |----|----|
-| Anyone with `workspace.agents.manage` | Create, edit, pause, and archive agents. Set Access and the agent's Wiki tab. |
-| Anyone with `workspace.wiki.manage` | Create and archive named spaces, write space instructions, roll back a space, run Repair. This doesn't let them read spaces they aren't part of. |
-| Project managers | Attach and detach agents on their projects, and set project-level MCP and secrets. |
-| Every member | Message workspace-mode agents, read and edit wiki spaces they can see. |
+| A project's managers (and workspace owners and admins) | Create, edit, pause, and archive that project's agents. Attach and detach workspace-wide agents there, and set their project-only MCP servers and secrets. |
+| Anyone with `workspace.agents.manage` | Create and manage workspace-wide agents: Access mode, the SuperGloo messaging switch, Projects, and Wiki. |
+| Anyone with `workspace.wiki.manage` | Create and archive named spaces, edit Space settings (instructions and page types), roll back a space, run Repair. This doesn't let them read spaces they aren't part of. |
+| Every member | Message the agents they can see (project agents in their projects, and workspace-wide agents open to them). Read and edit wiki spaces they can see. |
 
 ### Launch checklist
 
@@ -900,11 +979,13 @@ Notice there's no repetition. The prompt says *when* to use the handbook. The wi
 - Wiki instructions say what to record and where, with no page-format rules
 - Each shared space the agent uses has space instructions
 - Grants match the plan, and there are no restricted spaces on an agent everyone can use
-- Access mode is set on purpose
+- The home project is chosen on purpose, or there's a clear reason it's workspace-wide
+- Workspace-wide agents: Access mode is set on purpose
+- The default read-write grant on `shared` is kept only if it should write workspace-wide notes
 - Long procedures moved out of the system prompt into skills, with clear descriptions
-- Attached to the right projects, and to nothing it doesn't need
+- Workspace-wide agents: attached to the right projects, and to nothing they don't need
 - MCP servers and secrets attached, with access set for the right people
 - Email triggers filtered by sender, if outside mail should start work
 - Tested in a DM, with a wiki write checked in the Wiki pane
 
-Written from the Mission Control product specs and source as of September 30, 2026: Public Agents, Workspace Wiki, Workspace MCP Servers, Skills, inbound email, and how the agent's system prompt is assembled. Menu labels may change in later versions.
+Written from the Mission Control product specs and source as of October 8, 2026: project-scoped Public Agents, the Workspace Wiki (including page types), Workspace MCP Servers, external accounts, Skills, inbound email, agent messages through SuperGloo, and how the agent's system prompt is assembled. Menu labels may change in later versions.
