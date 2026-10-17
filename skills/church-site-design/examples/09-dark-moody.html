@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>echo church &mdash; silver lake, los angeles</title>
+<meta name="description" content="Echo Church gathers Sundays at 10:00, 12:30 and 7:00 p.m. at The Echo Room, 2100 Sunset Blvd, Silver Lake. Come as you are.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#0b0b0a;
+  --coal:#151514;
+  --ash:#1f1f1d;
+  --bone:#ece7de;
+  --fog:#a29d94;
+  --dim:#8a857d;
+  --steel:#93a8bd;
+  --rule:rgba(236,231,222,.16);
+  --serif:"Instrument Serif", "Iowan Old Style", "Times New Roman", Georgia, serif;
+  --sans:"Hanken Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--black);color:var(--bone);font-family:var(--sans);font-weight:400;font-size:17px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::after{content:"";position:fixed;inset:-50%;z-index:90;pointer-events:none;opacity:.075;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");animation:grain 1.2s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
+img{display:block;max-width:100%}
+a{color:inherit}
+::selection{background:var(--bone);color:var(--black)}
+:focus-visible{outline:2px solid var(--steel);outline-offset:4px}
+.skip{position:absolute;left:-9999px;top:10px;background:var(--bone);color:var(--black);padding:10px 14px;z-index:100}
+.skip:focus{left:16px}
+.wrap{max-width:1400px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+@media (min-width:768px){.wrap{padding-left:max(48px, env(safe-area-inset-left, 0px));padding-right:max(48px, env(safe-area-inset-right, 0px))}}
+.cap{font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.32em;text-transform:uppercase}
+.serif{font-family:var(--serif);font-weight:400}
+.bw{filter:grayscale(1) contrast(1.06) brightness(.92)}
+.link{text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px;transition:color .25s,border-color .25s}
+.link:hover{color:var(--steel)}
+
+/* header */
+.head{position:absolute;top:0;left:0;right:0;z-index:40}
+.head-row{display:flex;align-items:center;justify-content:space-between;height:84px;gap:20px}
+.mark{display:flex;align-items:baseline;gap:10px;text-decoration:none}
+.mark .word{font-family:var(--serif);font-style:italic;font-size:36px;line-height:1;letter-spacing:-.01em}
+.mark svg{width:22px;height:22px;align-self:center}
+.nav{display:flex;align-items:center;gap:44px}
+.nav ul{display:flex;gap:30px;list-style:none;margin:0;padding:0}
+.nav ul a{font-size:13px;letter-spacing:.28em;text-transform:uppercase;text-decoration:none;color:var(--fog);transition:color .2s}
+.nav ul a:hover{color:var(--bone)}
+.nav-cta{display:flex;gap:22px;align-items:center}
+.nav-cta a{font-size:13px;letter-spacing:.28em;text-transform:uppercase;text-decoration:none}
+.nav-cta .new{border:1px solid var(--bone);padding:11px 18px;transition:background .25s,color .25s}
+.nav-cta .new:hover{background:var(--bone);color:var(--black)}
+.toggle{display:none;background:none;border:0;color:var(--bone);font:500 13px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;padding:14px 0 14px 10px;cursor:pointer}
+@media (max-width:1020px){.nav ul{display:none}.toggle{display:block}.nav{gap:18px}}
+@media (max-width:520px){.nav-cta .nav-give{display:none}.nav-cta .new{padding:10px 12px;letter-spacing:.2em}}
+.overlay{position:fixed;inset:0;z-index:60;background:var(--black);display:none;flex-direction:column;padding:0 max(16px, env(safe-area-inset-right, 0px)) 32px max(16px, env(safe-area-inset-left, 0px))}
+.overlay.open{display:flex}
+.overlay .head-row{flex:none}
+.overlay ul{list-style:none;margin:auto 0;padding:0}
+.overlay li a{display:block;font-family:var(--serif);font-size:clamp(48px,13vw,84px);line-height:1.08;text-decoration:none}
+.overlay li a:hover{font-style:italic}
+.overlay p{color:var(--fog);font-size:15px;margin:0}
+
+/* hero */
+.hero{min-height:100vh;min-height:100svh;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(24px,4vw,72px);align-items:end;padding-top:120px;padding-bottom:56px}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(68px,11.4vw,196px);line-height:.86;letter-spacing:-.025em;margin:0 0 48px}
+.hero h1 em{display:block;padding-left:.9em}
+.hero-meta{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:start;border-top:1px solid var(--rule);padding-top:22px;max-width:640px}
+.hero-meta .cap{color:var(--steel);padding-top:4px}
+.hero-meta p{margin:0;font-size:18px;color:var(--bone)}
+.hero-meta p span{color:var(--fog)}
+.hero-photo{position:relative;height:min(78vh,760px);overflow:hidden;background:var(--coal)}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 36%;animation:settle 2.6s cubic-bezier(.2,.7,.2,1) both}
+@keyframes settle{from{transform:scale(1.07)}to{transform:scale(1)}}
+.hero-photo figcaption{position:absolute;left:0;bottom:0;right:0;padding:40px 18px 16px;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--bone);background:linear-gradient(180deg,transparent,rgba(11,11,10,.85))}
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;padding-top:110px;align-items:start}
+  .hero-photo{height:62vh;order:-1}
+  .hero h1{margin-bottom:32px}
+  .hero-meta{grid-template-columns:1fr;gap:6px}
+}
+
+/* statement */
+.statement{padding:170px 0 150px}
+.statement p{font-family:var(--serif);font-size:clamp(32px,4.2vw,64px);line-height:1.08;letter-spacing:-.01em;margin:0;max-width:20ch}
+.statement p em{color:var(--steel)}
+.statement .cap{display:block;color:var(--dim);margin-top:56px}
+.statement-grid{display:grid;grid-template-columns:1fr 2.2fr;gap:40px}
+@media (max-width:860px){.statement{padding:120px 0}.statement-grid{grid-template-columns:1fr}}
+
+/* sundays */
+.sundays{padding:0 0 180px}
+.sec-label{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--rule);padding-top:18px;margin-bottom:80px;gap:16px}
+.sec-label h2{font-family:var(--sans);font-weight:500;font-size:13px;letter-spacing:.32em;text-transform:uppercase;margin:0}
+.sec-label span{color:var(--dim);font-size:13px;letter-spacing:.2em;text-transform:uppercase}
+.times{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-bottom:120px}
+.time b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(84px,10vw,168px);line-height:.85;letter-spacing:-.03em}
+.time b small{font-size:.32em;letter-spacing:0;margin-left:.15em;color:var(--fog)}
+.time p{margin:18px 0 0;color:var(--fog);font-size:16px;max-width:300px}
+.time p strong{color:var(--bone);font-weight:500}
+@media (max-width:760px){.times{grid-template-columns:1fr;gap:56px}}
+.first{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,120px)}
+.first h3{font-family:var(--serif);font-weight:400;font-size:clamp(44px,5vw,80px);line-height:.95;margin:0 0 36px;letter-spacing:-.015em}
+.first h3 em{color:var(--steel)}
+.first ol{list-style:none;margin:0;padding:0}
+.first li{display:grid;grid-template-columns:110px 1fr;gap:18px;padding:20px 0;border-top:1px solid var(--rule);font-size:17px}
+.first li:last-child{border-bottom:1px solid var(--rule)}
+.first li span{color:var(--dim);font-size:13px;letter-spacing:.24em;text-transform:uppercase;padding-top:3px}
+.visit-form{background:var(--coal);padding:clamp(28px,4vw,52px);align-self:start}
+.visit-form p.lead{margin:0 0 30px;color:var(--fog)}
+.field{margin-bottom:22px}
+.field label{display:block;font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--fog);margin-bottom:8px}
+.field input,.field select{width:100%;height:52px;background:transparent;border:0;border-bottom:1px solid rgba(236,231,222,.4);color:var(--bone);font:400 18px var(--sans);padding:0;border-radius:0;-webkit-appearance:none;appearance:none}
+.field select{background-image:linear-gradient(45deg,transparent 50%,var(--bone) 50%),linear-gradient(135deg,var(--bone) 50%,transparent 50%);background-position:calc(100% - 12px) 22px,calc(100% - 6px) 22px;background-size:6px 6px;background-repeat:no-repeat}
+.field select option{background:var(--coal);color:var(--bone)}
+.field input:focus,.field select:focus{outline:none;border-bottom-color:var(--steel)}
+.field input:focus-visible,.field select:focus-visible{outline:2px solid var(--steel);outline-offset:4px}
+.btn{display:inline-flex;align-items:center;gap:14px;background:var(--bone);color:var(--black);border:0;font:500 13px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;padding:20px 28px;text-decoration:none;cursor:pointer;transition:background .25s}
+.btn:hover{background:#fff}
+.btn svg{width:18px;height:10px;transition:transform .25s}
+.btn:hover svg{transform:translateX(4px)}
+.btn-line{background:transparent;color:var(--bone);border:1px solid var(--bone)}
+.btn-line:hover{background:var(--bone);color:var(--black)}
+.form-ok{margin:18px 0 0;font-family:var(--serif);font-size:26px;line-height:1.2;color:var(--bone);min-height:1.2em}
+@media (max-width:860px){.first{grid-template-columns:1fr}.first li{grid-template-columns:1fr;gap:4px}}
+
+/* honest */
+.honest{position:relative;isolation:isolate;overflow:hidden}
+.honest-band{position:relative;height:clamp(460px,82vh,820px);display:flex;align-items:flex-end;isolation:isolate;overflow:hidden}
+.honest-band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:40% 45%;z-index:-2}
+.honest-band::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(11,11,10,.35) 0%,rgba(11,11,10,.25) 40%,rgba(11,11,10,.92) 100%)}
+.honest-title{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(110px,24vw,400px);line-height:.72;letter-spacing:-.04em;margin:0 0 -0.06em;white-space:nowrap}
+.honest-band .cap{position:absolute;top:36px;color:var(--bone)}
+.honest-body{display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(40px,7vw,120px);padding-top:80px;padding-bottom:130px}
+.honest-body p.intro{font-family:var(--serif);font-size:clamp(26px,2.6vw,38px);line-height:1.15;margin:0 0 32px}
+.honest-body p.sub{color:var(--fog);margin:0 0 32px;max-width:440px}
+.eps{list-style:none;margin:0;padding:0}
+.ep{display:grid;grid-template-columns:90px 1fr auto;gap:20px;align-items:baseline;padding:24px 0;border-top:1px solid var(--rule)}
+.ep:last-child{border-bottom:1px solid var(--rule)}
+.ep .d{color:var(--dim);font-size:13px;letter-spacing:.2em;text-transform:uppercase}
+.ep a{font-family:var(--serif);font-size:clamp(26px,2.4vw,36px);line-height:1.1;text-decoration:none;transition:color .2s}
+.ep a:hover{color:var(--steel);font-style:italic}
+.ep small{display:block;font-family:var(--sans);font-size:14px;color:var(--fog);margin-top:6px}
+.ep .r{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--fog);white-space:nowrap}
+.ep.soon a{color:var(--dim)}
+.pod{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:44px;align-items:baseline}
+.pod .cap{color:var(--steel)}
+.pod a{font-size:15px}
+@media (max-width:860px){.honest-body{grid-template-columns:1fr;padding-top:56px;padding-bottom:120px}.ep{grid-template-columns:1fr;gap:6px}}
+
+/* people */
+.people{padding:0 0 140px}
+.people-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px;align-items:start}
+.person{margin:0}
+.person .ph{overflow:hidden;background:var(--coal)}
+.person img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.7,.2,1),filter .6s}
+.person:hover img{transform:scale(1.03)}
+.person figcaption{padding-top:20px}
+.person h3{font-family:var(--serif);font-weight:400;font-size:clamp(34px,3.2vw,50px);line-height:1;margin:0 0 10px;letter-spacing:-.01em}
+.person p{margin:0;color:var(--fog);font-size:16px;max-width:380px}
+.p1{grid-column:1 / span 5}
+.p1 .ph{aspect-ratio:4/5}
+.p2{grid-column:7 / span 6;margin-top:120px}
+.p2 .ph{aspect-ratio:5/4}
+.p3{grid-column:3 / span 4;margin-top:40px}
+.p3 .ph{aspect-ratio:3/4}
+.p-note{grid-column:8 / span 5;margin-top:64px}
+.p-note ul{list-style:none;padding:0;margin:0}
+.p-note li{padding:22px 0;border-top:1px solid var(--rule)}
+.p-note li:last-child{border-bottom:1px solid var(--rule)}
+.p-note li b{display:block;font-family:var(--serif);font-weight:400;font-size:30px;line-height:1.1}
+.p-note li span{color:var(--fog);font-size:16px}
+@media (max-width:860px){
+  .people{padding-bottom:120px}
+  .p1,.p2,.p3,.p-note{grid-column:1 / -1;margin-top:0}
+  .p2,.p3,.p-note{margin-top:48px}
+  .p3{grid-column:1 / span 10}
+  .p2 .ph{aspect-ratio:4/3}
+}
+
+/* nights */
+.nights{position:relative;isolation:isolate;overflow:hidden;padding:160px 0 120px}
+.nights > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;z-index:-2}
+.nights::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(11,11,10,.72)}
+.nights-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(40px,6vw,100px);align-items:end}
+.nights h2{font-family:var(--serif);font-weight:400;font-size:clamp(72px,10vw,170px);line-height:.85;margin:20px 0 28px;letter-spacing:-.03em}
+.nights h2 em{color:var(--steel)}
+.nights p.lede{font-size:19px;max-width:520px;margin:0 0 34px}
+.nights .cap{color:var(--bone)}
+.cal{list-style:none;margin:0;padding:0;background:rgba(11,11,10,.86)}
+.cal li{display:grid;grid-template-columns:86px 1fr;gap:16px;padding:22px 24px;border-bottom:1px solid var(--rule)}
+.cal li:last-child{border-bottom:0}
+.cal .dt{font-family:var(--serif);font-size:30px;line-height:1}
+.cal .dt small{display:block;font-family:var(--sans);font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--fog);margin-top:6px}
+.cal b{display:block;font-weight:500;font-size:17px}
+.cal span{color:var(--fog);font-size:15px}
+@media (max-width:860px){.nights{padding:110px 0 80px}.nights-grid{grid-template-columns:1fr}.cal li{padding:18px 16px;grid-template-columns:70px 1fr}}
+
+/* shop */
+.shop{padding:180px 0}
+.shop-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:56px}
+.shop-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(56px,7vw,112px);line-height:.9;margin:0;letter-spacing:-.02em}
+.shop-head p{color:var(--fog);margin:0;max-width:440px;justify-self:end}
+.goods{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:20px}
+.good{text-decoration:none;display:block}
+.good .art{background:var(--coal);aspect-ratio:4/5;display:grid;place-items:center;transition:background .4s}
+.good:hover .art{background:var(--ash)}
+.good svg{width:62%;height:auto}
+.good .meta{display:flex;justify-content:space-between;gap:14px;padding-top:16px;font-size:15px}
+.good .meta span:last-child{color:var(--fog)}
+.good .art{aspect-ratio:auto;height:clamp(300px,32vw,460px)}
+@media (max-width:860px){.shop{padding:120px 0}.shop-head{grid-template-columns:1fr}.shop-head p{justify-self:start}.goods{grid-template-columns:1fr 1fr}.good:first-child{grid-column:1 / -1}.good .art{height:240px}.good:first-child .art{height:300px}}
+
+/* rooms + give */
+.rooms{padding:0 0 180px}
+.rooms-list{list-style:none;margin:0;padding:0}
+.rooms-list li{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:24px;align-items:baseline;padding:30px 0;border-top:1px solid var(--rule)}
+.rooms-list li:last-child{border-bottom:1px solid var(--rule)}
+.rooms-list h3{font-family:var(--serif);font-weight:400;font-size:clamp(40px,4.6vw,72px);line-height:.95;margin:0;letter-spacing:-.015em}
+.rooms-list li.soon h3{color:var(--dim)}
+.rooms-list p{margin:0;color:var(--fog);font-size:16px}
+.rooms-list p strong{color:var(--bone);font-weight:500}
+@media (max-width:860px){.rooms{padding-bottom:120px}.rooms-list li{grid-template-columns:1fr;gap:8px}}
+.give{background:var(--bone);color:var(--black);padding:160px 0}
+.give-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:56px;align-items:end}
+.give h2{font-family:var(--serif);font-weight:400;font-size:clamp(56px,7.4vw,124px);line-height:.9;margin:0;letter-spacing:-.025em}
+.give h2 em{color:#4b5d70}
+.give p{font-size:18px;margin:0 0 30px;color:#2b2a27}
+.give .btn{background:var(--black);color:var(--bone)}
+.give .btn:hover{background:#2a2a28}
+.give .cap{color:#4a4842;display:block;margin-bottom:24px}
+.give small{display:block;margin-top:22px;color:#4a4842;font-size:14px}
+@media (max-width:860px){.give{padding:110px 0}.give-grid{grid-template-columns:1fr}}
+
+/* footer */
+.foot{padding:120px 0 40px}
+.foot .foot-word{font-family:var(--serif);font-style:italic;font-size:clamp(120px,30vw,480px);line-height:.7;letter-spacing:-.05em;margin:0 0 80px;color:var(--bone)}
+.foot-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;padding-top:28px;border-top:1px solid var(--rule)}
+.foot h3{font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--dim);margin:0 0 16px}
+.foot p,.foot li{margin:0 0 6px;font-size:15.5px;color:var(--bone)}
+.foot ul{list-style:none;padding:0;margin:0}
+.foot a{text-decoration:none}
+.foot a:hover{color:var(--steel)}
+.foot-bot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:80px;color:var(--dim);font-size:14px}
+@media (max-width:860px){.foot-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.foot-grid{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="head">
+  <div class="wrap head-row">
+    <a class="mark" href="#top" aria-label="Echo Church home">
+      <svg viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="3" fill="#ece7de"/><circle cx="11" cy="11" r="7" fill="none" stroke="#ece7de" stroke-width="1"/><circle cx="11" cy="11" r="10.4" fill="none" stroke="#ece7de" stroke-width=".8" opacity=".5"/></svg>
+      <span class="word">echo</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <ul>
+        <li><a href="#sundays">Sundays</a></li>
+        <li><a href="#honest">Honest</a></li>
+        <li><a href="#circles">Circles</a></li>
+        <li><a href="#nights">Nights</a></li>
+        <li><a href="#shop">Shop</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a class="nav-give" href="#give">Give</a>
+        <a class="new" href="#visit">New here</a>
+        <button class="toggle" type="button" aria-expanded="false" aria-controls="overlay">Menu</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="head-row">
+    <span class="mark"><span class="word">echo</span></span>
+    <button class="toggle" type="button" style="display:block" data-close>Close</button>
+  </div>
+  <ul>
+    <li><a href="#sundays">sundays</a></li>
+    <li><a href="#honest">honest</a></li>
+    <li><a href="#circles">circles</a></li>
+    <li><a href="#nights">echo nights</a></li>
+    <li><a href="#shop">shop</a></li>
+    <li><a href="#give">give</a></li>
+  </ul>
+  <p>The Echo Room &middot; 2100 Sunset Blvd, Silver Lake</p>
+</div>
+
+<main id="main">
+  <section class="wrap hero" id="top" aria-labelledby="hero-title">
+    <div>
+      <h1 id="hero-title">come as <em>you are.</em></h1>
+      <div class="hero-meta">
+        <span class="cap">Sundays</span>
+        <p>10:00 &middot; 12:30 &middot; 7:00 pm<br><span>The Echo Room, 2100 Sunset Blvd, Silver Lake</span></p>
+      </div>
+    </div>
+    <figure class="hero-photo" style="margin:0">
+      <img class="bw" src="https://images.unsplash.com/photo-1684607776189-24a70a10a804?w=1600&q=75&fm=jpg" alt="Black-and-white portrait of a bearded man in round glasses looking back over his shoulder">
+      <figcaption>Sam, 7 pm regular</figcaption>
+    </figure>
+  </section>
+
+  <section class="statement" aria-label="Who we are">
+    <div class="wrap statement-grid">
+      <span class="cap" style="color:var(--dim);margin:12px 0 0">A church in Silver Lake, est. 2019</span>
+      <div>
+        <p>For the doubters, the devoted and the <em>barely holding on.</em></p>
+        <span class="cap">Jonah &amp; Mia Reyes, pastors</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sundays" id="sundays" aria-labelledby="sundays-title">
+    <div class="wrap">
+      <div class="sec-label"><h2 id="sundays-title">Sundays</h2><span>The Echo Room</span></div>
+      <div class="times">
+        <div class="time"><b>10<small>am</small></b><p><strong>Morning.</strong> Echo Kids for 6 months to 5th grade. Coffee from 9:30.</p></div>
+        <div class="time"><b>12:30</b><p><strong>Midday.</strong> Same gathering, more brunch energy. Echo Kids available.</p></div>
+        <div class="time"><b>7<small>pm</small></b><p><strong>Night.</strong> Built for young adults, 18&ndash;30. Lights low, hang after.</p></div>
+      </div>
+
+      <div class="first" id="visit">
+        <div>
+          <h3>first time? <em>here&rsquo;s the whole thing.</em></h3>
+          <ol>
+            <li><span>Park</span>Street parking on Sunset, or the lot behind the building after 9:00.</li>
+            <li><span>Coffee</span>Free, and actually good. Bar opens 30 minutes before each gathering.</li>
+            <li><span>Inside</span>About 75 minutes. A few songs, an honest talk, room to sit with it.</li>
+            <li><span>Kids</span>Check in at the Echo Kids desk to the left. Every leader is background-checked.</li>
+            <li><span>After</span>Stick around. Find someone in a bone-colored lanyard; they&rsquo;ll buy your second coffee.</li>
+          </ol>
+        </div>
+        <form class="visit-form" id="visit-form" novalidate>
+          <p class="cap" style="color:var(--steel);margin:0 0 14px">Let us know you&rsquo;re coming</p>
+          <p class="lead">No follow-up spam. Someone will meet you at the door and save you a seat.</p>
+          <div class="field"><label for="v-name">First name</label><input id="v-name" name="name" autocomplete="given-name" required></div>
+          <div class="field"><label for="v-email">Email</label><input id="v-email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="v-when">Which gathering</label>
+            <select id="v-when" name="when"><option>Sunday 10:00 am</option><option>Sunday 12:30 pm</option><option>Sunday 7:00 pm</option><option>Echo Nights, Nov 20</option></select></div>
+          <button class="btn" type="submit">I&rsquo;m coming <svg viewBox="0 0 18 10" fill="none" stroke="currentColor"><path d="M0 5h17M12 1l4 4-4 4"/></svg></button>
+          <p class="form-ok" id="visit-ok" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="honest" id="honest" aria-labelledby="honest-title">
+    <div class="honest-band">
+      <img class="bw" src="https://images.unsplash.com/photo-1620175406441-1355276b45e5?w=1600&q=75&fm=jpg" alt="A row of young adults singing in a dim room, eyes closed, black-and-white">
+      <div class="wrap" style="width:100%;position:relative;height:100%;display:flex;align-items:flex-end">
+        <span class="cap">Current series &middot; Psalms of lament</span>
+        <h2 class="honest-title" id="honest-title">honest</h2>
+      </div>
+    </div>
+    <div class="wrap honest-body">
+      <div>
+        <p class="intro">A third of the Psalms are complaints. God kept every one of them.</p>
+        <p class="sub">Six Sundays in the Psalms of lament: what to do with grief, anger and silence, and why bringing them to God is an act of faith, not a lack of it.</p>
+        <a class="btn btn-line" href="#honest">Watch the series <svg viewBox="0 0 18 10" fill="none" stroke="currentColor"><path d="M0 5h17M12 1l4 4-4 4"/></svg></a>
+        <div class="pod">
+          <span class="cap">Echo Talks</span>
+          <a class="link" href="#honest">Apple Podcasts</a>
+          <a class="link" href="#honest">Spotify</a>
+          <a class="link" href="#honest">YouTube</a>
+        </div>
+      </div>
+      <ol class="eps">
+        <li class="ep"><span class="d">Oct 4</span><div><a href="#honest">how long?</a><small>Psalm 13 &middot; Jonah Reyes</small></div><span class="r">41 min</span></li>
+        <li class="ep"><span class="d">Oct 11</span><div><a href="#honest">tears for food</a><small>Psalm 42 &middot; Mia Reyes</small></div><span class="r">38 min</span></li>
+        <li class="ep"><span class="d">Oct 18</span><div><a href="#honest">out of the depths</a><small>Psalm 130 &middot; Jonah Reyes</small></div><span class="r">This Sunday</span></li>
+        <li class="ep soon"><span class="d">Oct 25</span><div><a href="#honest">darkness, my closest friend</a><small>Psalm 88 &middot; Mia Reyes</small></div><span class="r">Next</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="people" id="circles" aria-labelledby="circles-title">
+    <div class="wrap">
+      <div class="sec-label"><h2 id="circles-title">Find your people</h2><span>Circles &middot; Nights &middot; Kids &middot; Youth</span></div>
+      <div class="people-grid">
+        <figure class="person p1">
+          <div class="ph"><img class="bw" src="https://images.unsplash.com/photo-1591727884968-cc11135a19b3?w=1600&q=75&fm=jpg" alt="Black-and-white portrait of a young woman with long dark hair, chin on her hand, smiling" style="object-position:50% 30%"></div>
+          <figcaption><h3>echo circles</h3><p>Eight to twelve people, one living room, every other week. Thirty-four circles from Los Feliz to Highland Park. New circles start November 1.</p></figcaption>
+        </figure>
+        <figure class="person p2">
+          <div class="ph"><img class="bw" src="https://images.unsplash.com/photo-1558730234-d8b2281b0d00?w=1600&q=75&fm=jpg" alt="Black-and-white studio portrait of a young man with swept hair and a short beard" style="object-position:50% 40%"></div>
+          <figcaption><h3>sunday nights</h3><p>The 7 pm gathering is where most of our 20-somethings land. Stay after for tacos on the patio.</p></figcaption>
+        </figure>
+        <figure class="person p3">
+          <div class="ph"><img class="bw" src="https://images.unsplash.com/photo-1617746652908-91e66c07499a?w=1600&q=75&fm=jpg" alt="Dramatically lit black-and-white portrait of a young man looking straight at the camera" style="object-position:50% 22%"></div>
+          <figcaption><h3>the crew</h3><p>Doors, sound, lights, coffee, kids. Serve one, sit one.</p></figcaption>
+        </figure>
+        <div class="p-note">
+          <ul>
+            <li><b>echo kids</b><span>6 months to 5th grade, Sundays at 10:00 &amp; 12:30. Secure check-in.</span></li>
+            <li><b>echo youth</b><span>6th&ndash;12th grade, Wednesdays 7:00 pm in the Room.</span></li>
+            <li><b>care</b><span>Counseling referrals, grief groups and recovery on Thursdays.</span></li>
+          </ul>
+          <p style="margin:28px 0 0"><a class="link" href="#circles">Find a circle</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="nights" id="nights" aria-labelledby="nights-title">
+    <img class="bw" src="https://images.unsplash.com/photo-1573152958734-1922c188fba3?w=1600&q=75&fm=jpg" alt="A packed room with hands raised toward a stage washed in white light, black-and-white">
+    <div class="wrap nights-grid">
+      <div>
+        <span class="cap">Friday, November 20 &middot; 8:00 pm</span>
+        <h2 id="nights-title">echo <em>nights</em></h2>
+        <p class="lede">One night of worship, no sermon, no rush. Doors at 7:30. Free. Bring the friend who&rsquo;d never come on a Sunday.</p>
+        <a class="btn" href="#visit">Save a spot <svg viewBox="0 0 18 10" fill="none" stroke="currentColor"><path d="M0 5h17M12 1l4 4-4 4"/></svg></a>
+      </div>
+      <ul class="cal" aria-label="Coming up">
+        <li><span class="dt">01<small>Nov</small></span><div><b>Circles launch</b><span>Sign-ups close Oct 28</span></div></li>
+        <li><span class="dt">20<small>Nov</small></span><div><b>Echo Nights</b><span>8:00 pm, The Echo Room</span></div></li>
+        <li><span class="dt">26<small>Nov</small></span><div><b>Friendsgiving</b><span>Long tables, 4:00 pm. Bring a side.</span></div></li>
+        <li><span class="dt">24<small>Dec</small></span><div><b>Christmas Eve</b><span>4:00, 6:00 &amp; 11:00 pm candlelight</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="shop" id="shop" aria-labelledby="shop-title">
+    <div class="wrap">
+      <div class="sec-label"><h2>Shop</h2><span>Drop 04 &middot; Oct 23</span></div>
+      <div class="shop-head">
+        <h2 id="shop-title">the honest drop</h2>
+        <p>Heavyweight blanks, printed in Boyle Heights. Every dollar goes to the Echo Kids room rebuild.</p>
+      </div>
+      <div class="goods">
+        <a class="good" href="#shop">
+          <div class="art" aria-hidden="true"><svg viewBox="0 0 200 200"><path d="M62 30l-40 22 14 34 18-8v94h92V78l18 8 14-34-40-22c-4 12-18 20-38 20S66 42 62 30z" fill="#2b2b28"/><text x="100" y="110" text-anchor="middle" font-family="Instrument Serif, serif" font-style="italic" font-size="30" fill="#ece7de">honest</text><text x="100" y="128" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="6.5" letter-spacing="2.4" fill="#a29d94">PSALM 13 &#183; HOW LONG</text></svg></div>
+          <div class="meta"><span>Honest tee, washed black</span><span>$34</span></div>
+        </a>
+        <a class="good" href="#shop">
+          <div class="art" aria-hidden="true"><svg viewBox="0 0 200 200"><path d="M70 28c6 14 18 20 30 20s24-6 30-20l40 20 14 70-20 6-10-40v106H46V84l-10 40-20-6 14-70z" fill="#ece7de"/><path d="M84 28c2 16 8 26 16 26s14-10 16-26" fill="none" stroke="#a29d94" stroke-width="2"/><text x="100" y="118" text-anchor="middle" font-family="Instrument Serif, serif" font-style="italic" font-size="22" fill="#0b0b0a">echo</text></svg></div>
+          <div class="meta"><span>Echo hoodie, bone</span><span>$68</span></div>
+        </a>
+        <a class="good" href="#shop">
+          <div class="art" aria-hidden="true"><svg viewBox="0 0 200 200"><path d="M40 120c0-40 26-66 60-66s60 26 60 66z" fill="#2b2b28"/><path d="M30 120h150c0 10-10 14-24 14H30z" fill="#1f1f1d"/><circle cx="100" cy="98" r="9" fill="none" stroke="#ece7de" stroke-width="1.6"/><circle cx="100" cy="98" r="3" fill="#ece7de"/></svg></div>
+          <div class="meta"><span>Ring cap, black</span><span>$30</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="rooms" aria-labelledby="rooms-title">
+    <div class="wrap">
+      <div class="sec-label"><h2 id="rooms-title">Where we meet</h2><span>One room, for now</span></div>
+      <ul class="rooms-list">
+        <li><h3>silver lake</h3><p><strong>The Echo Room</strong><br>2100 Sunset Blvd, Los Angeles, CA 90026</p><p>Sundays 10:00, 12:30 &amp; 7:00 pm<br><a class="link" href="#visit">Plan a visit</a></p></li>
+        <li><h3>online</h3><p><strong>Live at 10:00 &amp; 7:00 pm</strong><br>YouTube and the Echo app</p><p>Talks up by Monday on Echo Talks<br><a class="link" href="#honest">Watch</a></p></li>
+        <li class="soon"><h3>echo park</h3><p><strong>Launching fall 2027</strong><br>A second room, a mile east</p><p>Interest meetings start in January<br><a class="link" href="#visit">Get updates</a></p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="give" id="give" aria-labelledby="give-title">
+    <div class="wrap give-grid">
+      <div>
+        <span class="cap">Give</span>
+        <h2 id="give-title">keep the door <em>open.</em></h2>
+      </div>
+      <div>
+        <p>Generosity is how this room stays open to whoever walks in on a Sunday night. It funds Echo Kids, care counseling and our partners in Skid Row and Tijuana.</p>
+        <a class="btn" href="#give">Give online <svg viewBox="0 0 18 10" fill="none" stroke="currentColor"><path d="M0 5h17M12 1l4 4-4 4"/></svg></a>
+        <small>Or text ECHO to 323-555-0119. Echo Church is a 501(c)(3).</small>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="foot-word" aria-hidden="true">echo</p>
+    <div class="foot-grid">
+      <div><h3>Sundays</h3><p>10:00 am</p><p>12:30 pm</p><p>7:00 pm (young adults)</p></div>
+      <div><h3>The Echo Room</h3><p>2100 Sunset Blvd</p><p>Silver Lake, Los Angeles</p><p>CA 90026</p></div>
+      <div><h3>Say hi</h3><ul><li><a href="#top">hello@echochurch.la</a></li><li><a href="#top">(323) 555-0110</a></li><li><a href="#visit">New here</a></li><li><a href="#give">Give</a></li></ul></div>
+      <div><h3>Follow</h3><ul><li><a href="#top">Instagram</a></li><li><a href="#top">YouTube</a></li><li><a href="#honest">Echo Talks podcast</a></li><li><a href="#top">TikTok</a></li></ul></div>
+    </div>
+    <div class="foot-bot"><span>&copy; 2026 Echo Church. Pastors Jonah &amp; Mia Reyes.</span><span>Come as you are.</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var ov=document.getElementById('overlay');
+  var openB=document.querySelector('.head .toggle');
+  var closeB=ov.querySelector('[data-close]');
+  function set(o){ov.classList.toggle('open',o);openB.setAttribute('aria-expanded',o?'true':'false');document.body.style.overflow=o?'hidden':'';(o?closeB:openB).focus();}
+  openB.addEventListener('click',function(){set(true)});
+  closeB.addEventListener('click',function(){set(false)});
+  ov.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){set(false)})});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&ov.classList.contains('open'))set(false)});
+
+  var f=document.getElementById('visit-form'),ok=document.getElementById('visit-ok');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var n=f.elements.name.value.trim(),m=f.elements.email.value.trim();
+    if(!n){ok.textContent='We just need a first name.';f.elements.name.focus();return;}
+    if(m.indexOf('@')<1){ok.textContent='That email doesn’t look right.';f.elements.email.focus();return;}
+    var w=f.elements.when.value;ok.textContent='See you '+(/^Sunday/.test(w)?w.replace(/^Sunday /,'Sunday at '):'at '+w.replace(/,.*/,''))+', '+n+'. Look for the bone lanyard.';
+    f.reset();
+  });
+})();
+</script>
+</body>
+</html>

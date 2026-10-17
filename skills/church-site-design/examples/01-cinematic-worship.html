@@ -1,0 +1,721 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Harbor Point Church | Tampa Bay</title>
+<meta name="description" content="Harbor Point Church is one church in four locations across Tampa Bay: Westshore, Brandon, St. Pete and Online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,400..800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#08090b;
+  --ink-2:#121418;
+  --ink-3:#1b1e24;
+  --line:rgba(255,255,255,.14);
+  --white:#ffffff;
+  --paper:#f4f4f2;
+  --mute:#b9bdc6;
+  --mute-dark:#575c66;
+  --sun:#ffd23f;
+  --sun-deep:#f2b705;
+  --gut:max(16px, env(safe-area-inset-left, 0px));
+  --gut-r:max(16px, env(safe-area-inset-right, 0px));
+  --font:"Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ink);color:var(--white);font-family:var(--font);font-size:17px;line-height:1.55;font-stretch:100%;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:2px}
+.skip{position:absolute;left:-9999px;top:8px;background:var(--sun);color:var(--ink);padding:10px 16px;font-weight:700;z-index:100}
+.skip:focus{left:16px}
+.wrap{max-width:1360px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+@media (min-width:768px){.wrap{padding-left:max(40px, env(safe-area-inset-left, 0px));padding-right:max(40px, env(safe-area-inset-right, 0px))}}
+.display{font-weight:900;font-stretch:72%;text-transform:uppercase;line-height:.88;letter-spacing:-.005em;margin:0}
+.kicker{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-stretch:110%}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;font-family:var(--font);font-weight:800;font-stretch:110%;font-size:14px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;white-space:nowrap;border:2px solid transparent;border-radius:999px;cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn-sun{background:var(--sun);color:var(--ink)}
+.btn-sun:hover{background:#ffe07a}
+.btn-ghost{border-color:rgba(255,255,255,.75);color:var(--white);background:rgba(0,0,0,.15)}
+.btn-ghost:hover{background:var(--white);color:var(--ink)}
+.btn-ink{background:var(--ink);color:var(--white)}
+.btn-ink:hover{background:#2a2e36}
+.live-dot{width:9px;height:9px;border-radius:50%;background:#ff4b4b;box-shadow:0 0 0 0 rgba(255,75,75,.7);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,75,75,.6)}70%{box-shadow:0 0 0 10px rgba(255,75,75,0)}100%{box-shadow:0 0 0 0 rgba(255,75,75,0)}}
+
+/* header */
+.site-head{position:absolute;top:0;left:0;right:0;z-index:20}
+.head-row{display:flex;align-items:center;justify-content:space-between;gap:24px;height:88px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--white)}
+.logo svg{width:40px;height:40px;flex:none}
+.logo b{display:block;white-space:nowrap;font-weight:900;font-stretch:80%;font-size:22px;line-height:.9;letter-spacing:.02em;text-transform:uppercase}
+.logo small{display:block;font-size:13px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:var(--mute);margin-top:3px}
+.nav{display:flex;align-items:center;gap:30px}
+.nav-links{display:flex;gap:28px;list-style:none;margin:0;padding:0}
+.nav-links a{text-decoration:none;font-weight:700;font-stretch:105%;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:#e9eaee;padding:8px 0;border-bottom:2px solid transparent}
+.nav-links a:hover{border-color:var(--sun)}
+.nav-actions{display:flex;gap:10px}
+.nav-actions .btn{min-height:44px;padding:0 20px;font-size:13px}
+.menu-btn{display:none;background:none;border:1px solid rgba(255,255,255,.4);color:var(--white);height:44px;padding:0 16px;border-radius:999px;font:700 13px/1 var(--font);letter-spacing:.14em;text-transform:uppercase;align-items:center;gap:10px;cursor:pointer}
+.menu-btn span.bars{display:inline-block;width:18px;height:2px;background:currentColor;position:relative}
+.menu-btn span.bars::before,.menu-btn span.bars::after{content:"";position:absolute;left:0;width:18px;height:2px;background:currentColor}
+.menu-btn span.bars::before{top:-6px}.menu-btn span.bars::after{top:6px}
+@media (max-width:1080px){
+  .nav-links{display:none}
+  .menu-btn{display:inline-flex}
+  .nav{gap:10px}
+}
+@media (max-width:560px){
+  .nav-actions .btn-ghost{display:none}
+  .logo small{display:none}
+  .nav-actions .btn{padding:0 16px}
+  .site-head .menu-btn{width:44px;padding:0;justify-content:center;font-size:0;gap:0}
+  .logo svg{width:34px;height:34px}
+  .logo b{font-size:19px;white-space:normal;max-width:80px}
+  .head-row{gap:10px}
+  .nav-actions .btn{letter-spacing:.08em}
+}
+.drawer{display:none;position:fixed;inset:0;z-index:50;background:rgba(8,9,11,.97);padding:24px max(16px, env(safe-area-inset-right, 0px)) 40px max(16px, env(safe-area-inset-left, 0px));overflow:auto}
+.drawer.open{display:block}
+.drawer-top{display:flex;justify-content:space-between;align-items:center;height:64px}
+.drawer ul{list-style:none;margin:28px 0 36px;padding:0}
+.drawer li a{display:block;font-weight:900;font-stretch:72%;text-transform:uppercase;font-size:clamp(40px,11vw,64px);line-height:1.05;text-decoration:none;padding:4px 0}
+.drawer li a:hover{color:var(--sun)}
+.drawer .btn{width:100%;margin-top:10px}
+
+/* hero */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate;background:#0b0710}
+.hero-media{position:absolute;inset:0;z-index:-2;overflow:hidden}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;transform-origin:62% 35%;animation:kenburns 28s ease-in-out infinite alternate}
+@keyframes kenburns{0%{transform:scale(1.04) translate3d(0,0,0)}100%{transform:scale(1.16) translate3d(-2%,1.5%,0)}}
+.hero-media::after{content:"";position:absolute;inset:-20%;background:linear-gradient(105deg,transparent 40%,rgba(255,236,190,.16) 50%,transparent 60%);animation:sweep 11s ease-in-out infinite;mix-blend-mode:screen}
+@keyframes sweep{0%{transform:translateX(-60%)}55%,100%{transform:translateX(60%)}}
+.hero-scrim{position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(180deg,rgba(8,9,11,.78) 0%,rgba(8,9,11,.25) 22%,rgba(8,9,11,.35) 48%,rgba(8,9,11,.92) 84%,var(--ink) 100%),
+  radial-gradient(ellipse at 50% 70%,rgba(8,9,11,.35),rgba(8,9,11,.6))}
+.hero-inner{width:100%;padding-top:140px;padding-bottom:44px;text-align:center}
+.hero .kicker{display:inline-flex;align-items:center;gap:12px;color:var(--sun)}
+.hero .kicker::before,.hero .kicker::after{content:"";width:34px;height:2px;background:currentColor}
+.hero h1{font-size:clamp(50px,13.8vw,236px);margin:18px 0 18px}
+.hero-sub{font-size:clamp(18px,1.6vw,22px);max-width:640px;margin:0 auto 32px;color:#eceef2;font-weight:500}
+.hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.hero-ctas .btn{min-width:200px}
+.countdown{margin:52px auto 0;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:28px;max-width:980px;border-top:1px solid var(--line);padding-top:26px;text-align:left}
+.cd-label{display:flex;align-items:center;gap:12px;font-weight:800;font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-stretch:110%}
+.cd-label small{display:block;font-weight:500;letter-spacing:.04em;text-transform:none;color:var(--mute);font-size:14px;margin-top:3px}
+.cd-clock{display:flex;justify-content:center;gap:clamp(14px,3vw,40px)}
+.cd-unit{text-align:center;min-width:56px}
+.cd-unit b{display:block;font-weight:900;font-stretch:72%;font-size:clamp(38px,4.6vw,60px);line-height:1;font-variant-numeric:tabular-nums}
+.cd-unit span{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);font-weight:700}
+.cd-link{font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:2px solid var(--sun);padding-bottom:4px;white-space:nowrap}
+@media (max-width:820px){
+  .countdown{grid-template-columns:1fr;text-align:center;gap:18px}
+  .cd-label{justify-content:center}
+}
+
+/* times + campus band */
+.times{background:var(--ink);border-bottom:1px solid var(--line)}
+.times-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.times-grid > div{padding:30px 28px 30px 0;border-right:1px solid var(--line)}
+.times-grid > div + div{padding-left:28px}
+.times-grid > div:last-child{border-right:0}
+.times h2{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--sun);margin:0 0 8px;font-weight:800;font-stretch:110%}
+.times p{margin:0;font-size:17px;color:#e4e6ea}
+.times strong{display:block;font-weight:900;font-stretch:78%;font-size:30px;text-transform:uppercase;line-height:1.05;color:var(--white);margin-bottom:4px}
+@media (max-width:900px){.times-grid{grid-template-columns:1fr 1fr}.times-grid > div{border-bottom:1px solid var(--line)}.times-grid > div:nth-child(2n){border-right:0}.times-grid > div:nth-child(3){padding-left:0}}
+@media (max-width:520px){.times-grid{grid-template-columns:1fr}.times-grid > div{border-right:0;padding-left:0 !important;padding-right:0}}
+
+/* sections */
+section{scroll-margin-top:20px}
+.sec{padding:120px 0}
+@media (max-width:700px){.sec{padding:80px 0}}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:48px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(52px,8vw,120px)}
+.sec-head p{max-width:440px;margin:0;color:var(--mute);font-size:18px}
+.light{background:var(--paper);color:var(--ink)}
+.light .sec-head p{color:var(--mute-dark)}
+.light .kicker{color:#7a5a00}
+
+/* latest message */
+.msg{display:grid;grid-template-columns:1.5fr 1fr;gap:28px}
+.msg-feature{position:relative;border-radius:18px;overflow:hidden;min-height:560px;display:flex;align-items:flex-end;text-decoration:none;isolation:isolate}
+.msg-feature img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:40% 30%;z-index:-2;transition:transform 1.2s ease}
+.msg-feature:hover img{transform:scale(1.04)}
+.msg-feature::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(8,9,11,.1) 30%,rgba(8,9,11,.92) 92%)}
+.msg-body{padding:36px}
+.play{width:84px;height:84px;border-radius:50%;background:var(--sun);display:grid;place-items:center;margin-bottom:26px;transition:transform .3s}
+.msg-feature:hover .play{transform:scale(1.08)}
+.play svg{width:28px;height:28px;margin-left:4px}
+.msg-body .kicker{color:var(--sun)}
+.msg-body h3{font-size:clamp(40px,4.8vw,72px);margin:12px 0 14px}
+.msg-body p{margin:0;color:#dfe2e8;font-size:17px}
+.msg-list{display:flex;flex-direction:column;gap:14px}
+.series-card{background:var(--ink-3);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden}
+.series-card .art{font-weight:900;font-stretch:62%;text-transform:uppercase;font-size:64px;line-height:.85;color:transparent;-webkit-text-stroke:1.5px rgba(255,210,63,.65);letter-spacing:.01em;margin-bottom:10px}
+.series-card p{margin:0;color:var(--mute);font-size:15px}
+.ep{display:grid;grid-template-columns:64px 1fr auto;gap:18px;align-items:center;padding:18px 20px;background:var(--ink-2);border-radius:14px;text-decoration:none;border:1px solid transparent;transition:border-color .2s}
+.ep:hover{border-color:rgba(255,210,63,.6)}
+.ep .n{font-weight:900;font-stretch:72%;font-size:40px;line-height:1;color:var(--mute-dark)}
+.ep b{display:block;font-weight:800;font-size:17px;line-height:1.25}
+.ep small{color:var(--mute);font-size:14px}
+.ep .t{font-size:13px;color:var(--mute);font-variant-numeric:tabular-nums}
+.watch-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px}
+.watch-row .btn{min-height:46px;font-size:13px;padding:0 18px}
+@media (max-width:980px){.msg{grid-template-columns:1fr}.msg-feature{min-height:460px}}
+@media (max-width:520px){.msg-body{padding:24px}.ep{grid-template-columns:44px 1fr}.ep .t{display:none}.ep .n{font-size:32px}}
+
+/* next steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:2px solid var(--ink);counter-reset:s}
+.step{padding:30px 28px 34px 0;position:relative;display:flex;flex-direction:column}
+.step + .step{padding-left:28px;border-left:1px solid #d4d4d0}
+.step .num{font-weight:900;font-stretch:62%;font-size:110px;line-height:.8;color:var(--ink);margin-bottom:18px}
+.step .num em{font-style:normal;color:var(--sun-deep);-webkit-text-stroke:0}
+.step h3{font-weight:900;font-stretch:80%;text-transform:uppercase;font-size:34px;line-height:1;margin:0 0 10px}
+.step p{margin:0 0 20px;color:#3b3f47;font-size:16.5px}
+.step .when{display:inline-block;background:var(--ink);color:var(--white);font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:7px 12px;border-radius:999px;margin-bottom:14px;align-self:flex-start}
+.step a.more{margin-top:auto;font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:2px solid var(--sun-deep);align-self:flex-start;padding-bottom:3px}
+@media (max-width:1000px){.steps{grid-template-columns:1fr 1fr}.step:nth-child(3){padding-left:0;border-left:0}.step:nth-child(n+3){border-top:1px solid #d4d4d0}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}.step{padding-left:0 !important;border-left:0 !important}.step + .step{border-top:1px solid #d4d4d0}.step .num{font-size:84px}}
+.newcomer{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;margin-top:100px}
+.newcomer-photo{border-radius:18px;overflow:hidden;aspect-ratio:4/3}
+.newcomer-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 100%;transform:scale(1.75);transform-origin:38% 100%}
+.newcomer h3{font-size:clamp(44px,5.4vw,80px);margin:14px 0 18px}
+.newcomer ul{list-style:none;margin:0 0 30px;padding:0;border-top:1px solid #d4d4d0}
+.newcomer li{display:grid;grid-template-columns:140px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid #d4d4d0;font-size:16.5px;color:#30343b}
+.newcomer li b{font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);padding-top:2px}
+@media (max-width:900px){.newcomer{grid-template-columns:1fr;gap:36px;margin-top:72px}}
+@media (max-width:480px){.newcomer li{grid-template-columns:1fr;gap:4px}}
+
+/* campuses */
+.campus-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.campus-tabs button{font:800 13px/1 var(--font);font-stretch:110%;letter-spacing:.14em;text-transform:uppercase;padding:14px 20px;border-radius:999px;background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.3);cursor:pointer}
+.campus-tabs button[aria-selected="true"]{background:var(--white);color:var(--ink);border-color:var(--white)}
+.campus-panel{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch}
+.campus-panel[hidden]{display:none}
+.campus-info{background:var(--ink-3);border-radius:18px;padding:40px;display:flex;flex-direction:column}
+.campus-info h3{font-size:clamp(48px,6vw,92px);margin:0 0 14px}
+.campus-info .addr{color:#e2e4e9;font-size:18px;margin:0 0 26px}
+.campus-info dl{display:grid;grid-template-columns:auto 1fr;gap:12px 28px;margin:0 0 30px;padding:24px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.campus-info dt{font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--sun);padding-top:3px}
+.campus-info dd{margin:0;font-size:17px}
+.campus-info .row{margin-top:auto;display:flex;gap:12px;flex-wrap:wrap}
+.map{border-radius:18px;overflow:hidden;background:#0f1a24;position:relative;min-height:420px}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+.map-label{position:absolute;left:24px;bottom:22px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;background:rgba(8,9,11,.82);padding:10px 14px;border-radius:999px}
+@media (max-width:900px){.campus-panel{grid-template-columns:1fr}.map{min-height:300px}.campus-info{padding:28px}}
+
+/* ministries */
+.min-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+.min{position:relative;border-radius:18px;overflow:hidden;min-height:440px;display:flex;align-items:flex-end;text-decoration:none;color:var(--white);isolation:isolate}
+.min img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1s ease}
+.min:hover img{transform:scale(1.05)}
+.min::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(8,9,11,0) 25%,rgba(8,9,11,.9) 90%)}
+.min .in{padding:32px}
+.min h3{font-size:clamp(48px,5.6vw,84px);margin:0 0 10px}
+.min p{margin:0;max-width:420px;color:#e5e7ec;font-size:16.5px}
+.min .tag{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:var(--sun);border-radius:999px;padding:7px 12px;margin-bottom:16px}
+.min-a{grid-column:span 7}
+.min-b{grid-column:span 5}
+.min-c{grid-column:span 5;background:var(--sun);color:var(--ink)}
+.min-c::before{display:none}
+.min-c p{color:#2b2400}
+.min-c .tag{background:var(--ink);color:var(--white)}
+.min-d{grid-column:span 7;background:var(--ink-3)}
+.min-d::before{display:none}
+.min-c .glyph,.min-d .glyph{position:absolute;right:-10px;top:-24px;font-weight:900;font-stretch:62%;font-size:260px;line-height:.8;text-transform:uppercase;z-index:-1;opacity:.12}
+.min-d .glyph{color:var(--white);opacity:.06}
+.ages{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.ages span{font-size:13px;font-weight:700;border:1.5px solid currentColor;border-radius:999px;padding:6px 12px}
+@media (max-width:900px){.min-a,.min-b,.min-c,.min-d{grid-column:span 12}.min{min-height:380px}}
+@media (max-width:520px){.min .in{padding:24px}.min-c .glyph,.min-d .glyph{font-size:180px}}
+
+/* events */
+.ev-wrap{position:relative}
+.ev-track{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(300px,380px);gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:22px;scrollbar-width:thin;scrollbar-color:#9a9a96 transparent}
+.ev{scroll-snap-align:start;background:var(--white);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;color:var(--ink);text-decoration:none;border:1px solid #e1e1dd}
+.ev-top{background:var(--ink);color:var(--white);padding:26px 26px 22px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:flex-start;min-height:170px;position:relative;overflow:hidden}
+.ev-top.sun{background:var(--sun);color:var(--ink)}
+.ev-top.photo{background:#000}
+.ev-top.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+.ev-date{position:relative;font-weight:900;font-stretch:72%;text-transform:uppercase;line-height:.85}
+.ev-date b{display:block;font-size:84px}
+.ev-date span{font-size:22px;letter-spacing:.06em;white-space:nowrap}
+.ev-camp{position:relative;font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;border:1.5px solid currentColor;border-radius:999px;padding:6px 10px}
+.ev-body{padding:24px 26px 28px;display:flex;flex-direction:column;flex:1}
+.ev-body h3{font-weight:900;font-stretch:80%;text-transform:uppercase;font-size:30px;line-height:1;margin:0 0 10px}
+.ev-body p{margin:0 0 18px;color:#40444c;font-size:16px}
+.ev-body .meta{margin-top:auto;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5a5f68}
+.ev-nav{display:flex;gap:10px}
+.ev-nav button{width:52px;height:52px;border-radius:50%;border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;display:grid;place-items:center}
+.ev-nav button:hover{background:var(--ink);color:var(--white)}
+.ev-nav svg{width:20px;height:20px}
+
+/* give */
+.give{position:relative;overflow:hidden;isolation:isolate;padding:150px 0}
+.give img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;z-index:-2}
+.give::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(8,9,11,.94) 0%,rgba(8,9,11,.82) 45%,rgba(8,9,11,.4) 100%)}
+.give-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:end}
+.give h2{font-size:clamp(60px,9vw,150px);margin:16px 0 22px}
+.give p.lede{font-size:19px;max-width:560px;color:#e8e9ed;margin:0 0 30px}
+.give .kicker{color:var(--sun)}
+.give-ways{display:grid;gap:12px}
+.way{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 24px;border-radius:14px;background:rgba(8,9,11,.72);border:1px solid var(--line)}
+.way b{display:block;font-weight:800;font-size:17px}
+.way span{color:var(--mute);font-size:15px}
+.way code{font-family:var(--font);font-weight:900;font-stretch:80%;font-size:24px;color:var(--sun);white-space:nowrap}
+.give-stat{display:flex;gap:40px;margin-top:8px;flex-wrap:wrap}
+.give-stat div b{display:block;font-weight:900;font-stretch:72%;font-size:54px;line-height:1}
+.give-stat div span{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);font-weight:700}
+@media (max-width:900px){.give-grid{grid-template-columns:1fr}.give{padding:100px 0}.give::before{background:rgba(8,9,11,.84)}}
+
+/* app */
+.app{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.app h2{font-size:clamp(52px,7vw,110px);margin:14px 0 20px}
+.app p{font-size:18px;color:#3b3f47;max-width:500px;margin:0 0 28px}
+.stores{display:flex;gap:12px;flex-wrap:wrap}
+.store{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--white);text-decoration:none;border-radius:12px;padding:10px 20px 10px 16px;min-height:58px}
+.store svg{width:26px;height:26px}
+.store small{display:block;font-size:13px;letter-spacing:.06em;opacity:.8}
+.store b{display:block;font-size:18px;font-weight:800;line-height:1.1}
+.app-feats{list-style:none;padding:0;margin:0 0 30px;display:grid;grid-template-columns:1fr 1fr;gap:10px 24px}
+.app-feats li{font-weight:700;font-size:16px;padding-left:22px;position:relative}
+.app-feats li::before{content:"";position:absolute;left:0;top:8px;width:10px;height:10px;background:var(--sun-deep);border-radius:2px}
+.phone-stage{position:relative;display:flex;justify-content:center;padding:20px 0}
+.phone-stage::before{content:"";position:absolute;width:78%;aspect-ratio:1;border-radius:50%;background:var(--sun);top:50%;left:50%;transform:translate(-50%,-50%)}
+.phone{position:relative;width:min(300px,78vw);aspect-ratio:9/19;background:#000;border-radius:44px;padding:12px;box-shadow:0 40px 80px rgba(0,0,0,.35)}
+.screen{width:100%;height:100%;border-radius:34px;overflow:hidden;background:var(--ink);display:flex;flex-direction:column}
+.screen-hero{position:relative;height:52%;overflow:hidden}
+.screen-hero img{width:100%;height:100%;object-fit:cover;object-position:60% 40%}
+.screen-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.2),rgba(8,9,11,.95))}
+.screen-hero div{position:absolute;left:16px;right:16px;bottom:14px;z-index:1}
+.screen-hero b{display:block;font-weight:900;font-stretch:62%;font-size:40px;line-height:.9;text-transform:uppercase}
+.screen-hero span{font-size:13px;color:var(--mute);letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.screen-list{padding:12px 14px;display:grid;gap:8px}
+.screen-list div{background:var(--ink-3);border-radius:10px;padding:10px 12px;font-size:13px;font-weight:700;display:flex;justify-content:space-between}
+.screen-list div span{color:var(--sun)}
+@media (max-width:900px){.app{grid-template-columns:1fr}.phone-stage{order:-1}}
+
+/* footer */
+.foot{background:var(--ink);padding:100px 0 40px;border-top:1px solid var(--line)}
+.foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:60px;border-bottom:1px solid var(--line)}
+.foot h2{font-size:clamp(48px,6vw,88px);margin:0 0 22px}
+.foot h3{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--sun);margin:0 0 16px;font-weight:800}
+.foot p,.foot li{color:#d3d6dc;font-size:15.5px;margin:0 0 8px}
+.foot ul{list-style:none;padding:0;margin:0}
+.foot a{text-decoration:none}
+.foot a:hover{color:var(--sun)}
+.news{display:flex;gap:10px;max-width:460px;flex-wrap:wrap}
+.news label{position:absolute;left:-9999px}
+.news input{flex:1;min-width:200px;height:52px;border-radius:999px;border:1px solid rgba(255,255,255,.3);background:transparent;color:var(--white);padding:0 22px;font:500 16px var(--font)}
+.news input::placeholder{color:#9aa0aa}
+.news-ok{margin-top:12px;color:var(--sun);font-weight:700;min-height:1.5em}
+.social{display:flex;gap:10px;margin-top:22px}
+.social a{width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.3);display:grid;place-items:center}
+.social a:hover{background:var(--white);color:var(--ink)}
+.social svg{width:18px;height:18px}
+.foot-bot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:28px;font-size:14px;color:#a3a8b1}
+.foot-mark{font-weight:900;font-stretch:62%;text-transform:uppercase;font-size:clamp(70px,16vw,250px);line-height:.8;color:var(--ink-3);margin-top:60px;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-align:center;user-select:none}
+@media (max-width:1000px){.foot-top{grid-template-columns:1fr 1fr}.foot-top > div:first-child{grid-column:1/-1}}
+@media (max-width:520px){.foot-top{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}
+  .hero-media::after{display:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="logo" href="#top" aria-label="Harbor Point Church home">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="none" stroke="#fff" stroke-width="2"/><path d="M20 7 L20 26" stroke="#ffd23f" stroke-width="3" stroke-linecap="round"/><path d="M13 14 L20 7 L27 14" fill="none" stroke="#ffd23f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 27 Q14 23 20 27 T32 27" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><path d="M10 32 Q15 29 20 32 T30 32" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" opacity=".6"/></svg>
+      <span><b>Harbor Point</b><small>Tampa Bay</small></span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <ul class="nav-links">
+        <li><a href="#campuses">Campuses</a></li>
+        <li><a href="#next-steps">Next Steps</a></li>
+        <li><a href="#ministries">Ministries</a></li>
+        <li><a href="#watch">Watch</a></li>
+        <li><a href="#events">Events</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="btn btn-ghost" href="#give">Give</a>
+        <a class="btn btn-sun" href="#plan">Plan a Visit</a>
+      </div>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="drawer"><span class="bars" aria-hidden="true"></span>Menu</button>
+    </nav>
+  </div>
+</header>
+
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="drawer-top">
+    <span class="logo"><span><b>Harbor Point</b></span></span>
+    <button class="menu-btn" type="button" style="display:inline-flex" data-close>Close</button>
+  </div>
+  <ul>
+    <li><a href="#campuses">Campuses</a></li>
+    <li><a href="#next-steps">Next Steps</a></li>
+    <li><a href="#ministries">Ministries</a></li>
+    <li><a href="#watch">Watch</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#app">App</a></li>
+  </ul>
+  <a class="btn btn-sun" href="#plan">Plan a Visit</a>
+  <a class="btn btn-ghost" href="#give">Give</a>
+</div>
+
+<main id="main">
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="hero-media"><img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1600&q=75&fm=jpg" alt="A packed room with hands raised toward a stage washed in white and amber light"></div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <p class="kicker">New series &middot; Hebrews 12</p>
+      <h1 class="display" id="hero-title">Unshakable</h1>
+      <p class="hero-sub">When everything around you is moving, there is a kingdom that isn't. Join us this weekend in person at one of our Tampa Bay campuses or online.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-sun" href="#plan">Plan a Visit</a>
+        <a class="btn btn-ghost" href="#watch"><span class="live-dot" aria-hidden="true"></span>Watch Live</a>
+      </div>
+      <div class="countdown" aria-live="off">
+        <div class="cd-label"><span class="live-dot" aria-hidden="true"></span><div>Next live service<small id="cd-when">Saturday 6:00 p.m. ET, Westshore + Online</small></div></div>
+        <div class="cd-clock" id="cd-clock" aria-label="Time until next live service">
+          <div class="cd-unit"><b id="cd-d">02</b><span>Days</span></div>
+          <div class="cd-unit"><b id="cd-h">04</b><span>Hours</span></div>
+          <div class="cd-unit"><b id="cd-m">36</b><span>Min</span></div>
+          <div class="cd-unit"><b id="cd-s">00</b><span>Sec</span></div>
+        </div>
+        <a class="cd-link" href="#watch">Set a reminder</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="times" aria-label="Service times and locations">
+    <div class="wrap times-grid">
+      <div><h2>Sundays</h2><strong>9:00 &amp; 11:00 a.m.</strong><p>Every campus, every week</p></div>
+      <div><h2>Saturdays</h2><strong>6:00 p.m.</strong><p>Westshore campus only</p></div>
+      <div><h2>Online</h2><strong>Live all weekend</strong><p>Watch with a host in the chat</p></div>
+      <div><h2>Locations</h2><strong>4 campuses</strong><p><a href="#campuses">Westshore, Brandon, St. Pete, Online</a></p></div>
+    </div>
+  </section>
+
+  <section class="sec" id="watch" aria-labelledby="watch-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="kicker" style="color:var(--sun)">Latest message</p><h2 class="display" id="watch-title">Watch &amp; listen</h2></div>
+        <p>Every message from the weekend is online by Sunday afternoon. Catch up, share it with a friend, or watch it again with your group.</p>
+      </div>
+      <div class="msg">
+        <a class="msg-feature" href="#watch">
+          <img src="https://images.unsplash.com/photo-1637615739656-ca10c4285c88?w=1600&q=75&fm=jpg" alt="A man in worship with both arms raised, black-and-white">
+          <div class="msg-body">
+            <div class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l16 9-16 9z" fill="#08090b"/></svg></div>
+            <span class="kicker">Unshakable &middot; Week 3 &middot; Oct 11, 2026</span>
+            <h3 class="display">Consuming fire</h3>
+            <p>Pastor Andre Mitchell on Hebrews 12:25&ndash;29 and why a shaking world is not the end of the story. 41 min.</p>
+          </div>
+        </a>
+        <div class="msg-list">
+          <div class="series-card">
+            <div class="art" aria-hidden="true">Unshak<br>able</div>
+            <span class="kicker" style="color:var(--sun)">Current series</span>
+            <p>Six weeks in Hebrews 12 with Pastors Andre &amp; Kayla Mitchell. Sept 27 &ndash; Nov 1.</p>
+          </div>
+          <a class="ep" href="#watch"><span class="n">02</span><span><b>Run with your eyes up</b><small>Kayla Mitchell &middot; Oct 4</small></span><span class="t">38:12</span></a>
+          <a class="ep" href="#watch"><span class="n">01</span><span><b>A great cloud around you</b><small>Andre Mitchell &middot; Sept 27</small></span><span class="t">44:05</span></a>
+          <div class="watch-row">
+            <a class="btn btn-ghost" href="#watch">All messages</a>
+            <a class="btn btn-ghost" href="#watch">Podcast</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec light" id="next-steps" aria-labelledby="steps-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="kicker">Next steps</p><h2 class="display" id="steps-title">Find your next step</h2></div>
+        <p>Church is more than a seat on the weekend. Wherever you are with God, there is a clear, simple next move, and someone ready to walk it with you.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="num">0<em>1</em></div>
+          <span class="when">Sun, Oct 25 &middot; 12:30 p.m.</span>
+          <h3>Starting Point</h3>
+          <p>One lunch, one hour. Meet our pastors, hear the Harbor Point story, and ask anything you want.</p>
+          <a class="more" href="#plan">Save a seat</a>
+        </div>
+        <div class="step">
+          <div class="num">0<em>2</em></div>
+          <span class="when">Winter groups open Jan 11</span>
+          <h3>Groups</h3>
+          <p>Eight to twelve people in a living room, a coffee shop or a dock. More than 180 groups across the Bay.</p>
+          <a class="more" href="#ministries">Find a group</a>
+        </div>
+        <div class="step">
+          <div class="num">0<em>3</em></div>
+          <span class="when">Baptism Sunday &middot; Nov 8</span>
+          <h3>Baptism</h3>
+          <p>Ready to go public with your faith? Sign up by Nov 1 and we'll walk you through every detail, towels included.</p>
+          <a class="more" href="#events">Sign up to be baptized</a>
+        </div>
+        <div class="step">
+          <div class="num">0<em>4</em></div>
+          <span class="when">Every weekend</span>
+          <h3>Dream Team</h3>
+          <p>Park cars, rock babies, run cameras, greet at the door. Serve one service, attend one service.</p>
+          <a class="more" href="#next-steps">Join a team</a>
+        </div>
+      </div>
+
+      <div class="newcomer" id="plan">
+        <div class="newcomer-photo"><img src="https://images.unsplash.com/photo-1765947382559-93260e5d6c89?w=1600&q=75&fm=jpg" alt="A crowded church lobby full of people greeting each other after a service"></div>
+        <div>
+          <p class="kicker">Plan a visit</p>
+          <h3 class="display">Your first Sunday, sorted</h3>
+          <ul>
+            <li><b>Arrive</b><span>Come 15 minutes early. Look for the yellow umbrellas in First Time Guest parking.</span></li>
+            <li><b>Kids</b><span>Harbor Kids check-in is right off the lobby. Secure, fun, and trained volunteers in every room.</span></li>
+            <li><b>Service</b><span>About 70 minutes of live music and a practical message. Come as you are, shorts welcome.</span></li>
+            <li><b>After</b><span>Stop by the Welcome Tent for a free gift and a real conversation, if you want one.</span></li>
+          </ul>
+          <a class="btn btn-ink" href="#plan">Tell us you're coming</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="campuses" aria-labelledby="campus-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="kicker" style="color:var(--sun)">One church, four locations</p><h2 class="display" id="campus-title">Find a campus</h2></div>
+        <p>Same message, same heart, with a local team who knows your neighborhood. Pick the campus closest to you.</p>
+      </div>
+      <div class="campus-tabs" role="tablist" aria-label="Campuses">
+        <button role="tab" id="t-ws" aria-controls="p-ws" aria-selected="true">Westshore</button>
+        <button role="tab" id="t-br" aria-controls="p-br" aria-selected="false" tabindex="-1">Brandon</button>
+        <button role="tab" id="t-sp" aria-controls="p-sp" aria-selected="false" tabindex="-1">St. Pete</button>
+        <button role="tab" id="t-on" aria-controls="p-on" aria-selected="false" tabindex="-1">Online</button>
+      </div>
+
+      <div class="campus-panel" role="tabpanel" id="p-ws" aria-labelledby="t-ws">
+        <div class="campus-info">
+          <h3 class="display">Westshore</h3>
+          <p class="addr">4100 W Cypress St, Tampa, FL 33607</p>
+          <dl><dt>Saturday</dt><dd>6:00 p.m.</dd><dt>Sunday</dt><dd>9:00 &amp; 11:00 a.m.</dd><dt>Campus pastor</dt><dd>Rob &amp; Tasha Greene</dd></dl>
+          <div class="row"><a class="btn btn-sun" href="#plan">Plan a Visit</a><a class="btn btn-ghost" href="#campuses">Directions</a></div>
+        </div>
+        <div class="map" aria-hidden="true"></div>
+      </div>
+      <div class="campus-panel" role="tabpanel" id="p-br" aria-labelledby="t-br" hidden>
+        <div class="campus-info">
+          <h3 class="display">Brandon</h3>
+          <p class="addr">2250 Lumsden Rd, Brandon, FL 33511</p>
+          <dl><dt>Sunday</dt><dd>9:00 &amp; 11:00 a.m.</dd><dt>Campus pastor</dt><dd>Marisol Vega</dd><dt>Also here</dt><dd>HP Students, Wednesdays 7:00 p.m.</dd></dl>
+          <div class="row"><a class="btn btn-sun" href="#plan">Plan a Visit</a><a class="btn btn-ghost" href="#campuses">Directions</a></div>
+        </div>
+        <div class="map" aria-hidden="true"></div>
+      </div>
+      <div class="campus-panel" role="tabpanel" id="p-sp" aria-labelledby="t-sp" hidden>
+        <div class="campus-info">
+          <h3 class="display">St. Pete</h3>
+          <p class="addr">1400 Central Ave, St. Petersburg, FL 33705</p>
+          <dl><dt>Sunday</dt><dd>9:00 &amp; 11:00 a.m.</dd><dt>Campus pastor</dt><dd>Jordan Ellis</dd><dt>Parking</dt><dd>Free garage on 14th St N</dd></dl>
+          <div class="row"><a class="btn btn-sun" href="#plan">Plan a Visit</a><a class="btn btn-ghost" href="#campuses">Directions</a></div>
+        </div>
+        <div class="map" aria-hidden="true"></div>
+      </div>
+      <div class="campus-panel" role="tabpanel" id="p-on" aria-labelledby="t-on" hidden>
+        <div class="campus-info">
+          <h3 class="display">Online</h3>
+          <p class="addr">Live on the app, YouTube and harborpoint.church/live</p>
+          <dl><dt>Saturday</dt><dd>6:00 p.m. ET</dd><dt>Sunday</dt><dd>9:00 &amp; 11:00 a.m. ET</dd><dt>Online pastor</dt><dd>Chris Duval, live in the chat</dd></dl>
+          <div class="row"><a class="btn btn-sun" href="#watch">Watch Live</a><a class="btn btn-ghost" href="#app">Get the app</a></div>
+        </div>
+        <div class="map" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec light" id="ministries" aria-labelledby="min-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="kicker">Ministries</p><h2 class="display" id="min-title">There's a place for you</h2></div>
+        <p>From the nursery to the retirement community, every age and stage has a team building something great for them.</p>
+      </div>
+      <div class="min-grid">
+        <a class="min min-a" href="#ministries">
+          <img src="https://images.unsplash.com/photo-1570786032462-2efc3ca8fccd?w=1600&q=75&fm=jpg" alt="Silhouetted students with hands raised in warm stage light" style="object-position:50% 40%">
+          <div class="in"><span class="tag">Grades 6&ndash;12</span><h3 class="display">HP Students</h3><p>Wednesdays at 7:00 p.m. at Westshore and Brandon. Loud worship, real talk, and small groups led by people who show up for you.</p></div>
+        </a>
+        <a class="min min-b" href="#ministries">
+          <img src="https://images.unsplash.com/photo-1477281765962-ef34e8bb0967?w=1600&q=75&fm=jpg" alt="A crowd in worship, lit by a single beam of light from the stage" style="object-position:62% 70%">
+          <div class="in"><span class="tag">Young adults &middot; 18&ndash;29</span><h3 class="display">Tuesday Nights</h3><p>Worship and a message every Tuesday at 7:30 p.m. in St. Pete, then tacos.</p></div>
+        </a>
+        <a class="min min-c" href="#ministries">
+          <span class="glyph" aria-hidden="true">Kids</span>
+          <div class="in"><span class="tag">Birth &ndash; 5th grade</span><h3 class="display">Harbor Kids</h3><p>Every service, every campus. Secure check-in, background-checked leaders, and a Bible story your kids will retell at lunch.</p><div class="ages"><span>Nursery</span><span>Preschool</span><span>K&ndash;2</span><span>3rd&ndash;5th</span></div></div>
+        </a>
+        <a class="min min-d" href="#ministries">
+          <span class="glyph" aria-hidden="true">Groups</span>
+          <div class="in"><span class="tag">Adults</span><h3 class="display">Groups</h3><p>Men's and women's groups, marriage groups, recovery, and neighborhood groups from Clearwater to Riverview. Winter semester starts Jan 11.</p></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec light" id="events" aria-labelledby="ev-title" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="kicker">What's coming up</p><h2 class="display" id="ev-title">Events</h2></div>
+        <div class="ev-nav"><button type="button" id="ev-prev" aria-label="Previous events"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" id="ev-next" aria-label="Next events"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7"/></svg></button></div>
+      </div>
+      <div class="ev-track" id="ev-track" tabindex="0" aria-label="Upcoming events, scroll horizontally">
+        <a class="ev" href="#events"><div class="ev-top"><div class="ev-date"><span>Sun &middot; Oct</span><b>25</b></div><span class="ev-camp">All campuses</span></div><div class="ev-body"><h3>Starting Point</h3><p>Lunch with our pastors after the 11:00 service. Kids are welcome; we'll have pizza for them too.</p><span class="meta">12:30 p.m. &middot; RSVP</span></div></a>
+        <a class="ev" href="#events"><div class="ev-top photo"><img src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=1600&q=75&fm=jpg" alt=""><div class="ev-date"><span>Fri &middot; Oct</span><b>30</b></div><span class="ev-camp">Westshore</span></div><div class="ev-body"><h3>Unshakable Worship Night</h3><p>Two hours of worship with the Harbor Point band to close out the series. Doors at 6:30.</p><span class="meta">7:00 p.m. &middot; Free</span></div></a>
+        <a class="ev" href="#events"><div class="ev-top sun"><div class="ev-date"><span>Sun &middot; Nov</span><b>08</b></div><span class="ev-camp">All campuses</span></div><div class="ev-body"><h3>Baptism Sunday</h3><p>Bring your people and your loudest cheering. Sign up by Nov 1 to be baptized.</p><span class="meta">All services</span></div></a>
+        <a class="ev" href="#events"><div class="ev-top"><div class="ev-date"><span>Fri &middot; Nov</span><b>13</b></div><span class="ev-camp">Brandon</span></div><div class="ev-body"><h3>Women's Night Out</h3><p>Dinner, worship and Kayla Mitchell on finding steady ground in a busy season.</p><span class="meta">6:30 p.m. &middot; $15</span></div></a>
+        <a class="ev" href="#events"><div class="ev-top sun"><div class="ev-date"><span>Sat &middot; Nov</span><b>21</b></div><span class="ev-camp">Tampa Bay</span></div><div class="ev-body"><h3>Serve the Bay</h3><p>Thanksgiving outreach: 5,000 meal boxes packed and delivered with Feeding Tampa Bay partners.</p><span class="meta">8:00 a.m. &middot; All ages</span></div></a>
+        <a class="ev" href="#events"><div class="ev-top"><div class="ev-date"><span>Dec</span><b>19&ndash;24</b></div><span class="ev-camp">All campuses</span></div><div class="ev-body"><h3>Christmas at Harbor Point</h3><p>Ten services, candlelight, a full choir and Harbor Kids programming at every one.</p><span class="meta">Times announced Nov 15</span></div></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="give" id="give" aria-labelledby="give-title">
+    <img src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=1600&q=75&fm=jpg" alt="" aria-hidden="true">
+    <div class="wrap give-grid">
+      <div>
+        <p class="kicker">Giving</p>
+        <h2 class="display" id="give-title">Built by generosity</h2>
+        <p class="lede">Every gift fuels a weekend where someone hears about Jesus for the first time, a kid in Brandon gets a backpack, and a family in St. Pete gets a meal. Thank you for building this with us.</p>
+        <div class="give-stat"><div><b>412</b><span>Baptisms in 2026</span></div><div><b>38k</b><span>Meals served</span></div><div><b>14</b><span>Global partners</span></div></div>
+      </div>
+      <div class="give-ways">
+        <a class="btn btn-sun" href="#give" style="min-height:60px">Give online</a>
+        <div class="way"><div><b>Text to give</b><span>Text any amount to</span></div><code>813-555-0148</code></div>
+        <div class="way"><div><b>In the app</b><span>Set up recurring giving in two minutes</span></div><a class="cd-link" href="#app">Open</a></div>
+        <div class="way"><div><b>Stocks &amp; planned gifts</b><span>Talk with our stewardship team</span></div><a class="cd-link" href="#footer">Contact</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec light" id="app" aria-labelledby="app-title">
+    <div class="wrap app">
+      <div>
+        <p class="kicker">The Harbor Point app</p>
+        <h2 class="display" id="app-title">Church in your pocket</h2>
+        <p>Watch live, take notes on the message, check your kids in before you park, find a group and give, all from one app.</p>
+        <ul class="app-feats"><li>Live stream &amp; replays</li><li>Express kids check-in</li><li>Message notes</li><li>Daily Bible plan</li><li>Group finder</li><li>Giving history</li></ul>
+        <div class="stores">
+          <a class="store" href="#app"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.8 1.3 10.3.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.7-4.2zM13.9 4.9c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg><span><small>Download on the</small><b>App Store</b></span></a>
+          <a class="store" href="#app"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.5l10.5 10.5L4 23.5c-.4-.2-.7-.7-.7-1.2V3.7c0-.5.3-1 .7-1.2z" fill="#ffd23f"/><path d="M14.5 13L17.7 9.8l3.6 2.1c.9.5.9 1.8 0 2.3l-3.6 2.1z" fill="#fff"/><path d="M4 2.5c.3-.2.8-.2 1.2 0l12.5 7.3L14.5 13z" fill="#fff" opacity=".7"/><path d="M14.5 13l3.2 3.2-12.5 7.3c-.4.2-.9.2-1.2 0z" fill="#fff" opacity=".45"/></svg><span><small>Get it on</small><b>Google Play</b></span></a>
+        </div>
+      </div>
+      <div class="phone-stage" aria-hidden="true">
+        <div class="phone"><div class="screen">
+          <div class="screen-hero"><img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1600&q=75&fm=jpg" alt=""><div><span>Live now</span><b>Unshak&shy;able</b></div></div>
+          <div class="screen-list"><div>Check in kids <span>2 kids</span></div><div>Message notes <span>Week 4</span></div><div>Give <span>Recurring</span></div><div>My group <span>Tue 7pm</span></div></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" id="footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <h2 class="display">See you Sunday</h2>
+        <form class="news" id="news" novalidate>
+          <label for="news-email">Email address</label>
+          <input id="news-email" type="email" placeholder="Email for weekly updates" autocomplete="email" required>
+          <button class="btn btn-sun" type="submit">Sign up</button>
+        </form>
+        <p class="news-ok" id="news-ok" role="status"></p>
+        <div class="social">
+          <a href="#footer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="#footer" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 8.2a3 3 0 0 0-2.1-2.1C18 5.6 12 5.6 12 5.6s-6 0-7.9.5A3 3 0 0 0 2 8.2 31 31 0 0 0 1.6 12 31 31 0 0 0 2 15.8a3 3 0 0 0 2.1 2.1c1.9.5 7.9.5 7.9.5s6 0 7.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .4-3.8 31 31 0 0 0-.4-3.8zM10 15V9l5.2 3z"/></svg></a>
+          <a href="#footer" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-2.8 0-4.5 1.8-4.5 4.6V11H7v4h2.5v9h4v-9h3l.5-4h-3.5V8.8c0-.5.3-.8.5-.8z"/></svg></a>
+          <a href="#footer" aria-label="Spotify podcast"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M7 9.5c3.5-1 7.5-.6 10.5 1M7.5 12.8c3-.8 6-.4 8.5 1M8 16c2.2-.5 4.6-.3 6.5.7"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h3>Westshore</h3>
+        <ul><li>4100 W Cypress St</li><li>Tampa, FL 33607</li><li>Sat 6:00 p.m.</li><li>Sun 9:00 &amp; 11:00 a.m.</li></ul>
+      </div>
+      <div>
+        <h3>Brandon &middot; St. Pete</h3>
+        <ul><li>2250 Lumsden Rd, Brandon</li><li>1400 Central Ave, St. Pete</li><li>Sun 9:00 &amp; 11:00 a.m.</li><li><a href="#watch">Online: all weekend</a></li></ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul><li><a href="#footer">hello@harborpoint.church</a></li><li><a href="#footer">(813) 555-0140</a></li><li>Office: Mon&ndash;Thu, 9&ndash;4</li><li><a href="#footer">Prayer requests</a></li><li><a href="#footer">Careers</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bot"><span>&copy; 2026 Harbor Point Church. Lead Pastors Andre &amp; Kayla Mitchell.</span><span><a href="#footer">Privacy</a> &middot; <a href="#footer">Accessibility</a> &middot; <a href="#footer">Child safety policy</a></span></div>
+    <div class="foot-mark" aria-hidden="true">Harbor Point</div>
+  </div>
+</footer>
+
+<template id="map-tpl">
+  <svg viewBox="0 0 600 420" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="420" fill="#0f1a24"/>
+    <path d="M0 260 C80 240 120 300 190 290 S300 210 360 240 470 330 600 300 L600 420 L0 420Z" fill="#0a2a3c"/>
+    <path d="M250 0 C270 80 230 140 280 200 S330 300 300 420" fill="none" stroke="#0a2a3c" stroke-width="46"/>
+    <g stroke="#26313d" stroke-width="2"><path d="M0 90 H600"/><path d="M0 170 H600"/><path d="M80 0 V420"/><path d="M420 0 V420"/><path d="M520 0 V420"/><path d="M0 40 L600 210"/></g>
+    <g stroke="#3a4552" stroke-width="5" fill="none"><path d="M0 130 C200 120 380 150 600 120"/><path d="M160 0 C170 140 150 300 170 420"/></g>
+    <circle class="pin-ring" cx="0" cy="0" r="28" fill="#ffd23f" opacity=".25"/>
+    <circle class="pin" cx="0" cy="0" r="11" fill="#ffd23f" stroke="#08090b" stroke-width="4"/>
+  </svg>
+</template>
+
+<script>
+(function(){
+  // menu
+  var drawer=document.getElementById('drawer');
+  var openBtn=document.querySelector('.site-head .menu-btn');
+  var closeBtn=drawer.querySelector('[data-close]');
+  function setMenu(o){drawer.classList.toggle('open',o);openBtn.setAttribute('aria-expanded',o?'true':'false');document.body.style.overflow=o?'hidden':'';if(o)closeBtn.focus();else openBtn.focus();}
+  openBtn.addEventListener('click',function(){setMenu(true)});
+  closeBtn.addEventListener('click',function(){setMenu(false)});
+  drawer.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false)})});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&drawer.classList.contains('open'))setMenu(false)});
+
+  // countdown to next service (ET approximation using local clock offsets)
+  var slots=[{d:6,h:18,label:'Saturday 6:00 p.m. ET, Westshore + Online'},{d:0,h:9,label:'Sunday 9:00 a.m. ET, all campuses + Online'},{d:0,h:11,label:'Sunday 11:00 a.m. ET, all campuses + Online'}];
+  function nowET(){var n=new Date();var s=n.toLocaleString('en-US',{timeZone:'America/New_York'});return new Date(s);}
+  function next(){var n=nowET();var best=null;slots.forEach(function(s){var t=new Date(n);t.setHours(s.h,0,0,0);var diff=(s.d-n.getDay()+7)%7;t.setDate(n.getDate()+diff);if(t<=n)t.setDate(t.getDate()+7);if(!best||t<best.t)best={t:t,label:s.label};});best.ms=best.t-n;return best;}
+  function pad(v){return (v<10?'0':'')+v}
+  var el={d:document.getElementById('cd-d'),h:document.getElementById('cd-h'),m:document.getElementById('cd-m'),s:document.getElementById('cd-s'),w:document.getElementById('cd-when')};
+  function tick(){var b=next();var t=Math.floor(b.ms/1000);el.d.textContent=pad(Math.floor(t/86400));el.h.textContent=pad(Math.floor(t%86400/3600));el.m.textContent=pad(Math.floor(t%3600/60));el.s.textContent=pad(t%60);el.w.textContent=b.label;}
+  try{tick();setInterval(tick,1000);}catch(e){}
+
+  // maps
+  var tpl=document.getElementById('map-tpl');
+  var pins={'p-ws':[230,150,'Westshore'],'p-br':[480,190,'Brandon'],'p-sp':[120,330,'St. Pete'],'p-on':[300,210,'Everywhere']};
+  document.querySelectorAll('.campus-panel').forEach(function(p){var m=p.querySelector('.map');var svg=tpl.content.cloneNode(true);var pin=pins[p.id];svg.querySelector('.pin').setAttribute('cx',pin[0]);svg.querySelector('.pin').setAttribute('cy',pin[1]);svg.querySelector('.pin-ring').setAttribute('cx',pin[0]);svg.querySelector('.pin-ring').setAttribute('cy',pin[1]);m.appendChild(svg);var l=document.createElement('span');l.className='map-label';l.textContent=pin[2]+' campus';m.appendChild(l);});
+
+  // tabs
+  var tabs=[].slice.call(document.querySelectorAll('[role=tab]'));
+  function select(t){tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on;});}
+  tabs.forEach(function(t,i){t.addEventListener('click',function(){select(t)});t.addEventListener('keydown',function(e){var k=e.key,j=null;if(k==='ArrowRight')j=(i+1)%tabs.length;if(k==='ArrowLeft')j=(i-1+tabs.length)%tabs.length;if(j!==null){tabs[j].focus();select(tabs[j]);}});});
+
+  // events carousel
+  var tr=document.getElementById('ev-track');
+  function step(dir){var c=tr.querySelector('.ev');var w=c?c.getBoundingClientRect().width+20:360;tr.scrollBy({left:dir*w,behavior:'smooth'});}
+  document.getElementById('ev-prev').addEventListener('click',function(){step(-1)});
+  document.getElementById('ev-next').addEventListener('click',function(){step(1)});
+
+  // newsletter
+  document.getElementById('news').addEventListener('submit',function(e){e.preventDefault();var i=document.getElementById('news-email');var ok=document.getElementById('news-ok');if(!i.value||i.value.indexOf('@')<1){ok.textContent='Please enter a valid email address.';i.focus();return;}ok.textContent='You’re in. Look for our Thursday email this week.';this.reset();});
+})();
+</script>
+</body>
+</html>

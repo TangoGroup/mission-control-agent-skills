@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Greater New Hope Missionary Baptist Church · Memphis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --crimson:#9b1a30; --crimson-dk:#6c0f21; --crimson-xdk:#4a0916;
+  --gold:#e9b44c; --gold-lt:#f6d58a; --gold-dk:#a8771f;
+  --purple:#2b1342; --purple-2:#3b1c58;
+  --ivory:#fbf4e6; --ivory-2:#f3e7cf; --ink:#1c0d15; --muted:#5e4a52;
+  --green:#1d6a44;
+  --display:"DM Serif Display", "Bodoni 72", Didot, Georgia, serif;
+  --sans:"Archivo", "Helvetica Neue", Arial, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ivory);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1320px;margin:0 auto;padding-left:max(28px, env(safe-area-inset-left, 0px));padding-right:max(28px, env(safe-area-inset-right, 0px))}
+@media (max-width:600px){.wrap{padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}}
+.skip{position:absolute;left:-999px;top:8px;background:#fff;padding:8px 14px;z-index:99}
+.skip:focus{left:12px}
+.cond{font-stretch:68%;font-weight:800;text-transform:uppercase;letter-spacing:.02em}
+.kente{height:12px;background:repeating-linear-gradient(90deg,var(--gold) 0 34px,var(--ink) 34px 40px,var(--crimson) 40px 70px,var(--green) 70px 82px,var(--gold) 82px 88px,var(--ink) 88px 96px)}
+
+/* utility bar */
+.util{background:var(--purple);color:#efe6f6;font-size:14px}
+.util .wrap{display:flex;justify-content:space-between;gap:16px;align-items:center;min-height:42px;flex-wrap:wrap;padding-top:6px;padding-bottom:6px}
+.util a{color:#fff;font-weight:700;text-decoration:none}
+.util a:hover{text-decoration:underline}
+.ldot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#ff5a4f;margin-right:8px;vertical-align:0;animation:blink 1.6s infinite}
+@keyframes blink{50%{opacity:.35}}
+.util .r{display:flex;gap:18px;flex-wrap:wrap}
+
+/* header */
+header.site{background:var(--ivory);position:sticky;top:0;z-index:40;border-bottom:3px solid var(--crimson)}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:20px;min-height:84px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+.brand svg{width:54px;height:54px;flex:none}
+.brand b{display:block;font-family:var(--display);font-weight:400;font-size:23px;line-height:1.05}
+.brand small{display:block;font-size:13px;font-stretch:80%;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--crimson)}
+.menu{display:flex;gap:24px;list-style:none;margin:0;padding:0;font-weight:600;font-size:15px}
+.menu a{text-decoration:none}
+.menu a:hover{color:var(--crimson)}
+.act{display:flex;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-family:var(--sans);font-weight:800;font-stretch:80%;text-transform:uppercase;letter-spacing:.05em;font-size:15px;padding:13px 20px;border:2px solid transparent;cursor:pointer;line-height:1}
+.b-crimson{background:var(--crimson);color:#fff}
+.b-crimson:hover{background:var(--crimson-dk)}
+.b-gold{background:var(--gold);color:var(--ink)}
+.b-gold:hover{background:var(--gold-lt)}
+.b-out{border-color:var(--ink);color:var(--ink);background:transparent}
+.b-out-lt{border-color:var(--gold-lt);color:var(--gold-lt);background:transparent}
+.b-out-lt:hover{background:var(--gold);color:var(--ink)}
+.b-ivory{background:var(--ivory);color:var(--ink)}
+.toggle{display:none;background:var(--ink);color:#fff;border:0;padding:12px 16px;font-weight:800;font-stretch:80%;text-transform:uppercase;letter-spacing:.06em;font-size:14px;cursor:pointer;font-family:var(--sans)}
+.drawer{display:none}
+@media (max-width:1120px){
+  .menu,.act .b-out{display:none}
+  .toggle{display:inline-block}
+  .drawer.open{display:block;background:var(--ivory);border-top:1px solid var(--ivory-2)}
+  .drawer ul{list-style:none;margin:0;padding:8px 0 20px}
+  .drawer a{display:block;padding:13px 0;font-family:var(--display);font-size:24px;text-decoration:none;border-bottom:1px solid var(--ivory-2)}
+}
+@media (max-width:520px){.brand b{font-size:19px}.nav{gap:12px}.brand{min-width:0;gap:10px}.util .r span{display:none}.brand svg{width:44px;height:44px}.nav .brand small{display:none}.act .b-crimson{display:none}.nav{min-height:72px}}
+
+/* HERO POSTER */
+.hero{background:var(--crimson);color:var(--ivory);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(circle at 85% 20%, rgba(233,180,76,.18) 0 18%, transparent 18.2%),
+  radial-gradient(circle at 85% 20%, transparent 0 26%, rgba(233,180,76,.12) 26.2% 26.6%, transparent 26.8%);pointer-events:none}
+.poster{position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:40px;padding:56px 0 40px;align-items:center}
+.presents{font-stretch:75%;font-weight:700;text-transform:uppercase;letter-spacing:.18em;font-size:14px;color:var(--gold-lt);display:flex;align-items:center;gap:14px}
+.presents::after{content:"";height:2px;flex:1;background:var(--gold);max-width:120px}
+.title{margin:14px 0 0;font-weight:400}
+.t-row{display:flex;align-items:center;gap:22px}
+.t-125{font-family:var(--display);font-size:clamp(150px,19vw,290px);line-height:.78;color:var(--gold);letter-spacing:-.04em;text-shadow:6px 6px 0 var(--crimson-xdk)}
+.t-stack{display:flex;flex-direction:column;font-stretch:62%;font-weight:900;text-transform:uppercase;line-height:.86;font-size:clamp(52px,6.6vw,104px);letter-spacing:.005em}
+.t-stack span:last-child{color:var(--gold-lt)}
+.t-sub{display:block;font-family:var(--display);font-style:italic;font-size:clamp(28px,3.1vw,46px);line-height:1.05;margin-top:18px;color:#fff}
+.datebar{display:inline-flex;align-items:stretch;margin-top:26px;background:var(--ink);color:#fff;flex-wrap:wrap}
+.datebar span{padding:12px 18px;font-stretch:72%;font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:clamp(18px,1.8vw,24px)}
+.datebar span:first-child{background:var(--gold);color:var(--ink)}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+
+.frames{position:relative;min-height:560px}
+.arch{position:absolute;right:6%;top:0;width:68%;aspect-ratio:3/4;border-radius:999px 999px 0 0;overflow:hidden;border:6px solid var(--ivory);z-index:1}
+.arch img{width:100%;height:100%;object-fit:cover;object-position:52% 40%}
+.arch-shadow{position:absolute;right:calc(6% - 18px);top:18px;width:68%;aspect-ratio:3/4;border-radius:999px 999px 0 0;background:var(--gold);z-index:0}
+.circle{position:absolute;left:0;bottom:0;width:46%;aspect-ratio:1;border-radius:50%;overflow:hidden;border:6px solid var(--gold);z-index:2}
+.circle img{width:100%;height:100%;object-fit:cover;object-position:42% 60%}
+.seal{position:absolute;right:0;bottom:6%;width:150px;height:150px;z-index:3;background:var(--purple);border-radius:50%;display:grid;place-items:center;color:var(--gold)}
+.seal svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 40s linear infinite}
+.seal .c{text-align:center;line-height:1}
+.seal .c b{display:block;font-family:var(--display);font-weight:400;font-size:40px;color:#fff}
+.seal .c small{font-stretch:70%;font-weight:800;letter-spacing:.12em;font-size:13px;text-transform:uppercase}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.weekend{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-bottom:0;background:var(--crimson-dk);border-top:4px solid var(--gold)}
+.wk{padding:22px 24px 26px;display:grid;grid-template-columns:auto 1fr;gap:4px 18px;align-items:start;border-right:1px solid rgba(233,180,76,.35)}
+.wk:last-child{border-right:0}
+.wk .d{grid-row:span 3;text-align:center;min-width:76px}
+.wk .d small{display:block;font-stretch:70%;font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:14px;color:var(--gold-lt)}
+.wk .d b{display:block;font-family:var(--display);font-weight:400;font-size:64px;line-height:.9;color:var(--gold)}
+.wk h3{margin:2px 0 0;font-family:var(--display);font-weight:400;font-size:25px;line-height:1.1;color:#fff}
+.wk p{margin:0;font-size:15px;color:#f4e3e6}
+.wk .time{font-stretch:75%;font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:14px;color:var(--gold-lt)}
+@media (max-width:1000px){
+  .poster{grid-template-columns:1fr;gap:28px;padding-top:40px}
+  .frames{min-height:0;height:min(92vw,560px);max-width:560px;width:100%;margin:0 auto}
+  .weekend{grid-template-columns:1fr}
+  .wk{border-right:0;border-bottom:1px solid rgba(233,180,76,.35)}
+}
+@media (max-width:520px){.t-row{gap:12px}.seal{width:112px;height:112px}.seal .c b{font-size:30px}.seal .c small{font-size:13px;letter-spacing:.06em}.datebar span{padding:10px 12px}.wk{padding:18px 4px}.wk .d b{font-size:52px}}
+
+/* ticker */
+.ticker{background:var(--gold);color:var(--ink);overflow:hidden;border-bottom:3px solid var(--ink)}
+.ticker .lab{position:absolute;left:0;top:0;bottom:0;background:var(--ink);color:var(--gold);display:flex;align-items:center;padding:0 18px;font-stretch:70%;font-weight:900;letter-spacing:.1em;text-transform:uppercase;font-size:15px;z-index:2}
+.tick-in{position:relative;height:54px;display:flex;align-items:center}
+.track{display:flex;gap:0;white-space:nowrap;animation:marq 48s linear infinite;padding-left:150px}
+.track span{font-stretch:72%;font-weight:800;text-transform:uppercase;letter-spacing:.05em;font-size:18px;padding:0 22px}
+.track span::after{content:"✦";margin-left:44px;color:var(--crimson)}
+.ticker:hover .track{animation-play-state:paused}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* sections */
+section{padding:96px 0}
+.h2{font-family:var(--display);font-weight:400;font-size:clamp(40px,5vw,72px);line-height:1;margin:0;letter-spacing:-.01em}
+.lab2{font-stretch:72%;font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:14px;color:var(--crimson);display:block;margin-bottom:12px}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:40px;flex-wrap:wrap}
+.head p{max-width:520px;margin:12px 0 0;color:var(--muted)}
+
+/* worship schedule band */
+.sched{background:var(--purple);color:#fff;padding:0}
+.sched .wrap{display:grid;grid-template-columns:minmax(0,.9fr) repeat(3,minmax(0,1fr));gap:0}
+.sc-h{padding:40px 32px 40px 0;display:flex;flex-direction:column;justify-content:center}
+.sc-h h2{font-family:var(--display);font-weight:400;font-size:clamp(34px,3.2vw,46px);line-height:1;margin:0 0 10px}
+.sc-h p{margin:0;color:#dcd0e8;font-size:15px}
+.sc{padding:40px 28px;border-left:1px solid rgba(255,255,255,.18)}
+.sc .t{font-family:var(--display);font-size:clamp(46px,4.6vw,66px);line-height:.95;color:var(--gold)}
+.sc .t small{font-family:var(--sans);font-stretch:70%;font-weight:800;font-size:20px;margin-left:4px;text-transform:uppercase}
+.sc h3{margin:10px 0 2px;font-stretch:75%;font-weight:800;text-transform:uppercase;letter-spacing:.05em;font-size:19px}
+.sc p{margin:0;color:#dcd0e8;font-size:15px}
+@media (max-width:1000px){.sched .wrap{grid-template-columns:1fr 1fr 1fr}.sc-h{grid-column:1/-1;padding:36px 0 8px}.sc{border-left:0;border-top:1px solid rgba(255,255,255,.18);padding:24px 16px 32px 0}}
+@media (max-width:600px){.sched .wrap{grid-template-columns:1fr}.sc{padding:20px 0 24px}}
+
+/* campaign tiles */
+.tiles{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:minmax(150px,auto);gap:18px}
+.tile{position:relative;overflow:hidden;text-decoration:none;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;min-height:300px}
+.tile h3{font-family:var(--display);font-weight:400;font-size:clamp(32px,3.2vw,48px);line-height:1;margin:6px 0 8px;position:relative}
+.tile p{margin:0;position:relative;max-width:440px}
+.tile .tag{position:relative;align-self:flex-start;background:var(--gold);color:var(--ink);font-stretch:70%;font-weight:900;letter-spacing:.1em;text-transform:uppercase;font-size:13px;padding:6px 10px}
+.tile .go{position:relative;margin-top:16px;font-stretch:75%;font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:14px}
+.tile:hover .go{text-decoration:underline;text-underline-offset:4px}
+.t-rest{grid-column:span 7;grid-row:span 2;min-height:540px}
+.t-rest img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:55% 40%;transition:transform 1.2s}
+.t-rest:hover img{transform:scale(1.04)}
+.t-rest::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(43,19,66,.15) 10%,rgba(43,19,66,.6) 45%,rgba(43,19,66,.96) 100%)}
+.t-rest > *{z-index:1}
+.t-rest h3{font-size:clamp(44px,5vw,80px)}
+.t-food{grid-column:span 5;background:var(--gold);color:var(--ink)}
+.t-food .tag{background:var(--ink);color:var(--gold)}
+.t-food .big{position:relative;display:block;font-family:var(--display);font-size:clamp(72px,7vw,110px);line-height:.9;color:var(--crimson-dk);margin-bottom:14px}
+.t-food .big small{font-family:var(--sans);font-stretch:70%;font-weight:900;font-size:20px;text-transform:uppercase;letter-spacing:.06em;margin-left:8px}
+.t-watch{grid-column:span 5;background:var(--ink);color:#fff}
+.t-watch .stars{position:absolute;right:22px;top:22px;font-family:var(--display);font-size:56px;line-height:1;color:var(--gold)}
+@media (max-width:1000px){.t-rest,.t-food,.t-watch{grid-column:1/-1}.t-rest{min-height:440px}}
+
+/* watch live */
+.live{background:var(--ink);color:#fff;padding:0;position:relative}
+.live-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:600px}
+.live-img{position:relative;overflow:hidden}
+.live-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:48% 30%}
+.live-img .onair{position:absolute;left:24px;top:24px;background:#d92a2a;color:#fff;padding:8px 12px;font-stretch:70%;font-weight:900;letter-spacing:.12em;text-transform:uppercase;font-size:14px}
+.live-txt{padding:72px max(28px, env(safe-area-inset-right, 0px)) 72px 64px;display:flex;flex-direction:column;justify-content:center;max-width:700px}
+.live-txt .h2{font-size:clamp(52px,6.4vw,104px)}
+.live-txt .h2 span{color:var(--gold);font-style:italic}
+.live-txt p{color:#e3d8dc;max-width:520px}
+.count{display:flex;gap:10px;margin:22px 0 26px;flex-wrap:wrap}
+.count div{background:var(--crimson);padding:12px 16px;min-width:84px;text-align:center}
+.count b{display:block;font-family:var(--display);font-weight:400;font-size:40px;line-height:1;font-variant-numeric:tabular-nums}
+.count small{font-stretch:70%;font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:13px;color:var(--gold-lt)}
+.plat{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;font-size:15px;color:#d6c8cd}
+.plat a{color:#fff;font-weight:700}
+.lastmsg{margin-top:34px;padding-top:22px;border-top:1px solid rgba(255,255,255,.2)}
+.lastmsg small{font-stretch:72%;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-lt);font-size:13px}
+.lastmsg h3{font-family:var(--display);font-weight:400;font-size:28px;margin:4px 0 2px}
+.lastmsg p{margin:0;font-size:15px}
+@media (max-width:1000px){.live-grid{grid-template-columns:1fr}.live-img{min-height:360px}.live-txt{padding:56px max(16px, env(safe-area-inset-left, 0px)) 64px}}
+
+/* pastor */
+.pastor{background:var(--ivory-2)}
+.p-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:64px;align-items:center}
+.portrait{position:relative;aspect-ratio:4/5;max-width:440px;width:100%}
+.portrait .oval{position:absolute;inset:0;border-radius:999px 999px 0 0;background:var(--purple);overflow:hidden;display:flex;align-items:flex-end;justify-content:center}
+.portrait .oval img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:88% 40%;opacity:.9}
+.portrait .oval::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(43,19,66,0) 45%,rgba(43,19,66,.95) 100%)}
+.portrait .cap{position:relative;z-index:1;color:#fff;padding:24px;text-align:center}
+.portrait .cap b{display:block;font-family:var(--display);font-weight:400;font-size:26px;line-height:1.1}
+.portrait .cap small{font-stretch:72%;font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:13px;color:var(--gold-lt)}
+.portrait .ring{position:absolute;inset:-14px 14px 14px -14px;border:3px solid var(--crimson);border-radius:999px 999px 0 0;z-index:-1}
+.p-txt blockquote{margin:22px 0;font-family:var(--display);font-size:clamp(26px,2.6vw,36px);line-height:1.2;color:var(--crimson-dk)}
+.p-txt p{max-width:620px}
+.sig{display:flex;gap:28px;flex-wrap:wrap;margin-top:26px}
+.sig div b{display:block;font-family:var(--display);font-weight:400;font-size:22px}
+.sig div span{font-size:14px;color:var(--muted)}
+@media (max-width:900px){.p-grid{grid-template-columns:1fr;gap:44px}.portrait{max-width:360px;margin-left:14px}}
+@media (max-width:520px){.p-txt blockquote{font-size:22px}}
+
+/* ministries */
+.mins{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.min{position:relative;min-height:280px;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;text-decoration:none;overflow:hidden}
+.min h3{position:relative;font-family:var(--display);font-weight:400;font-size:32px;line-height:1.05;margin:0 0 6px}
+.min p{position:relative;margin:0;font-size:15px}
+.min .k{position:absolute;top:22px;left:24px;font-stretch:70%;font-weight:900;letter-spacing:.12em;text-transform:uppercase;font-size:13px}
+.m-photo{color:#fff}
+.m-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.m-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,13,21,.2) 0%,rgba(28,13,21,.6) 40%,rgba(28,13,21,.95) 100%)}
+.m-photo > *{z-index:1}
+.m-photo .k{color:var(--gold-lt)}
+.m-crimson{background:var(--crimson);color:#fff}
+.m-crimson .k{color:var(--gold-lt)}
+.m-gold{background:var(--gold);color:var(--ink)}
+.m-purple{background:var(--purple);color:#fff}
+.m-purple .k{color:var(--gold)}
+.m-green{background:var(--green);color:#fff}
+.m-green .k{color:var(--gold-lt)}
+.m-ivory{background:#fff;color:var(--ink);border:2px solid var(--ink)}
+.m-ivory .k{color:var(--crimson)}
+.min .glyph{position:absolute;right:20px;top:16px;font-family:var(--display);font-size:90px;line-height:1;opacity:.22}
+@media (max-width:1000px){.mins{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.mins{grid-template-columns:1fr}.min{min-height:220px}}
+
+/* newcomer */
+.new{background:#fff}
+.n-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:64px}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.steps li{background:var(--ivory);padding:24px;border-top:5px solid var(--crimson)}
+.steps li:nth-child(2){border-top-color:var(--gold)}
+.steps li:nth-child(3){border-top-color:var(--purple)}
+.steps li:nth-child(4){border-top-color:var(--green)}
+.steps .n{font-family:var(--display);font-size:40px;line-height:1;color:var(--crimson)}
+.steps h3{margin:8px 0 6px;font-stretch:78%;font-weight:800;text-transform:uppercase;letter-spacing:.03em;font-size:19px}
+.steps p{margin:0;font-size:15px;color:var(--muted)}
+.n-side p{color:var(--muted)}
+.addr{margin-top:26px;background:var(--purple);color:#fff;padding:24px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center}
+.addr svg{width:64px;height:64px}
+.addr b{display:block;font-family:var(--display);font-weight:400;font-size:24px;line-height:1.1}
+.addr span{font-size:15px;color:#dcd0e8}
+.addr a{color:var(--gold);font-weight:700}
+@media (max-width:900px){.n-grid{grid-template-columns:1fr;gap:36px}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}}
+
+/* events */
+.events{background:var(--ivory)}
+.ev{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.ev a{text-decoration:none;color:var(--ink);background:#fff;display:flex;flex-direction:column}
+.ev .db{background:var(--crimson);color:#fff;padding:18px 20px;display:flex;align-items:baseline;gap:12px}
+.ev .db b{font-family:var(--display);font-weight:400;font-size:64px;line-height:.85;color:var(--gold)}
+.ev .db span{font-stretch:70%;font-weight:900;letter-spacing:.1em;text-transform:uppercase;font-size:16px;line-height:1.15}
+.ev a:nth-child(2) .db{background:var(--purple)}
+.ev a:nth-child(3) .db{background:var(--green)}
+.ev a:nth-child(4) .db{background:var(--ink)}
+.ev .bd{padding:20px;flex:1;display:flex;flex-direction:column}
+.ev h3{font-family:var(--display);font-weight:400;font-size:26px;line-height:1.1;margin:0 0 8px}
+.ev p{margin:0 0 14px;font-size:15px;color:var(--muted)}
+.ev .more{margin-top:auto;font-stretch:75%;font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:14px;color:var(--crimson)}
+.ev a:hover h3{text-decoration:underline;text-underline-offset:4px}
+@media (max-width:1000px){.ev{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.ev{grid-template-columns:1fr}}
+
+/* give */
+.give{background:var(--crimson-dk);color:#fff;position:relative;overflow:hidden}
+.g-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:64px;align-items:center}
+.give .h2 span{color:var(--gold)}
+.give p{color:#f1dde1;max-width:560px}
+.gift{background:var(--ivory);color:var(--ink);padding:30px;border:4px solid var(--gold)}
+.gift .big{font-family:var(--display);font-size:clamp(64px,7vw,96px);line-height:.9;color:var(--crimson)}
+.gift h3{font-stretch:75%;font-weight:900;text-transform:uppercase;letter-spacing:.04em;font-size:22px;margin:8px 0 6px}
+.gift p{color:var(--muted);margin:0 0 18px}
+.meter{height:14px;background:var(--ivory-2);margin:6px 0 8px;overflow:hidden}
+.meter i{display:block;height:100%;width:68%;background:var(--crimson)}
+.gift small{font-size:14px;color:var(--muted)}
+.ways{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:30px}
+.ways div{border-top:2px solid var(--gold);padding-top:12px}
+.ways b{display:block;font-stretch:75%;font-weight:800;text-transform:uppercase;letter-spacing:.05em;font-size:16px}
+.ways span{font-size:15px;color:#f1dde1}
+@media (max-width:900px){.g-grid{grid-template-columns:1fr;gap:40px}}
+@media (max-width:560px){.ways{grid-template-columns:1fr}}
+
+/* footer */
+footer{background:var(--ink);color:#e5d9dd;padding:72px 0 36px;font-size:15px}
+.f-grid{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr));gap:40px}
+footer h3{font-stretch:72%;font-weight:900;letter-spacing:.12em;text-transform:uppercase;font-size:14px;color:var(--gold);margin:0 0 14px}
+footer ul{list-style:none;margin:0;padding:0}
+footer li{padding:4px 0}
+footer a{color:#e5d9dd;text-decoration:none}
+footer a:hover{color:#fff;text-decoration:underline}
+footer .brand{color:#fff}
+footer .brand small{color:var(--gold-lt)}
+.legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid #3a2a31;margin-top:54px;padding-top:22px;font-size:14px;color:#bba9b0}
+@media (max-width:900px){.f-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.f-grid{grid-template-columns:1fr}}
+@media (max-width:600px){section{padding:68px 0}}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .track{flex-wrap:wrap;white-space:normal;padding:10px 16px 10px 150px}
+  .tick-in{height:auto;min-height:54px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="util" role="region" aria-label="Live worship and quick links">
+  <div class="wrap">
+    <span><span class="ldot" aria-hidden="true"></span><a href="#live">Watch Live</a> Sundays 10:30 a.m. &amp; Wednesdays 7:00 p.m. CT</span>
+    <span class="r"><span>(901) 555-0187</span><a href="#new">I'm New</a><a href="#give">Give</a></span>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Greater New Hope Missionary Baptist Church, home">
+      <svg viewBox="0 0 60 60" aria-hidden="true">
+        <circle cx="30" cy="30" r="29" fill="#9b1a30"/>
+        <circle cx="30" cy="30" r="24" fill="none" stroke="#e9b44c" stroke-width="1.5"/>
+        <path d="M30 12 v28 M21 21 h18" stroke="#e9b44c" stroke-width="3.5" stroke-linecap="square"/>
+        <path d="M14 44 Q30 34 46 44" stroke="#fbf4e6" stroke-width="2.5" fill="none"/>
+        <path d="M18 48 Q30 40 42 48" stroke="#fbf4e6" stroke-width="2" fill="none"/>
+      </svg>
+      <span><b>Greater New Hope</b><small>Missionary Baptist Church · Memphis</small></span>
+    </a>
+    <nav aria-label="Main">
+      <ul class="menu">
+        <li><a href="#homecoming">Homecoming</a></li>
+        <li><a href="#pastor">Our Pastor</a></li>
+        <li><a href="#ministries">Ministries</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#new">I'm New</a></li>
+      </ul>
+    </nav>
+    <div class="act">
+      <a class="btn b-out" href="#new">Plan Your Visit</a>
+      <a class="btn b-crimson" href="#live">Watch Live</a>
+      <a class="btn b-gold" href="#give">Give</a>
+      <button class="toggle" id="toggle" aria-expanded="false" aria-controls="drawer">Menu</button>
+    </div>
+  </div>
+  <div class="drawer" id="drawer">
+    <div class="wrap">
+      <ul>
+        <li><a href="#homecoming">125th Homecoming</a></li>
+        <li><a href="#live">Watch Live</a></li>
+        <li><a href="#new">Plan Your Visit</a></li>
+        <li><a href="#pastor">Our Pastor</a></li>
+        <li><a href="#ministries">Ministries</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#give">Give</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" id="homecoming" aria-labelledby="hero-title" style="padding:0">
+  <div class="wrap">
+    <div class="poster">
+      <div>
+        <span class="presents">Greater New Hope M.B.C. · 1901–2026</span>
+        <h1 class="title" id="hero-title">
+          <span class="t-row"><span class="t-125">125</span><span class="t-stack"><span>Years</span><span>of Hope</span></span></span>
+          <span class="t-sub">Homecoming &amp; Anniversary Weekend</span>
+        </h1>
+        <div class="datebar"><span>Nov 13–15, 2026</span><span>Memphis, Tennessee</span></div>
+        <div class="hero-cta">
+          <a class="btn b-gold" href="#weekend">See the weekend</a>
+          <a class="btn b-out-lt" href="#homecoming">RSVP for Homecoming</a>
+        </div>
+      </div>
+      <div class="frames">
+        <span class="arch-shadow" aria-hidden="true"></span>
+        <div class="arch"><img src="https://images.unsplash.com/photo-1560251445-ba979d304eb9?w=1600&q=75&fm=jpg" alt="The Greater New Hope choir in red robes and gold stoles, wearing red church hats"></div>
+        <div class="circle"><img src="https://images.unsplash.com/photo-1593678820334-91d5f99be314?w=1600&q=75&fm=jpg" alt="The Mass Choir in navy and red robes singing from hymnals"></div>
+        <div class="seal" role="img" aria-label="125th anniversary seal">
+          <svg viewBox="0 0 150 150" aria-hidden="true"><defs><path id="ring" d="M75,75 m-58,0 a58,58 0 1,1 116,0 a58,58 0 1,1 -116,0"/></defs>
+            <text font-family="Archivo, Arial, sans-serif" font-size="12.5" font-weight="800" letter-spacing="3" fill="#e9b44c"><textPath href="#ring">HOMECOMING 2026 · 125TH ANNIVERSARY · </textPath></text></svg>
+          <span class="c"><b>125</b><small>Est. 1901</small></span>
+        </div>
+      </div>
+    </div>
+    <div class="weekend" id="weekend" aria-label="Weekend schedule">
+      <div class="wk"><span class="d"><small>Fri</small><b>13</b></span><span class="time">7:00 p.m. · Sanctuary</span><h3>Gospel Concert</h3><p>The Mass Choir, the Brooks Family Singers and alumni choirs from five decades.</p></div>
+      <div class="wk"><span class="d"><small>Sat</small><b>14</b></span><span class="time">10 a.m.–3 p.m. · Church grounds</span><h3>Community Fair</h3><p>Free health screenings, flu shots, a fish fry, school supplies and a bounce house.</p></div>
+      <div class="wk"><span class="d"><small>Sun</small><b>15</b></span><span class="time">10:30 a.m. · Homecoming worship</span><h3>Homecoming Sunday</h3><p>Guest preacher Rev. Dr. Lorraine E. Whitfield. Dinner on the grounds to follow.</p></div>
+    </div>
+  </div>
+  <div class="kente" aria-hidden="true"></div>
+</section>
+
+<div class="ticker" role="region" aria-label="Announcements">
+  <div class="tick-in">
+    <span class="lab">Announcements</span>
+    <div class="track">
+      <span>Thanksgiving Food Drive · Sat Nov 21 · 9 a.m.</span>
+      <span>Watch Night Service · Dec 31 · 10 p.m.</span>
+      <span>2026: Year of Restoration</span>
+      <span>Homecoming dinner tickets in the Fellowship Hall</span>
+      <span>Scholarship applications due Dec 1</span>
+      <span>Wednesday Bible Study · 7 p.m. · In person &amp; online</span>
+      <span aria-hidden="true">Thanksgiving Food Drive · Sat Nov 21 · 9 a.m.</span>
+      <span aria-hidden="true">Watch Night Service · Dec 31 · 10 p.m.</span>
+      <span aria-hidden="true">2026: Year of Restoration</span>
+      <span aria-hidden="true">Homecoming dinner tickets in the Fellowship Hall</span>
+      <span aria-hidden="true">Scholarship applications due Dec 1</span>
+      <span aria-hidden="true">Wednesday Bible Study · 7 p.m. · In person &amp; online</span>
+    </div>
+  </div>
+</div>
+
+<section class="sched" aria-labelledby="sched-title">
+  <div class="wrap">
+    <div class="sc-h"><h2 id="sched-title">Worship Schedule</h2><p>1125 New Hope Blvd, Memphis, TN 38106. All are welcome.</p></div>
+    <div class="sc"><span class="t">9:00<small>a.m.</small></span><h3>Sunday School</h3><p>Classes for every age, Sunday mornings</p></div>
+    <div class="sc"><span class="t">10:30<small>a.m.</small></span><h3>Morning Worship</h3><p>Sanctuary &amp; streamed live</p></div>
+    <div class="sc"><span class="t">7:00<small>p.m.</small></span><h3>Bible Study</h3><p>Wednesdays, in person &amp; online</p></div>
+  </div>
+</section>
+
+<section aria-labelledby="happening-title">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="lab2">This season at New Hope</span><h2 class="h2" id="happening-title">What's happening</h2></div>
+      <p>From homecoming to the last hour of the year, here's where to be and how to help.</p>
+    </div>
+    <div class="tiles">
+      <a class="tile t-rest" href="#events">
+        <img src="https://images.unsplash.com/photo-1775400713633-e4b2b3577fb7?w=1600&q=75&fm=jpg" alt="Worshippers lifting their hands toward the stage">
+        <span class="tag">2026 church theme</span>
+        <h3>Year of Restoration</h3>
+        <p>"I will restore to you the years that the swarming locust has eaten." Joel 2:25. Our sermon series and prayer focus all year long.</p>
+        <span class="go">Read the theme →</span>
+      </a>
+      <a class="tile t-food" href="#events">
+        <span class="big">500<small>baskets</small></span>
+        <span class="tag">Sat · Nov 21</span>
+        <h3>Thanksgiving Food Drive</h3>
+        <p>Help us fill 500 baskets for families in South Memphis. Drop off canned goods and turkeys Sundays through Nov 15.</p>
+        <span class="go">Volunteer or donate →</span>
+      </a>
+      <a class="tile t-watch" href="#events">
+        <span class="stars" aria-hidden="true">12:00</span>
+        <span class="tag">Thu · Dec 31 · 10 p.m.</span>
+        <h3>Watch Night Service</h3>
+        <p>Pray the old year out and the new year in, together. Testimony, praise and communion.</p>
+        <span class="go">Details →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="live" id="live" aria-labelledby="live-title">
+  <div class="live-grid">
+    <div class="live-img">
+      <img src="https://images.unsplash.com/photo-1761901219072-491a18f3ccd7?w=1600&q=75&fm=jpg" alt="A worship leader singing with one hand raised">
+      <span class="onair">Live every Sunday</span>
+    </div>
+    <div class="live-txt">
+      <span class="lab2" style="color:var(--gold-lt)">Worship with us from anywhere</span>
+      <h2 class="h2" id="live-title">Watch <span>Live</span></h2>
+      <p>Morning Worship streams every Sunday at 10:30 a.m. and Bible Study every Wednesday at 7:00 p.m. Central. Our online family joins from Chicago, Atlanta, Houston and as far as Germany.</p>
+      <div class="count" aria-label="Time until the next live service" id="count">
+        <div><b id="cd-d">2</b><small>Days</small></div>
+        <div><b id="cd-h">14</b><small>Hours</small></div>
+        <div><b id="cd-m">30</b><small>Minutes</small></div>
+      </div>
+      <div><a class="btn b-gold" href="#live">Join the stream</a></div>
+      <p class="plat">Also on <a href="#live">YouTube</a> · <a href="#live">Facebook</a> · <a href="#live">our app</a> · Dial in: (901) 555-0110</p>
+      <div class="lastmsg">
+        <small>Last Sunday's message</small>
+        <h3>"Rebuild the Wall, Restore the Gate"</h3>
+        <p>Rev. Dr. Calvin T. Brooks · Nehemiah 2:17–20 · Year of Restoration</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pastor" id="pastor" aria-labelledby="pastor-title">
+  <div class="wrap p-grid">
+    <div class="portrait">
+      <span class="ring" aria-hidden="true"></span>
+      <div class="oval">
+        <img src="https://images.unsplash.com/photo-1593678820334-91d5f99be314?w=1600&q=75&fm=jpg" alt="Rev. Dr. Calvin T. Brooks in his robe, leading the choir">
+        <div class="cap"><b>Rev. Dr. Calvin T. Brooks</b><small>Senior Pastor since 1998</small></div>
+      </div>
+    </div>
+    <div class="p-txt">
+      <span class="lab2">A word from our pastor</span>
+      <h2 class="h2" id="pastor-title">Welcome to Greater New Hope</h2>
+      <blockquote>"For 125 years, this house has been a place where Memphis comes to pray, to sing, and to be sent back out with hope."</blockquote>
+      <p>Whether you grew up on these pews or you're looking for a church home for the first time, there's a seat for you. First Lady Denise Brooks and I would be honored to shake your hand after service. Come as you are, and come expecting God to restore.</p>
+      <div class="sig">
+        <div><b>Rev. Dr. Calvin T. Brooks</b><span>Senior Pastor</span></div>
+        <div><b>First Lady Denise Brooks</b><span>Women of Virtue</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ministries" aria-labelledby="min-title">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="lab2">Find your place to serve</span><h2 class="h2" id="min-title">Ministries</h2></div>
+      <p>Every member a minister. Visit the Ministry Fair in the Fellowship Hall after worship on the first Sunday of each month.</p>
+    </div>
+    <div class="mins">
+      <a class="min m-photo" href="#ministries"><img src="https://images.unsplash.com/photo-1593678820334-91d5f99be314?w=1600&q=75&fm=jpg" alt="The Mass Choir singing in robes" style="object-position:40% 55%"><span class="k">Music</span><h3>Mass Choir</h3><p>Rehearsal Thursdays 7 p.m. Every voice welcome.</p></a>
+      <a class="min m-purple" href="#ministries"><span class="glyph" aria-hidden="true">M</span><span class="k">Men's ministry</span><h3>Men of Valor</h3><p>Prayer breakfast every second Saturday, 8 a.m. Mentoring young men across Memphis.</p></a>
+      <a class="min m-crimson" href="#ministries"><span class="glyph" aria-hidden="true">W</span><span class="k">Women's ministry</span><h3>Women of Virtue</h3><p>Bible study, fellowship and the annual Women's Day in March. Led by First Lady Brooks.</p></a>
+      <a class="min m-photo" href="#ministries"><img src="https://images.unsplash.com/photo-1778824717521-a23599f32d71?w=1600&q=75&fm=jpg" alt="Young adults laughing together holding notebooks" style="object-position:50% 40%"><span class="k">Ages 12–30</span><h3>Youth &amp; Young Adults</h3><p>Friday Night Fire, college care packages and a summer trip.</p></a>
+      <a class="min m-gold" href="#ministries"><span class="glyph" aria-hidden="true">♥</span><span class="k" style="color:var(--crimson-dk)">Outreach</span><h3>Nursing Home Ministry</h3><p>Worship and visits at three Memphis care homes, the fourth Sunday of each month.</p></a>
+      <a class="min m-green" href="#ministries"><span class="glyph" aria-hidden="true">$</span><span class="k">Education</span><h3>Scholarship Fund</h3><p>$412,000 awarded to 230 students since 1987. Applications due Dec 1.</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="new" id="new" aria-labelledby="new-title">
+  <div class="wrap n-grid">
+    <div class="n-side">
+      <span class="lab2">First time?</span>
+      <h2 class="h2" id="new-title">Plan your visit</h2>
+      <p>We're a traditional Black Baptist church with a big choir, warm ushers and a sermon you'll still be thinking about on Tuesday. Worship lasts about two hours, and nobody minds if you need to step out with a little one.</p>
+      <a class="btn b-crimson" href="#new">Let us know you're coming</a>
+      <div class="addr">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" fill="#3b1c58"/><path d="M0 22h64M0 44h64M20 0v64M44 0v64" stroke="#5a3a78" stroke-width="3"/><path d="M32 12c-7 0-12 5-12 11 0 9 12 23 12 23s12-14 12-23c0-6-5-11-12-11z" fill="#e9b44c"/><circle cx="32" cy="23" r="4" fill="#3b1c58"/></svg>
+        <div><b>1125 New Hope Blvd</b><span>Memphis, TN 38106 · Free parking in the east lot and across Hope Ave</span><br><a href="#new">Get directions</a></div>
+      </div>
+    </div>
+    <ol class="steps">
+      <li><span class="n">1</span><h3>Park &amp; enter</h3><p>Parking attendants in orange vests will wave you in. Use the main doors under the bell tower.</p></li>
+      <li><span class="n">2</span><h3>Meet an usher</h3><p>Our ushers will seat you and hand you a program. Visitor cards are in the pew rack.</p></li>
+      <li><span class="n">3</span><h3>Worship with us</h3><p>Praise and worship, the Mass Choir, prayer, the Word, and an invitation to discipleship.</p></li>
+      <li><span class="n">4</span><h3>Stay for fellowship</h3><p>Visit the Welcome Table in the vestibule after service. New Members Class meets the first Sunday at 9 a.m.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="events" id="events" aria-labelledby="ev-title">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="lab2">Mark your calendar</span><h2 class="h2" id="ev-title">Upcoming events</h2></div>
+      <a class="btn b-out" href="#events">Full church calendar</a>
+    </div>
+    <div class="ev">
+      <a href="#weekend"><span class="db"><b>13</b><span>Nov<br>Fri–Sun</span></span><span class="bd"><h3>125th Homecoming Weekend</h3><p>Concert, community fair and Homecoming Sunday with Rev. Dr. Lorraine E. Whitfield.</p><span class="more">Weekend schedule →</span></span></a>
+      <a href="#events"><span class="db"><b>21</b><span>Nov<br>Saturday</span></span><span class="bd"><h3>Thanksgiving Food Drive</h3><p>Basket packing at 9 a.m., deliveries at 11. Bring a friend and a truck if you've got one.</p><span class="more">Sign up →</span></span></a>
+      <a href="#events"><span class="db"><b>13</b><span>Dec<br>Sunday</span></span><span class="bd"><h3>Christmas Cantata</h3><p>The Mass Choir and Youth Choir present "Emmanuel, God With Us" at 4:00 p.m.</p><span class="more">Details →</span></span></a>
+      <a href="#events"><span class="db"><b>31</b><span>Dec<br>Thursday</span></span><span class="bd"><h3>Watch Night Service</h3><p>10:00 p.m. until midnight. In the sanctuary and streamed live.</p><span class="more">Details →</span></span></a>
+    </div>
+  </div>
+</section>
+
+<section class="give" id="give" aria-labelledby="give-title">
+  <div class="wrap g-grid">
+    <div>
+      <span class="lab2" style="color:var(--gold-lt)">Tithes &amp; offerings</span>
+      <h2 class="h2" id="give-title">Give with a <span>cheerful heart</span></h2>
+      <p>Your tithes and offerings keep the lights on, the pantry full and the Scholarship Fund growing. Give securely online, by text, or in the offering at worship.</p>
+      <a class="btn b-gold" href="#give">Give online</a>
+      <div class="ways">
+        <div><b>Text to give</b><span>Text NEWHOPE to 73256</span></div>
+        <div><b>By mail</b><span>P.O. Box 16125, Memphis, TN 38186</span></div>
+        <div><b>In person</b><span>Offering during Morning Worship</span></div>
+      </div>
+    </div>
+    <div class="gift">
+      <span class="big">$125</span>
+      <h3>125 for 125 Anniversary Gift</h3>
+      <p>We're asking every member family to give $125 toward a new roof for the sanctuary and a restored fellowship kitchen.</p>
+      <div class="meter" role="img" aria-label="68 percent of the goal raised"><i></i></div>
+      <small>$170,400 of $250,000 raised · 1,363 gifts</small>
+      <div style="margin-top:18px"><a class="btn b-crimson" href="#give">Give the anniversary gift</a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<div class="kente" aria-hidden="true"></div>
+<footer aria-label="Site footer">
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <a class="brand" href="#top" aria-label="Greater New Hope Missionary Baptist Church, home">
+          <svg viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="29" fill="#9b1a30"/><circle cx="30" cy="30" r="24" fill="none" stroke="#e9b44c" stroke-width="1.5"/><path d="M30 12 v28 M21 21 h18" stroke="#e9b44c" stroke-width="3.5"/><path d="M14 44 Q30 34 46 44" stroke="#fbf4e6" stroke-width="2.5" fill="none"/><path d="M18 48 Q30 40 42 48" stroke="#fbf4e6" stroke-width="2" fill="none"/></svg>
+          <span><b>Greater New Hope</b><small>Missionary Baptist Church</small></span>
+        </a>
+        <p style="margin-top:18px">1125 New Hope Blvd<br>Memphis, Tennessee 38106<br>Serving South Memphis since 1901</p>
+      </div>
+      <div><h3>Worship</h3><ul><li>Sunday School 9:00 a.m.</li><li>Morning Worship 10:30 a.m.</li><li>Bible Study Wed 7:00 p.m.</li><li><a href="#live">Watch Live</a></li></ul></div>
+      <div><h3>Contact</h3><ul><li><a href="#top">(901) 555-0187</a></li><li><a href="#top">office@greaternewhopembc.org</a></li><li>Church office: Tue–Fri, 9 a.m.–4 p.m.</li><li><a href="#new">Plan Your Visit</a></li></ul></div>
+      <div><h3>Follow</h3><ul><li><a href="#top">Facebook</a></li><li><a href="#top">YouTube</a></li><li><a href="#top">Instagram</a></li><li><a href="#give">Give</a></li></ul></div>
+    </div>
+    <div class="legal"><span>© 2026 Greater New Hope Missionary Baptist Church</span><span>125 Years of Hope · 1901–2026</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var t=document.getElementById('toggle'),d=document.getElementById('drawer');
+  t.addEventListener('click',function(){var o=d.classList.toggle('open');t.setAttribute('aria-expanded',o);t.textContent=o?'Close':'Menu';});
+  d.addEventListener('click',function(e){if(e.target.tagName==='A'){d.classList.remove('open');t.setAttribute('aria-expanded','false');t.textContent='Menu';}});
+  // countdown to next service: Sunday 10:30 or Wednesday 19:00 Central (UTC-6 in Nov; approximate)
+  function next(){
+    var now=new Date(),best=null;
+    for(var i=0;i<8;i++){
+      var day=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate()+i));
+      var dow=day.getUTCDay(),c=null;
+      if(dow===0)c=new Date(day.getTime()+16.5*3600e3);
+      if(dow===3)c=new Date(day.getTime()+25*3600e3);
+      if(c&&c>now&&(!best||c<best))best=c;
+    }
+    return best;
+  }
+  var tg=next(),D=document.getElementById('cd-d'),H=document.getElementById('cd-h'),M=document.getElementById('cd-m');
+  function tick(){var s=Math.max(0,Math.floor((tg-new Date())/1000));D.textContent=Math.floor(s/86400);H.textContent=Math.floor(s%86400/3600);M.textContent=Math.floor(s%3600/60);}
+  if(tg){tick();setInterval(tick,30000);}
+})();
+</script>
+</body>
+</html>
