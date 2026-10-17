@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Common Ground Church · Westerville, Ohio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16211F;
+  --ink-2:#44504D;
+  --paper:#FFFFFF;
+  --mist:#F3F5F2;
+  --teal:#0E5650;
+  --teal-dk:#0A3F3B;
+  --mint:#D6EDE6;
+  --sun:#F4B740;
+  --sun-lt:#FFF1CF;
+  --sky:#DCE9F7;
+  --line:#E2E6E3;
+  --r:22px;
+  --font:"Plus Jakarta Sans", "Avenir Next", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3,h4{margin:0;line-height:1.12;letter-spacing:-0.02em;font-weight:800}
+p{margin:0}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(24px, env(safe-area-inset-left, 0px));padding-right:max(24px, env(safe-area-inset-right, 0px))}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.btn{display:inline-flex;align-items:center;gap:.5em;font:600 16px/1 var(--font);padding:15px 22px;border-radius:999px;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background .2s,transform .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn-teal{background:var(--teal);color:#fff}
+.btn-teal:hover{background:var(--teal-dk)}
+.btn-sun{background:var(--sun);color:var(--ink)}
+.btn-line{border-color:var(--ink);color:var(--ink);background:transparent}
+.kicker{font-size:15px;font-weight:600;color:var(--teal);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.kicker::before{content:"";width:22px;height:3px;border-radius:3px;background:var(--sun)}
+section{padding:104px 0}
+.h2{font-size:clamp(32px,4.2vw,52px);max-width:16ch}
+.lede{font-size:19px;color:var(--ink-2);max-width:54ch;margin-top:18px}
+
+/* header */
+.top{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;gap:24px}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:800;font-size:19px;letter-spacing:-.02em}
+.logo small{display:block;font-size:13px;font-weight:500;color:var(--ink-2);letter-spacing:0}
+.nav{display:flex;align-items:center;gap:30px}
+.nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+.nav ul a{text-decoration:none;font-weight:500;font-size:16px;color:var(--ink-2)}
+.nav ul a:hover{color:var(--teal)}
+.nav .acts{display:flex;gap:10px}
+.nav .btn{padding:12px 18px;font-size:15px}
+.menu-btn{display:none;background:none;border:2px solid var(--ink);border-radius:999px;padding:9px 16px;font:600 15px var(--font);color:var(--ink);cursor:pointer}
+
+/* hero */
+.hero{padding:64px 0 40px}
+.hero-grid{display:grid;grid-template-columns:1.14fr .92fr;gap:52px;align-items:center}
+.hero h1{font-size:clamp(40px,5.2vw,70px);max-width:none}
+.hero h1 em{font-style:normal;color:var(--teal)}
+.chat{margin-top:30px;display:flex;flex-direction:column;gap:10px;max-width:470px}
+.bubble{background:var(--mist);border-radius:20px 20px 20px 6px;padding:14px 18px;font-size:16.5px;color:var(--ink);animation:rise .6s ease-out both}
+.bubble:nth-child(2){animation-delay:.25s}
+.bubble.me{align-self:flex-end;background:var(--teal);color:#fff;border-radius:20px 20px 6px 20px;animation-delay:.5s}
+.who{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink-2);margin-bottom:2px}
+.who i{width:34px;height:34px;border-radius:50%;background:var(--sun);display:grid;place-items:center;font-style:normal;font-weight:700;color:var(--ink);font-size:14px}
+@keyframes rise{from{transform:translateY(10px)}to{transform:none}}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.hero-photo{position:relative}
+.hero-photo img{width:100%;aspect-ratio:4/4.4;object-fit:cover;object-position:62% 50%;border-radius:32px}
+.times-card{position:absolute;left:-40px;bottom:-30px;background:#fff;border-radius:var(--r);padding:22px 24px;box-shadow:0 18px 50px -18px rgba(14,40,37,.35);width:min(330px,88%)}
+.times-card h2{font-size:15px;font-weight:700;color:var(--teal);letter-spacing:0;margin-bottom:8px}
+.times-card .t{font-size:30px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.times-card .s{font-size:15px;color:var(--ink-2);margin-top:8px}
+.times-card .s b{color:var(--ink)}
+.sticker{position:absolute;top:22px;right:22px;background:var(--sun);color:var(--ink);border-radius:999px;padding:9px 16px;font-weight:700;font-size:14px}
+
+/* info strip */
+.strip{padding:56px 0 0}
+.strip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.info{border:1px solid var(--line);border-radius:var(--r);padding:24px 26px;display:flex;gap:16px;align-items:flex-start}
+.info svg{flex:none}
+.info h3{font-size:17px;letter-spacing:-.01em}
+.info p{font-size:16px;color:var(--ink-2);margin-top:4px}
+.info a{color:var(--teal);font-weight:600}
+
+/* first sunday */
+.first{background:var(--mint)}
+.first-head{display:grid;grid-template-columns:1fr 1fr;align-items:end;gap:40px}
+.first-head .lede{margin:0}
+.m-times{display:none}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:56px;counter-reset:s}
+.step{background:#fff;border-radius:var(--r);padding:28px 26px 30px;position:relative}
+.step .n{width:44px;height:44px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-weight:800;font-size:17px;margin-bottom:22px}
+.step:nth-child(2) .n{background:var(--sun);color:var(--ink)}
+.step:nth-child(3) .n{background:var(--ink)}
+.step:nth-child(4) .n{background:#3E7CB1}
+.step h3{font-size:21px}
+.step p{color:var(--ink-2);font-size:16px;margin-top:10px}
+.step .time{display:inline-block;margin-top:16px;font-size:13.5px;font-weight:700;color:var(--teal);background:var(--mint);padding:5px 11px;border-radius:999px}
+.plan{margin-top:28px;display:grid;grid-template-columns:1.1fr 1fr;gap:18px}
+.plan-form{background:var(--teal);color:#fff;border-radius:var(--r);padding:34px}
+.plan-form h3{font-size:26px}
+.plan-form p{color:#D4E8E3;margin-top:8px;font-size:16px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+.fields label{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600}
+.fields input,.fields select{font:500 16px var(--font);padding:13px 14px;border-radius:12px;border:0;background:#fff;color:var(--ink)}
+.plan-form .btn{margin-top:18px}
+.ok{display:none;margin-top:16px;background:var(--sun-lt);color:var(--ink);padding:14px 16px;border-radius:12px;font-weight:600}
+.ok.show{display:block}
+.qa{background:#fff;border-radius:var(--r);padding:30px 32px}
+.qa h3{font-size:22px;margin-bottom:6px}
+.qa details{border-top:1px solid var(--line);padding:15px 0}
+.qa details:first-of-type{border-top:0}
+.qa summary{font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"+";color:var(--teal);font-weight:800;font-size:20px;line-height:1}
+.qa details[open] summary::after{content:"–"}
+.qa details p{color:var(--ink-2);font-size:16px;margin-top:8px}
+
+/* find your place */
+.place-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin-top:52px}
+.pcard{border-radius:var(--r);overflow:hidden;position:relative;text-decoration:none;display:flex;flex-direction:column;min-height:260px}
+.pcard .body{padding:26px 28px 28px;display:flex;flex-direction:column;gap:8px;flex:1}
+.pcard h3{font-size:24px}
+.pcard p{font-size:16px}
+.pcard .go{margin-top:auto;padding-top:14px;font-weight:700;font-size:15px;display:flex;align-items:center;gap:8px}
+.pcard.big{grid-column:span 7;background:var(--ink);color:#fff}
+.pcard.big img{height:300px;object-fit:cover;object-position:50% 40%}
+.pcard.big p{color:#C9D3D0}
+.pcard.side{grid-column:span 5;background:var(--sun-lt)}
+.pcard.side img{height:300px;object-fit:cover;object-position:50% 55%}
+.pcard.side p{color:var(--ink-2)}
+.pcard.sm{grid-column:span 3;min-height:230px}
+.pcard.sm p{color:var(--ink-2)}
+.c-sky{background:var(--sky)}
+.c-mint{background:var(--mint)}
+.c-mist{background:var(--mist)}
+.c-sun{background:var(--sun)}
+.pcard.sm .age{font-size:13px;font-weight:700;color:var(--teal);text-transform:none}
+
+/* groups finder */
+.groups{background:var(--mist)}
+.finder{display:grid;grid-template-columns:340px 1fr;gap:44px;margin-top:48px;align-items:start}
+.filters{background:#fff;border-radius:var(--r);padding:26px}
+.filters fieldset{border:0;padding:0;margin:0 0 20px}
+.filters legend{font-weight:700;font-size:15px;margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:600 14.5px var(--font);border:1.5px solid var(--line);background:#fff;color:var(--ink);padding:9px 14px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
+.filters .note{font-size:14.5px;color:var(--ink-2);border-top:1px solid var(--line);padding-top:18px}
+.glist{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.g{background:#fff;border-radius:18px;padding:22px 24px;display:flex;flex-direction:column;gap:6px}
+.g .meta{font-size:13.5px;font-weight:600;color:var(--teal)}
+.g h3{font-size:19px;letter-spacing:-.01em}
+.g p{font-size:15px;color:var(--ink-2)}
+.g .lead{display:flex;align-items:center;gap:9px;margin-top:8px;font-size:14px;color:var(--ink-2)}
+.g .lead i{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-weight:700;font-size:12px;background:var(--mint);color:var(--teal)}
+.g[hidden]{display:none}
+.count{font-size:15px;color:var(--ink-2);margin-bottom:14px;grid-column:1/-1}
+.empty{display:none;grid-column:1/-1;background:#fff;border-radius:18px;padding:24px}
+
+/* message + events */
+.me-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:56px}
+.msg{border-radius:var(--r);border:1px solid var(--line);overflow:hidden;margin-top:34px}
+.msg .art{aspect-ratio:16/9;background:var(--teal);position:relative;display:flex;align-items:flex-end;padding:26px;color:#fff;overflow:hidden}
+.msg .art svg.bg{position:absolute;inset:0;width:100%;height:100%}
+.msg .art .title{position:relative;font-size:clamp(34px,4vw,50px);font-weight:800;letter-spacing:-.03em;line-height:1}
+.msg .art .title span{display:block;font-size:15px;font-weight:600;letter-spacing:0;color:var(--sun);margin-bottom:8px}
+.play{position:absolute;right:22px;top:22px;width:58px;height:58px;border-radius:50%;background:var(--sun);display:grid;place-items:center}
+.msg .info2{padding:22px 24px}
+.msg .info2 .d{font-size:14px;color:var(--ink-2)}
+.msg .info2 h3{font-size:21px;margin-top:4px}
+.msg .links{display:flex;gap:18px;margin-top:14px;font-size:15px;font-weight:600}
+.msg .links a{color:var(--teal)}
+.events{margin-top:34px;display:flex;flex-direction:column;gap:14px}
+.ev{display:grid;grid-template-columns:96px 1fr 150px;gap:22px;align-items:center;border-radius:var(--r);padding:14px;background:var(--mist)}
+.ev .date{background:#fff;border-radius:16px;text-align:center;padding:12px 0}
+.ev .date b{display:block;font-size:30px;line-height:1;letter-spacing:-.03em}
+.ev .date span{font-size:13px;font-weight:700;color:var(--teal)}
+.ev h3{font-size:19px;letter-spacing:-.01em}
+.ev p{font-size:15px;color:var(--ink-2);margin-top:4px}
+.ev img{width:150px;height:100px;object-fit:cover;border-radius:14px}
+.ev.feature{background:var(--sun-lt)}
+
+/* partner */
+.partner{padding:0}
+.partner-box{border-radius:32px;overflow:hidden;display:grid;grid-template-columns:1.15fr 1fr;background:var(--teal);color:#fff}
+.partner-box img{height:100%;min-height:420px;width:100%;object-fit:cover;object-position:50% 70%}
+.partner-box .txt{padding:56px 52px;display:flex;flex-direction:column;justify-content:center;gap:16px}
+.partner-box h2{font-size:clamp(28px,3.2vw,40px)}
+.partner-box p{color:#D4E8E3}
+.stats{display:flex;gap:30px;margin-top:8px;flex-wrap:wrap}
+.stats b{display:block;font-size:34px;letter-spacing:-.03em;color:var(--sun)}
+.stats span{font-size:14px;color:#D4E8E3}
+
+/* give */
+.give-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.give-ways{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.way{border:1px solid var(--line);border-radius:18px;padding:22px}
+.way h3{font-size:18px;letter-spacing:-.01em}
+.way p{font-size:15px;color:var(--ink-2);margin-top:6px}
+.way.hl{background:var(--sun);border-color:var(--sun)}
+.way.hl p{color:var(--ink)}
+.give-quote{margin-top:26px;padding:20px 22px;border-left:4px solid var(--sun);background:var(--mist);border-radius:0 16px 16px 0;font-size:16px;color:var(--ink-2)}
+
+/* footer */
+footer{background:var(--ink);color:#C9D3D0;padding:80px 0 40px;margin-top:0}
+.f-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+footer h2{color:#fff;font-size:30px;max-width:14ch}
+footer h3{color:#fff;font-size:15px;letter-spacing:0;margin-bottom:12px}
+footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:16px}
+footer a{text-decoration:none}
+footer a:hover{color:#fff;text-decoration:underline}
+.map{margin-top:24px;border-radius:18px;overflow:hidden;background:#22302D;height:150px;position:relative}
+.social{display:flex;gap:10px;margin-top:18px}
+.social a{width:42px;height:42px;border-radius:50%;border:1.5px solid #3B4A47;display:grid;place-items:center}
+.f-bot{border-top:1px solid #2E3B39;margin-top:56px;padding-top:24px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:14px}
+
+/* responsive */
+@media (max-width:1100px){
+  .nav ul{gap:18px}
+  .steps{grid-template-columns:1fr 1fr}
+  .pcard.sm{grid-column:span 6}
+}
+@media (max-width:960px){
+  .nav ul,.nav .acts .btn-line{display:none}
+  .menu-btn{display:inline-block}
+  .nav.open ul{display:flex;flex-direction:column;position:absolute;top:76px;left:0;right:0;background:#fff;padding:18px max(24px, env(safe-area-inset-left, 0px)) 26px;border-bottom:1px solid var(--line);gap:16px}
+  .nav.open ul a{font-size:19px;color:var(--ink)}
+  .hero-grid,.me-grid,.give-grid,.plan,.finder,.partner-box{grid-template-columns:1fr}
+  .hero-photo{margin:0 0 40px}
+  .times-card{left:16px}
+  .pcard.big,.pcard.side{grid-column:span 12}
+  .strip-grid{grid-template-columns:1fr}
+  .f-top{grid-template-columns:1fr 1fr}
+  .partner-box img{min-height:280px}
+}
+@media (max-width:640px){
+  .m-times{display:block;margin-top:16px;font-weight:700;font-size:17px;color:var(--teal)}
+  .m-times span{display:block;font-weight:500;font-size:15px;color:var(--ink-2)}
+  .hero-photo{margin-bottom:0}
+  .hero{padding-bottom:0}
+  .strip{padding-top:40px}
+  .first-head{grid-template-columns:1fr;gap:18px}
+  body{font-size:16px}
+  section{padding:76px 0}
+  .wrap{padding-left:max(18px, env(safe-area-inset-left, 0px));padding-right:max(18px, env(safe-area-inset-right, 0px))}
+  .hero{padding-top:36px}
+  .nav .acts .btn-teal{display:none}
+  .steps,.glist,.give-ways,.fields{grid-template-columns:1fr}
+  .pcard.sm{grid-column:span 12;min-height:0}
+  .pcard.big img,.pcard.side img{height:220px}
+  .ev{grid-template-columns:76px 1fr}
+  .ev img{display:none}
+  .ev .date b{font-size:24px}
+  .times-card{position:relative;left:auto;bottom:auto;margin:-60px 14px 0;width:auto}
+  .hero-photo img{aspect-ratio:4/4}
+  .partner-box .txt{padding:36px 26px}
+  .f-top{grid-template-columns:1fr}
+  .plan-form,.qa{padding:26px 22px}
+  .logo small{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Common Ground Church home">
+      <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><circle cx="15" cy="20" r="12" fill="#0E5650"/><circle cx="25" cy="20" r="12" fill="#F4B740" style="mix-blend-mode:multiply"/><path d="M20 10.4a12 12 0 0 1 0 19.2 12 12 0 0 1 0-19.2z" fill="#16211F"/></svg>
+      <span>Common Ground<small>Westerville, Ohio</small></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <ul id="menu">
+        <li><a href="#sundays">Sundays</a></li>
+        <li><a href="#place">Find your place</a></li>
+        <li><a href="#groups">Groups</a></li>
+        <li><a href="#watch">Messages</a></li>
+        <li><a href="#events">Events</a></li>
+      </ul>
+      <div class="acts">
+        <a class="btn btn-line" href="#give">Give</a>
+        <a class="btn btn-teal" href="#sundays">I'm new here</a>
+        <button class="menu-btn" aria-expanded="false" aria-controls="menu" id="menuBtn">Menu</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" aria-labelledby="hero-h">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="kicker">A church in Westerville for regular people</p>
+      <h1 id="hero-h">Pull up a chair. We <em>saved you</em> one.</h1>
+      <p class="m-times">Sundays 9:00 &amp; 10:45 a.m.<span>780 Schrock Rd, Westerville</span></p>
+      <div class="chat" aria-label="A welcome from Pastor Dana">
+        <div class="who"><i aria-hidden="true">DO</i> Dana Ortiz, Lead Pastor</div>
+        <p class="bubble">Hey, glad you found us. Sundays are relaxed: real music, a message you can actually use on Monday, and good coffee.</p>
+        <p class="bubble">Come as you are. Questions welcome, doubts too.</p>
+        <p class="bubble me">So what time should I come?</p>
+      </div>
+      <div class="hero-cta">
+        <a class="btn btn-teal" href="#sundays">Plan your first Sunday</a>
+        <a class="btn btn-line" href="#watch">Watch this week's message</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1653762381632-2945469edb7b?w=1600&q=75&fm=jpg" alt="Two friends laughing over iced coffee at a wooden table">
+      <span class="sticker">Coffee bar opens 8:30</span>
+      <div class="times-card">
+        <h2>This Sunday, Oct 18</h2>
+        <p class="t">9:00 &amp; 10:45 a.m.</p>
+        <p class="s"><b>Common Ground Church</b><br>780 Schrock Rd, Westerville, OH 43081</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="strip" aria-label="Service details">
+  <div class="wrap strip-grid">
+    <div class="info">
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="10" fill="#D6EDE6"/><path d="M10 13h12v7a5 5 0 0 1-5 5h-2a5 5 0 0 1-5-5zM22 15h2a2.5 2.5 0 0 1 0 5h-2" fill="none" stroke="#0E5650" stroke-width="2"/></svg>
+      <div><h3>About an hour, plus coffee</h3><p>Music, a message, and a few minutes to meet people. Nobody will make you stand up.</p></div>
+    </div>
+    <div class="info">
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="10" fill="#FFF1CF"/><circle cx="17" cy="13" r="4" fill="none" stroke="#16211F" stroke-width="2"/><path d="M10 26c1-4 4-6 7-6s6 2 7 6" fill="none" stroke="#16211F" stroke-width="2"/></svg>
+      <div><h3>Kids are covered</h3><p>Nursery through 5th grade at both services, with secure check-in.</p></div>
+    </div>
+    <div class="info">
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="10" fill="#DCE9F7"/><path d="M17 8c-4 0-7 3-7 7 0 5 7 11 7 11s7-6 7-11c0-4-3-7-7-7z" fill="none" stroke="#16211F" stroke-width="2"/><circle cx="17" cy="15" r="2.4" fill="#16211F"/></svg>
+      <div><h3>Off Schrock, by the Alum Creek trail</h3><p>Guest parking right by the front doors. <a href="#visit-map">Get directions</a></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="first" id="sundays" aria-labelledby="first-h">
+  <div class="wrap">
+    <div class="first-head">
+      <div>
+        <p class="kicker">I'm new here</p>
+        <h2 class="h2" id="first-h">Your first Sunday, start to finish</h2>
+      </div>
+      <p class="lede">No guesswork. Here's exactly what happens from the parking lot to your seat, so you can spend your energy on the good stuff.</p>
+    </div>
+    <ol class="steps" style="list-style:none;padding:0">
+      <li class="step"><span class="n">1</span><h3>Park in a Guest spot</h3><p>The yellow-signed spaces right by the main entrance are saved for first-timers. Our parking team will wave you in.</p><span class="time">Arrive around 8:45 or 10:30</span></li>
+      <li class="step"><span class="n">2</span><h3>Say hi at the Welcome Desk</h3><p>Just inside the doors. We'll answer questions, give you a quick tour, and hand you a small thank-you gift.</p><span class="time">Takes two minutes</span></li>
+      <li class="step"><span class="n">3</span><h3>Check in your kids</h3><p>A host walks you to Kids Check-In, prints matching name tags, and shows you their room. You keep the pickup tag.</p><span class="time">Pre-register to skip the line</span></li>
+      <li class="step"><span class="n">4</span><h3>Grab a coffee, find a seat</h3><p>The coffee bar is free for guests, and the lattes are made by people who care a lot about lattes. Sit anywhere.</p><span class="time">Coffee bar from 8:30</span></li>
+    </ol>
+    <div class="plan">
+      <form class="plan-form" id="planForm">
+        <h3>Let us know you're coming</h3>
+        <p>We'll save you a parking spot, have your kids' tags ready, and someone from our team will meet you at the door.</p>
+        <div class="fields">
+          <label>First name<input name="name" autocomplete="given-name" required></label>
+          <label>Email<input type="email" name="email" autocomplete="email" required></label>
+          <label>Which Sunday?<select name="day"><option>Oct 18</option><option>Oct 25</option><option>Nov 1</option><option>Nov 8</option></select></label>
+          <label>Service<select name="svc"><option>9:00 a.m.</option><option>10:45 a.m.</option></select></label>
+        </div>
+        <button class="btn btn-sun" type="submit">Save my seat</button>
+        <p class="ok" role="status" id="planOk"></p>
+      </form>
+      <div class="qa">
+        <h3>Good questions people ask</h3>
+        <details open><summary>What should I wear?</summary><p>Whatever you're comfortable in. You'll see jeans, sweaters, the occasional Buckeyes jersey in November.</p></details>
+        <details><summary>Is there anything for my kids?</summary><p>Yes. Nursery (6 weeks to 2), Preschool, and Elementary rooms run at both services. Every volunteer is background-checked and trained.</p></details>
+        <details><summary>Will I be asked to give money?</summary><p>No. Giving is for people who call Common Ground home. Please consider yourself our guest.</p></details>
+        <details><summary>Can I just text someone?</summary><p>Absolutely. Text <b>HELLO</b> to (614) 555-0142 and a real person on our guest team will text you back.</p></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="place" aria-labelledby="place-h">
+  <div class="wrap">
+    <p class="kicker">Find your place</p>
+    <h2 class="h2" id="place-h">Church happens around a lot of tables</h2>
+    <p class="lede">Sunday is the front door. Most of life at Common Ground happens in living rooms, coffee shops and kitchens across Westerville during the week.</p>
+    <div class="place-grid">
+      <a class="pcard big" href="#groups">
+        <img src="https://images.unsplash.com/photo-1764174861943-a7914825311f?w=1600&q=75&fm=jpg" alt="Young adults sharing ice cream and conversation around a table by a window" loading="lazy">
+        <div class="body"><h3>Groups</h3><p>Eight to twelve people, one evening a week, honest conversation. Our spring semester starts the week of January 10, 2027.</p><span class="go">Find a group →</span></div>
+      </a>
+      <a class="pcard side" href="#events">
+        <img src="https://images.unsplash.com/photo-1740506700638-01aba0ffbbc0?w=1600&q=75&fm=jpg" alt="A long table full of coffee cups, clementines and homemade cakes" loading="lazy">
+        <div class="body"><h3>Tables &amp; Meals</h3><p>Monthly dinners for anyone new, plus our Thanksgiving potluck on Nov 22.</p><span class="go">See what's cooking →</span></div>
+      </a>
+      <a class="pcard sm c-mint" href="#sundays"><div class="body"><span class="age">Birth – 5th grade</span><h3>CG Kids</h3><p>Safe, fun rooms where kids learn who Jesus is, at their level.</p><span class="go">Kids on Sunday →</span></div></a>
+      <a class="pcard sm c-sky" href="#groups"><div class="body"><span class="age">6th – 12th grade</span><h3>Students</h3><p>Sunday nights at 6:00 in the Loft. Pizza, games, real talk.</p><span class="go">Meet the team →</span></div></a>
+      <a class="pcard sm c-sun" href="#groups"><div class="body"><span class="age" style="color:var(--ink)">18 – 30ish</span><h3>Young Adults</h3><p>Tuesday nights at Kingdom Coffee on State Street.</p><span class="go">Come Tuesday →</span></div></a>
+      <a class="pcard sm c-mist" href="#events"><div class="body"><span class="age">Everyone</span><h3>Serve</h3><p>Coffee team, kids, parking, or Fall Serve Day across town.</p><span class="go">Find a team →</span></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="groups" id="groups" aria-labelledby="groups-h">
+  <div class="wrap">
+    <p class="kicker">Groups finder</p>
+    <h2 class="h2" id="groups-h">Find people to do life with</h2>
+    <p class="lede">A few fall groups still have room, and sign-ups for the spring semester open December 1. Filter by night or type.</p>
+    <div class="finder">
+      <div class="filters">
+        <fieldset><legend>Night</legend>
+          <div class="chips" data-key="day">
+            <button class="chip" aria-pressed="true" data-v="all">Any</button>
+            <button class="chip" aria-pressed="false" data-v="tue">Tue</button>
+            <button class="chip" aria-pressed="false" data-v="wed">Wed</button>
+            <button class="chip" aria-pressed="false" data-v="thu">Thu</button>
+            <button class="chip" aria-pressed="false" data-v="sun">Sun</button>
+          </div>
+        </fieldset>
+        <fieldset><legend>Type</legend>
+          <div class="chips" data-key="type">
+            <button class="chip" aria-pressed="true" data-v="all">All</button>
+            <button class="chip" aria-pressed="false" data-v="mixed">Mixed</button>
+            <button class="chip" aria-pressed="false" data-v="women">Women</button>
+            <button class="chip" aria-pressed="false" data-v="men">Men</button>
+            <button class="chip" aria-pressed="false" data-v="couples">Couples</button>
+          </div>
+        </fieldset>
+        <p class="note">Not sure? Come to <b>Group Connect</b> on Sunday, Jan 3 after either service and meet leaders face to face.</p>
+      </div>
+      <div class="glist" id="glist">
+        <p class="count" id="gcount" aria-live="polite">Showing 6 groups</p>
+        <article class="g" data-day="tue" data-type="mixed"><span class="meta">Tuesdays · 7:00 p.m. · Uptown Westerville</span><h3>Neighbors on State Street</h3><p>A walking-distance group for downtown folks. Dinner first, then the week's message.</p><span class="lead"><i aria-hidden="true">JK</i>Jess &amp; Kyle Brennan</span></article>
+        <article class="g" data-day="wed" data-type="women"><span class="meta">Wednesdays · 6:30 a.m. · Coffee bar</span><h3>Early Light Women</h3><p>Before-work Bible study with very strong coffee. Out by 7:30.</p><span class="lead"><i aria-hidden="true">MO</i>Maya Okafor</span></article>
+        <article class="g" data-day="thu" data-type="men"><span class="meta">Thursdays · 6:00 a.m. · Panera on Polaris</span><h3>Men's Breakfast Table</h3><p>Eggs, Proverbs, and accountability. Twelve guys, all ages.</p><span class="lead"><i aria-hidden="true">RT</i>Rob Tillman</span></article>
+        <article class="g" data-day="sun" data-type="couples"><span class="meta">Sundays · 5:30 p.m. · Genoa Township</span><h3>Married-ish</h3><p>Engaged and newly married couples. Childcare share available.</p><span class="lead"><i aria-hidden="true">AL</i>Ana &amp; Luis Ferreira</span></article>
+        <article class="g" data-day="wed" data-type="mixed"><span class="meta">Wednesdays · 7:00 p.m. · Online</span><h3>Doubters Welcome</h3><p>For people with big questions about faith. Nothing is off the table.</p><span class="lead"><i aria-hidden="true">DO</i>Dana Ortiz</span></article>
+        <article class="g" data-day="tue" data-type="mixed"><span class="meta">Tuesdays · 7:00 p.m. · Kingdom Coffee</span><h3>Young Adults Collective</h3><p>Worship, a short talk, then everyone stays way too late.</p><span class="lead"><i aria-hidden="true">SP</i>Sam Patel</span></article>
+        <p class="empty" id="gempty">No groups match those filters yet. Try another night, or text <b>GROUPS</b> to (614) 555-0142 and we'll help you find one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="watch" aria-labelledby="watch-h">
+  <div class="wrap me-grid">
+    <div>
+      <p class="kicker">Latest message</p>
+      <h2 class="h2" id="watch-h">Missed Sunday? Catch up.</h2>
+      <article class="msg">
+        <div class="art">
+          <svg class="bg" viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="330" cy="40" r="120" fill="#0A3F3B"/><circle cx="380" cy="190" r="70" fill="#F4B740" opacity=".9"/><circle cx="60" cy="10" r="40" fill="#D6EDE6" opacity=".18"/></svg>
+          <a class="play" href="#watch" aria-label="Play the message 'Who Is My Neighbor?'"><svg width="20" height="22" viewBox="0 0 20 22" aria-hidden="true"><path d="M2 2l16 9-16 9z" fill="#16211F"/></svg></a>
+          <p class="title"><span>Series · Part 3 of 5</span>Next Door</p>
+        </div>
+        <div class="info2">
+          <p class="d">Oct 11, 2026 · Dana Ortiz · Luke 10:25–37 · 34 min</p>
+          <h3>Who Is My Neighbor?</h3>
+          <div class="links"><a href="#watch">Watch</a><a href="#watch">Listen</a><a href="#groups">Group questions</a></div>
+        </div>
+      </article>
+    </div>
+    <div id="events">
+      <p class="kicker">Coming up</p>
+      <h2 class="h2">On the calendar</h2>
+      <div class="events">
+        <article class="ev feature"><div class="date"><b>24</b><span>OCT · SAT</span></div><div><h3>Fall Serve Day</h3><p>Rake leaves for neighbors, stock the Westerville Area Resource Ministry pantry, paint at Hanby Elementary. 9 a.m.–noon, kids welcome.</p></div><img src="https://images.unsplash.com/photo-1653762379617-4cff1ad07faf?w=1600&q=75&fm=jpg" alt="Two women chatting at a cafe table" loading="lazy" style="object-position:55% 40%"></article>
+        <article class="ev"><div class="date"><b>22</b><span>NOV · SUN</span></div><div><h3>Thanksgiving Potluck</h3><p>After the 10:45 service in the Commons. We'll bring the turkey, you bring a side.</p></div><img src="https://images.unsplash.com/photo-1732850714203-d40cd333968e?w=1600&q=75&fm=jpg" alt="People filling plates along a potluck buffet line" loading="lazy"></article>
+        <article class="ev"><div class="date"><b>6</b><span>DEC · SUN</span></div><div><h3>Newcomer Lunch</h3><p>Meet Dana and the staff over Mediterranean food. Childcare provided, RSVP at the Welcome Desk.</p></div><img src="https://images.unsplash.com/photo-1740506700638-01aba0ffbbc0?w=1600&q=75&fm=jpg" alt="Coffee cups and pastries on a shared table" loading="lazy" style="object-position:60% 40%"></article>
+        <article class="ev"><div class="date"><b>24</b><span>DEC · THU</span></div><div><h3>Christmas Eve at Common Ground</h3><p>Candlelight services at 3:00, 4:30 and 6:00 p.m. Kids programming at 3:00 and 4:30.</p></div><img src="https://images.unsplash.com/photo-1764174861943-a7914825311f?w=1600&q=75&fm=jpg" alt="Friends talking around a table" loading="lazy" style="object-position:60% 50%"></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="partner" aria-labelledby="partner-h">
+  <div class="wrap">
+    <div class="partner-box">
+      <img src="https://images.unsplash.com/photo-1717201611955-f7e723802d15?w=1600&q=75&fm=jpg" alt="A large congregation gathered for a photo outside an orange church building" loading="lazy">
+      <div class="txt">
+        <p class="kicker" style="color:var(--sun)">Beyond Westerville</p>
+        <h2 id="partner-h">Our sister church is 9,000 miles away</h2>
+        <p>Since 2019 we've partnered with Highlands Fellowship, a congregation of 400 in the mountains of Papua New Guinea. This photo is from their 50th anniversary last spring. Ten percent of everything given at Common Ground goes outside our walls.</p>
+        <div class="stats"><div><b>10%</b><span>of giving sent out</span></div><div><b>14</b><span>local partners</span></div><div><b>612</b><span>Serve Day volunteers in 2025</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="give" aria-labelledby="give-h">
+  <div class="wrap give-grid">
+    <div>
+      <p class="kicker">Giving</p>
+      <h2 class="h2" id="give-h">Generosity changes the neighborhood</h2>
+      <p class="lede">When you give, you're funding Serve Day supplies, the student ministry van, counseling scholarships and a church that's open to anyone who walks in. Thank you.</p>
+      <p class="give-quote">"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver." 2 Corinthians 9:7</p>
+    </div>
+    <div class="give-ways">
+      <a class="way hl" href="#give" style="text-decoration:none"><h3>Give online →</h3><p>One time or recurring, by card or bank. Takes about a minute.</p></a>
+      <div class="way"><h3>Text to give</h3><p>Text any amount to (614) 555-0199.</p></div>
+      <div class="way"><h3>On Sundays</h3><p>Giving boxes are by the coffee bar and each auditorium door.</p></div>
+      <div class="way"><h3>Stock &amp; IRA gifts</h3><p>Email our finance team at give@commonground.church.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer aria-labelledby="foot-h">
+  <div class="wrap">
+    <div class="f-top">
+      <div>
+        <h2 id="foot-h">See you Sunday. The coffee's on us.</h2>
+        <div class="map" id="visit-map" role="img" aria-label="Simple map showing Common Ground Church on Schrock Road near Alum Creek">
+          <svg width="100%" height="100%" viewBox="0 0 400 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <path d="M-10 110 Q120 90 210 112 T410 96" stroke="#2E5C57" stroke-width="12" fill="none"/>
+            <path d="M0 60 H400" stroke="#3B4A47" stroke-width="7"/>
+            <path d="M150 0 V150" stroke="#3B4A47" stroke-width="7"/>
+            <path d="M300 0 L280 150" stroke="#3B4A47" stroke-width="4"/>
+            <text x="12" y="52" fill="#8FA19D" font-size="11" font-family="sans-serif">Schrock Rd</text>
+            <text x="158" y="140" fill="#8FA19D" font-size="11" font-family="sans-serif">State St</text>
+            <text x="300" y="124" fill="#8FA19D" font-size="11" font-family="sans-serif">Alum Creek</text>
+            <circle cx="222" cy="60" r="13" fill="#F4B740"/><circle cx="222" cy="60" r="5" fill="#16211F"/>
+          </svg>
+        </div>
+      </div>
+      <div><h3>Visit</h3><ul><li>780 Schrock Rd</li><li>Westerville, OH 43081</li><li>Sundays 9:00 &amp; 10:45 a.m.</li><li>Coffee bar opens 8:30</li></ul></div>
+      <div><h3>Contact</h3><ul><li><a href="#top">(614) 555-0142</a></li><li><a href="#top">hello@commonground.church</a></li><li>Office: Mon–Thu, 9–4</li><li><a href="#sundays">Plan a visit</a></li></ul></div>
+      <div><h3>Explore</h3><ul><li><a href="#place">Kids &amp; Students</a></li><li><a href="#groups">Groups</a></li><li><a href="#watch">Messages</a></li><li><a href="#events">Events</a></li><li><a href="#give">Give</a></li></ul>
+        <div class="social">
+          <a href="#top" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9D3D0" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#C9D3D0"/></svg></a>
+          <a href="#top" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="#C9D3D0" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8z"/></svg></a>
+          <a href="#top" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4" fill="#C9D3D0"/><path d="M10 9l5 3-5 3z" fill="#16211F"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="f-bot"><span>© 2026 Common Ground Church · Westerville, Ohio</span><span>A church plant of Central Ohio friends, since 2011</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('menuBtn'),nav=document.getElementById('nav');
+  btn.addEventListener('click',function(){var o=nav.classList.toggle('open');btn.setAttribute('aria-expanded',o);btn.textContent=o?'Close':'Menu';});
+  document.querySelectorAll('#menu a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.textContent='Menu';});});
+
+  var f=document.getElementById('planForm');
+  f.addEventListener('submit',function(e){e.preventDefault();var n=f.name.value.trim()||'friend';var ok=document.getElementById('planOk');ok.textContent='Thanks, '+n+'! We’ll see you '+f.day.value+' at '+f.svc.value+'. Look for the yellow Guest signs out front.';ok.classList.add('show');});
+
+  var state={day:'all',type:'all'};
+  document.querySelectorAll('.chips').forEach(function(g){
+    g.addEventListener('click',function(e){var c=e.target.closest('.chip');if(!c)return;
+      g.querySelectorAll('.chip').forEach(function(x){x.setAttribute('aria-pressed','false')});
+      c.setAttribute('aria-pressed','true');state[g.dataset.key]=c.dataset.v;apply();});
+  });
+  function apply(){var n=0;document.querySelectorAll('#glist .g').forEach(function(g){
+    var show=(state.day==='all'||g.dataset.day===state.day)&&(state.type==='all'||g.dataset.type===state.type);
+    g.hidden=!show;if(show)n++;});
+    document.getElementById('gcount').textContent='Showing '+n+' group'+(n===1?'':'s');
+    document.getElementById('gempty').style.display=n?'none':'block';}
+})();
+</script>
+</body>
+</html>

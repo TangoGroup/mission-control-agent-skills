@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maple Creek Community Church · Cedar Falls, Iowa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#14204A;
+  --ink-2:#3E4769;
+  --paper:#FFFFFF;
+  --sun:#FFC52E;
+  --sun-lt:#FFF4CC;
+  --tomato:#F2542D;
+  --tomato-dk:#C23A16;
+  --cobalt:#1E4FD6;
+  --cobalt-lt:#E5EDFF;
+  --leaf:#13774A;
+  --leaf-lt:#DDF4E7;
+  --pink:#FFD6CC;
+  --display:"Fredoka","Baloo 2","Arial Rounded MT Bold","Trebuchet MS",system-ui,sans-serif;
+  --text:"Nunito Sans","Avenir Next","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--text);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:600;margin:0;line-height:1.08;letter-spacing:-0.01em}
+p{margin:0}
+:focus-visible{outline:3px solid var(--cobalt);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(24px, env(safe-area-inset-left, 0px));padding-right:max(24px, env(safe-area-inset-right, 0px))}
+.btn{display:inline-flex;align-items:center;gap:.5em;font:600 18px/1 var(--display);padding:16px 26px;border-radius:999px;text-decoration:none;border:3px solid var(--ink);cursor:pointer;transition:transform .2s, box-shadow .2s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+.btn-sun{background:var(--sun);color:var(--ink)}
+.btn-white{background:#fff;color:var(--ink)}
+.btn-ink{background:var(--ink);color:#fff}
+.tag{display:inline-block;font:600 16px/1 var(--display);padding:9px 16px;border-radius:999px;background:var(--sun);color:var(--ink)}
+section{padding:110px 0;position:relative}
+.h2{font-size:clamp(36px,5vw,62px)}
+.lede{font-size:20px;color:var(--ink-2);max-width:52ch;margin-top:18px}
+.wave{display:block;width:100%;height:60px}
+
+/* announcement */
+.ann{background:var(--cobalt);color:#fff;font-weight:700;font-size:16px;text-align:center;padding:10px 16px}
+.ann a{color:#fff}
+
+/* header */
+.top{position:sticky;top:0;z-index:50;background:#fff;border-bottom:3px solid var(--ink)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:82px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo b{font:700 24px/1 var(--display);letter-spacing:-.01em}
+.logo small{display:block;font:600 13px/1.2 var(--text);color:var(--ink-2);margin-top:3px}
+.nav{display:flex;align-items:center;gap:28px}
+.nav ul{list-style:none;display:flex;gap:24px;margin:0;padding:0}
+.nav ul a{text-decoration:none;font:500 18px var(--display)}
+.nav ul a:hover{color:var(--cobalt)}
+.nav .acts{display:flex;gap:10px;align-items:center}
+.nav .btn{padding:12px 20px;font-size:17px}
+.menu-btn{display:none;font:600 17px var(--display);background:var(--sun);border:3px solid var(--ink);border-radius:999px;padding:9px 18px;color:var(--ink);cursor:pointer}
+
+/* hero */
+.hero{padding:70px 0 90px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:60px;align-items:center}
+.hero h1{font-size:clamp(46px,6.6vw,92px);font-weight:700;line-height:1}
+.hero h1 .hl{color:var(--tomato-dk);position:relative;white-space:nowrap}
+.hero h1 .hl svg{position:absolute;left:0;right:0;bottom:-10px;width:100%;height:16px}
+.hero .lede{font-size:21px;margin-top:34px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px;padding:0;list-style:none}
+.facts li{display:flex;align-items:center;gap:8px;background:var(--cobalt-lt);border-radius:999px;padding:9px 16px 9px 10px;font-weight:700;font-size:16px}
+.facts li i{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-style:normal}
+.hero-art{position:relative;padding:20px 30px 30px 20px}
+.arch{position:relative;z-index:2;border-radius:999px 999px 36px 36px;overflow:hidden;border:4px solid var(--ink);aspect-ratio:4/4.6;background:var(--sun-lt)}
+.arch img{width:100%;height:100%;object-fit:cover;object-position:52% 50%}
+.shape{position:absolute;z-index:1}
+.s-sun{width:150px;height:150px;border-radius:50%;background:var(--sun);right:-6px;top:-4px;animation:bob 6s ease-in-out infinite}
+.s-half{width:180px;height:90px;border-radius:180px 180px 0 0;background:var(--cobalt);left:-20px;bottom:6px;animation:bob 7s ease-in-out infinite reverse}
+.s-squig{right:-24px;bottom:70px;width:120px;z-index:3}
+.badge{position:absolute;z-index:4;left:-14px;top:52%;background:#fff;border:3px solid var(--ink);border-radius:24px;padding:14px 18px;transform:rotate(-4deg);font-weight:700;font-size:16px;line-height:1.35}
+.badge b{display:block;font:600 22px var(--display)}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+/* times band */
+.times{background:var(--sun);padding:0}
+.times-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:0;border-left:3px solid var(--ink)}
+.times-grid > div{padding:30px 28px;border-right:3px solid var(--ink)}
+.times h2{font-size:30px}
+.times .k{font:600 15px var(--display);color:var(--ink-2)}
+.times .v{font:600 26px/1.15 var(--display);margin-top:4px}
+.times p.s{font-size:16px;color:var(--ink);margin-top:4px}
+
+/* sunday walkthrough */
+.walk{background:#fff}
+.walk-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end}
+.path{position:relative;margin-top:70px}
+.path svg.line{position:absolute;left:0;top:0;width:100%;height:84px;z-index:0}
+.stops{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;list-style:none;margin:0;padding:0;position:relative;z-index:1}
+.stop .dot{width:84px;height:84px;border-radius:50%;border:3px solid var(--ink);display:grid;place-items:center;font:700 34px var(--display);margin-bottom:22px;background:#fff}
+.stop:nth-child(1) .dot{background:var(--sun)}
+.stop:nth-child(2) .dot{background:var(--pink);border-radius:42px 42px 12px 12px}
+.stop:nth-child(3) .dot{background:var(--leaf-lt);border-radius:18px}
+.stop:nth-child(4) .dot{background:var(--cobalt);color:#fff}
+.stop h3{font-size:25px}
+.stop p{color:var(--ink-2);margin-top:8px;font-size:17px}
+.stop .when{display:inline-block;margin-top:14px;font-weight:800;font-size:15px;color:var(--cobalt)}
+
+/* creek kids */
+.kids{background:var(--cobalt-lt)}
+.kids-top{display:grid;grid-template-columns:1fr 420px;gap:60px;align-items:center}
+.circle-photo{width:100%;aspect-ratio:1;border-radius:50%;overflow:hidden;border:4px solid var(--ink);position:relative}
+.circle-photo img{width:100%;height:100%;object-fit:cover;object-position:45% 50%}
+.kids-logo{display:inline-flex;align-items:center;gap:10px;font:700 22px var(--display);color:var(--cobalt);margin-bottom:14px}
+.ages{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:64px}
+.age{background:#fff;border:3px solid var(--ink);border-radius:36px;padding:34px 30px 30px;position:relative;overflow:hidden}
+.age .shape-top{height:90px;margin:-34px -30px 24px;display:flex;align-items:flex-end;padding:0 30px 14px}
+.age:nth-child(1) .shape-top{background:var(--pink)}
+.age:nth-child(2) .shape-top{background:var(--sun)}
+.age:nth-child(3) .shape-top{background:var(--leaf-lt)}
+.age .range{font:700 44px/1 var(--display)}
+.age h3{font-size:30px}
+.age .room{font-weight:800;color:var(--cobalt);font-size:16px;margin-top:4px}
+.age p{color:var(--ink-2);margin-top:12px;font-size:17px}
+.age ul{margin:16px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px;font-size:16px;font-weight:700}
+.age ul li::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--tomato);margin-right:10px}
+
+/* safety */
+.safety{background:var(--ink);color:#fff}
+.safety-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.safety .lede{color:#D3D9EE}
+.safety .h2{color:#fff}
+.checks{list-style:none;padding:0;margin:34px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:22px 30px}
+.checks li{display:flex;gap:14px}
+.checks li svg{flex:none;margin-top:3px}
+.checks b{display:block;font:600 19px var(--display)}
+.checks span{color:#D3D9EE;font-size:16px}
+.tags{position:relative;height:440px}
+.ntag{position:absolute;width:300px;border-radius:24px;background:#fff;color:var(--ink);padding:22px 24px;border:3px solid #fff}
+.ntag .hd{font:600 14px var(--display);display:flex;justify-content:space-between;color:var(--ink-2)}
+.ntag .nm{font:700 40px/1 var(--display);margin:12px 0 6px}
+.ntag .code{font:700 30px var(--display);letter-spacing:.08em;background:var(--sun);display:inline-block;padding:4px 14px;border-radius:12px;margin-top:10px}
+.ntag .al{display:inline-block;margin-top:10px;margin-left:8px;background:var(--tomato-dk);color:#fff;font-weight:800;font-size:14px;padding:6px 12px;border-radius:999px}
+.ntag.kid{left:0;top:30px;transform:rotate(-6deg)}
+.ntag.par{right:0;bottom:30px;transform:rotate(5deg);background:var(--sun-lt)}
+.ntag.par .code{background:var(--sun)}
+.match{position:absolute;right:40px;top:20px;z-index:3;width:84px;height:84px;border-radius:50%;background:var(--leaf);display:grid;place-items:center;border:3px solid #fff}
+
+/* landing */
+.landing-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center}
+.landing-photo{position:relative}
+.landing-photo img{width:100%;aspect-ratio:5/4;object-fit:cover;object-position:55% 40%;border-radius:36px 140px 36px 36px;border:4px solid var(--ink)}
+.landing-photo .stamp{position:absolute;left:-18px;bottom:-22px;background:var(--tomato);color:var(--ink);border:3px solid var(--ink);border-radius:50%;width:132px;height:132px;display:grid;place-items:center;text-align:center;font:700 18px/1.1 var(--display);transform:rotate(-10deg)}
+.landing-logo{font:700 20px var(--display);color:var(--leaf);margin-bottom:12px}
+.wk{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.wk div{border-radius:20px;padding:18px;background:var(--leaf-lt)}
+.wk b{display:block;font:600 19px var(--display)}
+.wk span{font-size:15.5px;color:var(--ink-2)}
+
+/* events */
+.events{background:var(--sun-lt)}
+.ev-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:24px;margin-top:56px}
+.ev{border:3px solid var(--ink);border-radius:36px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.ev .pic{position:relative;height:280px;overflow:hidden}
+.ev .pic img{width:100%;height:100%;object-fit:cover}
+.ev .date{position:absolute;left:18px;top:18px;background:#fff;border:3px solid var(--ink);border-radius:20px;text-align:center;padding:8px 14px;font-family:var(--display)}
+.ev .date b{display:block;font-size:32px;line-height:1}
+.ev .date span{font-size:14px;font-weight:600}
+.ev .body{padding:24px 28px 28px}
+.ev h3{font-size:28px}
+.ev p{color:var(--ink-2);margin-top:8px;font-size:17px}
+.ev .meta{font-weight:800;font-size:15px;color:var(--cobalt);margin-top:12px}
+.ev.big{grid-row:span 2}
+.ev.big .pic{height:420px}
+.ev.trunk{background:var(--tomato);flex-direction:row}
+.ev.trunk .art{flex:0 0 42%;background:var(--ink);display:grid;place-items:center}
+.ev.trunk .body{color:var(--ink)}
+.ev.trunk p{color:var(--ink)}
+.ev.trunk .meta{color:var(--ink)}
+.ev.trunk .date-inline{font:600 18px var(--display);display:inline-block;background:#fff;border:3px solid var(--ink);border-radius:999px;padding:4px 14px;margin-bottom:12px}
+
+/* parents */
+.parents-grid{display:grid;grid-template-columns:380px 1fr;gap:70px;align-items:start}
+.becca img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:50% 78%;border-radius:200px 200px 36px 36px;border:4px solid var(--ink)}
+.becca figcaption{margin-top:16px;font-size:16px;color:var(--ink-2)}
+.becca figcaption b{font:600 21px var(--display);color:var(--ink);display:block}
+.note{font:500 26px/1.35 var(--display);margin-top:24px;max-width:30ch}
+.res{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
+.res a{text-decoration:none;border-radius:28px;padding:24px 26px;display:block;transition:transform .2s}
+.res a:hover{transform:translateY(-3px)}
+.res h3{font-size:23px}
+.res p{font-size:16px;color:var(--ink-2);margin-top:6px}
+.res .r1{background:var(--cobalt-lt)}
+.res .r2{background:var(--pink)}
+.res .r3{background:var(--leaf-lt)}
+.res .r4{background:var(--sun-lt)}
+
+/* message */
+.msg{background:var(--cobalt);color:#fff;border-radius:44px;display:grid;grid-template-columns:1fr 1.1fr;overflow:hidden}
+.msg .txt{padding:52px}
+.msg .h2{color:#fff;font-size:clamp(32px,3.8vw,48px)}
+.msg p{color:#DCE5FF;margin-top:14px}
+.msg .two{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px}
+.msg .two div{background:rgba(255,255,255,.12);border-radius:22px;padding:18px}
+.msg .two b{display:block;font:600 18px var(--display);color:var(--sun)}
+.msg .two span{font-size:16px;color:#fff}
+.msg .vid{position:relative;background:var(--sun);display:grid;place-items:center;min-height:360px}
+.msg .vid svg.bg{position:absolute;inset:0;width:100%;height:100%}
+.msg .vid .card{position:relative;text-align:center;color:var(--ink)}
+.msg .vid .card p{color:var(--ink);margin:0}
+.msg .vid .series{font:700 clamp(46px,5vw,70px)/0.95 var(--display)}
+.msg .vid .sub{font-weight:800;margin-top:10px}
+.play{margin:22px auto 0;width:76px;height:76px;border-radius:50%;background:var(--ink);display:grid;place-items:center}
+
+/* pre-register + give */
+.reg-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:28px}
+.reg{background:var(--leaf-lt);border-radius:40px;padding:46px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+.fields label{display:flex;flex-direction:column;gap:6px;font-weight:800;font-size:15px}
+.fields input,.fields select{font:600 17px var(--text);padding:14px 16px;border-radius:16px;border:3px solid var(--ink);background:#fff;color:var(--ink)}
+.fields .full{grid-column:1/-1}
+.reg .btn{margin-top:20px}
+.ok{display:none;margin-top:18px;background:#fff;border:3px solid var(--leaf);border-radius:18px;padding:16px 18px;font-weight:700}
+.ok.show{display:block}
+.give{background:var(--tomato);border-radius:40px;padding:46px;color:var(--ink);position:relative;overflow:hidden}
+.give .h2,.give p,.give ul,.give .btn{position:relative}
+.give .h2{font-size:clamp(34px,4vw,50px)}
+.give p{margin-top:14px;font-size:18px}
+.give ul{margin:20px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;font-weight:700}
+.give .btn{margin-top:26px}
+.give .circ{position:absolute;right:-50px;bottom:-60px;width:160px;height:160px;border-radius:50%;background:var(--sun)}
+
+/* footer */
+footer{background:var(--ink);color:#D3D9EE}
+footer .inner{padding:70px 0 40px}
+.f-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+footer h2{color:#fff;font-size:38px;max-width:16ch}
+footer h3{color:var(--sun);font-size:20px;margin-bottom:12px}
+footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:17px}
+footer a{text-decoration:none}
+footer a:hover{color:#fff;text-decoration:underline}
+.social{display:flex;gap:10px;margin-top:22px}
+.social a{width:46px;height:46px;border-radius:50%;background:#26346A;display:grid;place-items:center}
+.f-bot{margin-top:56px;padding-top:22px;border-top:2px solid #26346A;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:15px}
+
+@media (max-width:1100px){
+  .nav ul{gap:16px}
+  .nav ul a{font-size:17px}
+  .times-grid{grid-template-columns:1fr 1fr}
+  .times-grid > div{border-bottom:3px solid var(--ink)}
+  .stops{grid-template-columns:1fr 1fr;row-gap:44px}
+  .path svg.line{display:none}
+}
+@media (max-width:980px){
+  .nav ul,.nav .acts .btn-white{display:none}
+  .menu-btn{display:inline-block}
+  .nav.open ul{display:flex;flex-direction:column;position:absolute;left:0;right:0;top:82px;background:#fff;border-bottom:3px solid var(--ink);padding:20px max(24px, env(safe-area-inset-left, 0px)) 28px;gap:16px}
+  .nav.open ul a{font-size:22px}
+  .hero-grid,.kids-top,.safety-grid,.landing-grid,.parents-grid,.msg,.reg-grid,.walk-head{grid-template-columns:1fr}
+  .hero-art{max-width:520px}
+  .kids-top .circle-photo{max-width:380px}
+  .ages{grid-template-columns:1fr}
+  .ev-grid{grid-template-columns:1fr}
+  .ev.big .pic{height:320px}
+  .becca{max-width:380px}
+  .f-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .note{font-size:21px}
+  .tags{height:auto;display:flex;flex-direction:column;gap:18px;padding:10px 6px}
+  .ntag{position:relative;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;width:auto;max-width:300px}
+  .ntag.par{align-self:flex-end}
+  .match{display:none}
+  body{font-size:17px}
+  section{padding:76px 0}
+  .wrap{padding-left:max(18px, env(safe-area-inset-left, 0px));padding-right:max(18px, env(safe-area-inset-right, 0px))}
+  .hero{padding:40px 0 60px}
+  .hero .lede{font-size:19px}
+  .nav .acts .btn-sun{display:none}
+  .logo small{display:none}
+  .times-grid{grid-template-columns:1fr}
+  .stops,.checks,.wk,.res,.fields,.msg .two{grid-template-columns:1fr}
+  .tags{height:400px}
+  .ntag{width:250px}
+  .ntag .nm{font-size:32px}
+  .ev.trunk{flex-direction:column}
+  .ev.trunk .art{min-height:180px}
+  .msg .txt,.reg,.give{padding:30px 24px}
+  .msg{border-radius:32px}
+  .f-grid{grid-template-columns:1fr}
+  .badge{left:0}
+  .s-sun{width:110px;height:110px}
+  .landing-photo .stamp{width:108px;height:108px;font-size:16px;left:-6px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<p class="ann">Trunk or Treat is Saturday, Oct 31, 5–7 p.m. in the north lot. <a href="#events">Bring the whole crew →</a></p>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Maple Creek Community Church home">
+      <svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="#FFC52E" stroke="#14204A" stroke-width="3"/><path d="M24 9l3 7 6-3-2 7 7 1-6 5 3 4-7-1v8h-4v-8l-7 1 3-4-6-5 7-1-2-7 6 3z" fill="#F2542D" stroke="#14204A" stroke-width="2" stroke-linejoin="round"/><path d="M8 36c5-3 9 2 16-1s11 2 16 0" fill="none" stroke="#1E4FD6" stroke-width="3" stroke-linecap="round"/></svg>
+      <span><b>Maple Creek</b><small>Community Church · Cedar Falls</small></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <ul id="menu">
+        <li><a href="#kids">Creek Kids</a></li>
+        <li><a href="#landing">The Landing</a></li>
+        <li><a href="#parents">Parents</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#watch">Watch</a></li>
+      </ul>
+      <div class="acts">
+        <a class="btn btn-white" href="#give">Give</a>
+        <a class="btn btn-sun" href="#sunday">Plan your visit</a>
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu">Menu</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" aria-labelledby="hero-h">
+  <div class="wrap hero-grid">
+    <div>
+      <h1 id="hero-h">Sundays your kids will <span class="hl">ask for.<svg viewBox="0 0 200 16" preserveAspectRatio="none" aria-hidden="true"><path d="M2 10 Q 25 2 50 9 T 100 9 T 150 9 T 198 7" fill="none" stroke="#FFC52E" stroke-width="6" stroke-linecap="round"/></svg></span></h1>
+      <p class="lede">Maple Creek is a church in Cedar Falls where kids are known by name, parents get an hour to breathe, and everybody hears that Jesus is for them.</p>
+      <div class="hero-cta">
+        <a class="btn btn-sun" href="#register">Pre-register your kids</a>
+        <a class="btn btn-white" href="#sunday">What Sunday looks like</a>
+      </div>
+      <ul class="facts" aria-label="Sunday details">
+        <li><i style="background:#FFC52E" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="7" r="5" fill="none" stroke="#14204A" stroke-width="2"/><path d="M7 4v3l2 1.5" fill="none" stroke="#14204A" stroke-width="2" stroke-linecap="round"/></svg></i>Sundays 9:00 &amp; 10:30 a.m.</li>
+        <li><i style="background:#FFD6CC" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M7 1l1.8 3.8 4.2.5-3.1 2.9.8 4.1L7 10.3 3.3 12.3l.8-4.1L1 5.3l4.2-.5z" fill="#14204A"/></svg></i>Creek Kids at both</li>
+        <li><i style="background:#DDF4E7" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M7 1C4.5 1 2.6 2.9 2.6 5.3 2.6 8.6 7 13 7 13s4.4-4.4 4.4-7.7C11.4 2.9 9.5 1 7 1z" fill="#14204A"/><circle cx="7" cy="5.3" r="1.6" fill="#DDF4E7"/></svg></i>2400 Greenhill Rd</li>
+      </ul>
+    </div>
+    <div class="hero-art">
+      <span class="shape s-sun" aria-hidden="true"></span>
+      <span class="shape s-half" aria-hidden="true"></span>
+      <div class="arch"><img src="https://images.unsplash.com/photo-1561524891-8e08ab8569f3?w=1600&q=75&fm=jpg" alt="Three girls running down a wooden boardwalk toward their smiling parents"></div>
+      <svg class="shape s-squig" viewBox="0 0 120 40" aria-hidden="true"><path d="M4 20 Q 19 4 34 20 T 64 20 T 94 20 T 118 18" fill="none" stroke="#F2542D" stroke-width="7" stroke-linecap="round"/></svg>
+      <p class="badge"><b>Nursery to 12th grade</b>a spot for every age</p>
+    </div>
+  </div>
+</section>
+
+<section class="times" aria-labelledby="times-h">
+  <div class="wrap">
+    <div class="times-grid">
+      <div><h2 id="times-h">This Sunday, Oct 18</h2><p class="s">Same service twice. Kids programming at both.</p></div>
+      <div><p class="k">Services</p><p class="v">9:00 &amp; 10:30 a.m.</p></div>
+      <div><p class="k">Kids check-in opens</p><p class="v">8:40 &amp; 10:10</p></div>
+      <div><p class="k">Find us</p><p class="v">2400 Greenhill Rd</p><p class="s"><a href="#visit">Cedar Falls, IA · Map</a></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="walk" id="sunday" aria-labelledby="walk-h">
+  <div class="wrap">
+    <div class="walk-head">
+      <h2 class="h2" id="walk-h">A Sunday with kids, step by step</h2>
+      <p class="lede">Coming to church with little ones can feel like a lot. Here's the whole morning, so nobody has to guess (including the four-year-old).</p>
+    </div>
+    <div class="path">
+      <svg class="line" viewBox="0 0 1200 84" preserveAspectRatio="none" aria-hidden="true"><path d="M40 42 C 200 80, 300 4, 480 42 S 760 80, 900 42 S 1120 10, 1180 42" fill="none" stroke="#14204A" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round"/></svg>
+      <ol class="stops">
+        <li class="stop"><span class="dot" aria-hidden="true">1</span><h3>Park by the green doors</h3><p>Family parking with extra-wide spots for strollers and car seats sits right by the Creek Kids entrance.</p><span class="when">Aim for 8:45 or 10:15</span></li>
+        <li class="stop"><span class="dot" aria-hidden="true">2</span><h3>Check in at the kiosk</h3><p>A Creek Kids host helps you set up. Your child gets a name sticker, and you get a matching pickup tag.</p><span class="when">About 5 minutes the first time</span></li>
+        <li class="stop"><span class="dot" aria-hidden="true">3</span><h3>Drop off, go worship</h3><p>Walk your kids to their room and meet their leaders. If anyone needs you, we'll text your phone.</p><span class="when">Coffee's in the lobby</span></li>
+        <li class="stop"><span class="dot" aria-hidden="true">4</span><h3>Pick up and talk it over</h3><p>Show your tag at pickup. Kids bring home a Car Ride card with questions about the day's Bible story.</p><span class="when">Rooms close 15 min after service</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="kids" id="kids" aria-labelledby="kids-h">
+  <div class="wrap">
+    <div class="kids-top">
+      <div>
+        <p class="kids-logo"><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="#1E4FD6"/><path d="M5 18c4-3 7 2 11-1s7 2 11 0" fill="none" stroke="#FFC52E" stroke-width="3" stroke-linecap="round"/></svg>Creek Kids</p>
+        <h2 class="h2" id="kids-h">Big faith for little people</h2>
+        <p class="lede">Every Sunday, kids hear a true story about God, play hard, make a mess on purpose, and get to know a leader who remembers their name next week too.</p>
+      </div>
+      <div class="circle-photo"><img src="https://images.unsplash.com/photo-1617117206620-b01f2919ff86?w=1600&q=75&fm=jpg" alt="Two girls coloring pictures with bright markers at an outdoor table" loading="lazy"></div>
+    </div>
+    <div class="ages">
+      <article class="age"><div class="shape-top"><span class="range">0–2</span></div><h3>Nursery</h3><p class="room">The Nest · Room 104</p><p>Rocking chairs, soft blocks and gentle songs. We follow your schedule for naps and bottles.</p><ul><li>1 adult for every 3 babies</li><li>Diaper notes sent by text</li></ul></article>
+      <article class="age"><div class="shape-top"><span class="range">3–5</span></div><h3>Preschool</h3><p class="room">The Meadow · Rooms 108–110</p><p>Bible stories with puppets, music you'll hear in the car for weeks, and snack time (peanut-free).</p><ul><li>Potty help for 3s and 4s</li><li>Small groups by age</li></ul></article>
+      <article class="age"><div class="shape-top"><span class="range">K–5</span></div><h3>Elementary</h3><p class="room">The Clubhouse · Gym</p><p>Big-group worship, games and a story, then small groups by grade to talk about it and pray together.</p><ul><li>Same leaders all year</li><li>First Bible gift in 2nd grade</li></ul></article>
+    </div>
+  </div>
+</section>
+
+<section class="safety" aria-labelledby="safety-h">
+  <div class="wrap safety-grid">
+    <div>
+      <h2 class="h2" id="safety-h">Safe, checked and ready for your kids</h2>
+      <p class="lede">You're trusting us with the most important people in your life. Here's how we take care of them.</p>
+      <ul class="checks">
+        <li><svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="13" fill="#FFC52E"/><path d="M8 14l4 4 8-8" fill="none" stroke="#14204A" stroke-width="3" stroke-linecap="round"/></svg><div><b>Background checks</b><span>Every volunteer, renewed every two years, plus safety training.</span></div></li>
+        <li><svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="13" fill="#FFC52E"/><path d="M8 14l4 4 8-8" fill="none" stroke="#14204A" stroke-width="3" stroke-linecap="round"/></svg><div><b>Matching tags</b><span>Kids only leave with the adult holding their pickup code.</span></div></li>
+        <li><svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="13" fill="#FFC52E"/><path d="M8 14l4 4 8-8" fill="none" stroke="#14204A" stroke-width="3" stroke-linecap="round"/></svg><div><b>Two adults, always</b><span>No leader is ever alone with a child. Rooms have windows.</span></div></li>
+        <li><svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="13" fill="#FFC52E"/><path d="M8 14l4 4 8-8" fill="none" stroke="#14204A" stroke-width="3" stroke-linecap="round"/></svg><div><b>Allergy alerts</b><span>Printed right on the name tag. All snacks are peanut-free.</span></div></li>
+        <li><svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="13" fill="#FFC52E"/><path d="M8 14l4 4 8-8" fill="none" stroke="#14204A" stroke-width="3" stroke-linecap="round"/></svg><div><b>Secure hallway</b><span>One staffed entrance to the kids wing during services.</span></div></li>
+        <li><svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="13" fill="#FFC52E"/><path d="M8 14l4 4 8-8" fill="none" stroke="#14204A" stroke-width="3" stroke-linecap="round"/></svg><div><b>Text, don't page</b><span>Need you? Your phone buzzes. No numbers on the big screen.</span></div></li>
+      </ul>
+    </div>
+    <div class="tags" role="img" aria-label="Illustration: a child's name tag and the parent's pickup tag share the same code, 4821">
+      <div class="ntag kid"><p class="hd"><span>Creek Kids</span><span>Preschool · The Meadow</span></p><p class="nm">Mia L.</p><p>Age 4 · 9:00 service</p><span class="code">4821</span><span class="al">No dairy</span></div>
+      <span class="match" aria-hidden="true"><svg width="38" height="38" viewBox="0 0 38 38"><path d="M9 19l7 7 13-14" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="ntag par"><p class="hd"><span>Parent pickup</span><span>Oct 18</span></p><p class="nm">Lindqvist</p><p>Keep this tag for pickup</p><span class="code">4821</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="landing" aria-labelledby="landing-h">
+  <div class="wrap landing-grid">
+    <div class="landing-photo">
+      <img src="https://images.unsplash.com/photo-1633465623068-c34e257706c8?w=1600&q=75&fm=jpg" alt="A group of teenagers posing together and making peace signs by a river" loading="lazy">
+      <span class="stamp">Wed<br>6:30 p.m.</span>
+    </div>
+    <div>
+      <p class="landing-logo">The Landing · 6th–12th grade</p>
+      <h2 class="h2" id="landing-h">A place for students to land</h2>
+      <p class="lede">Middle and high schoolers meet Wednesday nights for worship, real questions about faith, small groups by grade, and an unreasonable amount of nachos.</p>
+      <div class="wk">
+        <div><b>6:30</b><span>Hangout, games, food</span></div>
+        <div><b>7:00</b><span>Worship and a talk</span></div>
+        <div><b>7:35</b><span>Small groups by grade</span></div>
+      </div>
+      <p class="lede" style="font-size:17px">Pickup at 8:15 at the east doors. Winter Retreat to Okoboji is Jan 15–17, 2027, sign-ups open Nov 1.</p>
+    </div>
+  </div>
+</section>
+
+<section class="events" id="events" aria-labelledby="events-h">
+  <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="position:absolute;top:-1px;left:0"><path d="M0 0 H1440 V18 C1200 60 960 0 720 28 S240 50 0 20 Z" fill="#fff"/></svg>
+  <div class="wrap">
+    <h2 class="h2" id="events-h">Family stuff on the calendar</h2>
+    <p class="lede">Everything here is made for all ages. Bring the grandparents, bring the neighbors, bring the kid from down the street.</p>
+    <div class="ev-grid">
+      <article class="ev big">
+        <div class="pic"><img src="https://images.unsplash.com/photo-1766932901295-d4185660341b?w=1600&q=75&fm=jpg" alt="Kids and parents making paper crafts at a long table in a greenhouse" loading="lazy" style="object-position:62% 55%"><p class="date"><b>6</b><span>DEC · SUN</span></p></div>
+        <div class="body"><h3>Family Advent Night</h3><p>Make an Advent wreath together, decorate cookies, and hear the Christmas story by candlelight. Supplies and hot chocolate are on us.</p><p class="meta">4:00–6:00 p.m. · Fellowship Hall · Free, please RSVP</p></div>
+      </article>
+      <article class="ev trunk">
+        <div class="art" aria-hidden="true"><svg width="150" height="130" viewBox="0 0 150 130"><ellipse cx="75" cy="78" rx="62" ry="46" fill="#FFC52E"/><path d="M45 40 Q 75 30 105 40" fill="none" stroke="#14204A" stroke-width="3"/><path d="M75 34 q2 -16 14 -20" fill="none" stroke="#13774A" stroke-width="7" stroke-linecap="round"/><path d="M52 70 l10 -10 l10 10z M80 70 l10 -10 l10 10z" fill="#14204A"/><path d="M52 92 q23 18 46 0" fill="none" stroke="#14204A" stroke-width="5" stroke-linecap="round"/></svg></div>
+        <div class="body"><span class="date-inline">Sat, Oct 31</span><h3>Trunk or Treat</h3><p>Forty decorated trunks, a chili cook-off, and the bounce house. Costumes very welcome.</p><p class="meta">5:00–7:00 p.m. · North lot</p></div>
+      </article>
+      <article class="ev">
+        <div class="pic" style="height:200px"><img src="https://images.unsplash.com/photo-1480388198291-d071e45ee9ca?w=1600&q=75&fm=jpg" alt="A boy praying with a Bible pressed to his forehead in front of Christmas lights" loading="lazy" style="object-position:60% 40%"><p class="date"><b>24</b><span>DEC · THU</span></p></div>
+        <div class="body"><h3>Christmas Eve Family Service</h3><p>A short, wiggle-friendly service with a live nativity and candles. Babies crying is the soundtrack.</p><p class="meta">4:00 p.m. · Also 6:00 &amp; 8:00 p.m.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="parents" aria-labelledby="parents-h">
+  <div class="wrap parents-grid">
+    <figure class="becca" style="margin:0">
+      <img src="https://images.unsplash.com/photo-1529518152792-d08317b26e22?w=1600&q=75&fm=jpg" alt="Becca Lindqvist walking with her husband and two kids under shady trees" loading="lazy">
+      <figcaption><b>Becca Lindqvist</b>Family Pastor, with Erik, Jonah and Elsa</figcaption>
+    </figure>
+    <div>
+      <h2 class="h2" id="parents-h">For parents, from a parent</h2>
+      <p class="note">"You're the biggest influence on your kid's faith. Our job is to cheer you on and hand you the tools. Text me anytime."</p>
+      <p style="margin-top:10px;color:var(--ink-2);font-size:16px">Becca · (319) 555-0177</p>
+      <div class="res">
+        <a class="r1" href="#parents"><h3>Car Ride cards</h3><p>Three questions each week about what your kids learned. Also in the church app.</p></a>
+        <a class="r2" href="#parents"><h3>Parenting in a Screen World</h3><p>A four-week class on Tuesdays, starting Nov 3. Childcare included.</p></a>
+        <a class="r3" href="#parents"><h3>Baby Dedication</h3><p>Sunday, Nov 15. Sign up by Nov 8 for a short prep class.</p></a>
+        <a class="r4" href="#parents"><h3>Special needs buddy</h3><p>A one-on-one buddy for kids who need extra support. Let's talk.</p></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="watch" aria-labelledby="watch-h" style="padding-top:0">
+  <div class="wrap">
+    <div class="msg">
+      <div class="txt">
+        <h2 class="h2" id="watch-h">Same story upstairs and down</h2>
+        <p>In our fall series, grown-ups and kids learn the same Bible passage each Sunday, so dinner conversation gets a lot easier.</p>
+        <div class="two">
+          <div><b>Grown-ups heard</b><span>"Room at the Table" · Luke 14 · Pastor Nate Halvorsen</span></div>
+          <div><b>Kids heard</b><span>Jesus throws a party and everyone is invited</span></div>
+        </div>
+        <a class="btn btn-sun" href="#watch" style="margin-top:28px">Watch Sunday's message</a>
+      </div>
+      <div class="vid">
+        <svg class="bg" viewBox="0 0 400 360" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="40" cy="40" r="70" fill="#F2542D"/><path d="M0 300 Q 100 250 200 300 T 400 290 V360 H0z" fill="#fff" opacity=".55"/><circle cx="360" cy="70" r="30" fill="#fff" opacity=".6"/></svg>
+        <div class="card"><p class="series">Home<br>Team</p><p class="sub">Week 6 of 8 · Oct 11</p><a class="play" href="#watch" aria-label="Play 'Room at the Table'"><svg width="26" height="28" viewBox="0 0 26 28" aria-hidden="true"><path d="M3 2l21 12-21 12z" fill="#FFC52E"/></svg></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="register" aria-labelledby="reg-h" style="padding-top:0">
+  <div class="wrap reg-grid">
+    <form class="reg" id="regForm">
+      <h2 class="h2" id="reg-h" style="font-size:clamp(32px,4vw,48px)">Skip the line on Sunday</h2>
+      <p class="lede" style="font-size:18px">Pre-register your kids and we'll have name tags printed and a host waiting for you at the green doors.</p>
+      <div class="fields">
+        <label>Your first name<input name="parent" autocomplete="given-name" required></label>
+        <label>Mobile number<input type="tel" name="phone" autocomplete="tel" required></label>
+        <label>Child's first name<input name="child" required></label>
+        <label>Age group<select name="age"><option>Nursery (0–2)</option><option>Preschool (3–5)</option><option>Elementary (K–5)</option></select></label>
+        <label class="full">Allergies or anything we should know?<input name="notes" placeholder="Optional"></label>
+      </div>
+      <button class="btn btn-ink" type="submit">Save our spot</button>
+      <p class="ok" role="status" id="regOk"></p>
+    </form>
+    <div class="give" id="give">
+      <span class="circ" aria-hidden="true"></span>
+      <h2 class="h2">Give to what grows here</h2>
+      <p>Your generosity keeps Creek Kids stocked, The Landing fed, and families in Cedar Falls cared for when life gets hard.</p>
+      <ul><li>Give online, once or monthly</li><li>Text any amount to (319) 555-0150</li><li>Giving boxes by the lobby doors</li></ul>
+      <a class="btn btn-white" href="#give">Give online</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer id="visit" aria-labelledby="foot-h">
+  <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="background:#fff"><path d="M0 30 C240 0 480 60 720 30 S1200 0 1440 30 V60 H0z" fill="#14204A"/></svg>
+  <div class="wrap inner">
+    <div class="f-grid">
+      <div>
+        <h2 id="foot-h">See you Sunday, crumbs and all.</h2>
+        <div class="social">
+          <a href="#top" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+          <a href="#top" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8z"/></svg></a>
+          <a href="#top" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4" fill="#fff"/><path d="M10 9l5 3-5 3z" fill="#14204A"/></svg></a>
+        </div>
+      </div>
+      <div><h3>Visit</h3><ul><li>2400 Greenhill Rd</li><li>Cedar Falls, IA 50613</li><li>Sundays 9:00 &amp; 10:30 a.m.</li><li>The Landing: Wed 6:30 p.m.</li></ul></div>
+      <div><h3>Contact</h3><ul><li><a href="#top">(319) 555-0140</a></li><li><a href="#top">hello@maplecreek.church</a></li><li>Office: Mon–Thu, 9–4</li><li><a href="#register">Pre-register kids</a></li></ul></div>
+      <div><h3>Families</h3><ul><li><a href="#kids">Creek Kids</a></li><li><a href="#landing">The Landing</a></li><li><a href="#parents">Parent resources</a></li><li><a href="#events">Events</a></li><li><a href="#give">Give</a></li></ul></div>
+    </div>
+    <div class="f-bot"><span>© 2026 Maple Creek Community Church</span><span>Kids check-in policy and safety plan available at the Welcome Center</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('menuBtn'),nav=document.getElementById('nav');
+  btn.addEventListener('click',function(){var o=nav.classList.toggle('open');btn.setAttribute('aria-expanded',o);btn.textContent=o?'Close':'Menu';});
+  document.querySelectorAll('#menu a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.textContent='Menu';});});
+  var f=document.getElementById('regForm');
+  f.addEventListener('submit',function(e){e.preventDefault();var c=f.child.value.trim()||'your child';var ok=document.getElementById('regOk');
+    ok.textContent='You’re all set! '+c+'’s tag will be ready at the green doors. We’ll text a reminder Saturday night.';ok.classList.add('show');});
+})();
+</script>
+</body>
+</html>

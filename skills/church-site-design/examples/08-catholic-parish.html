@@ -1,0 +1,784 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>St. Anne Catholic Parish · San Antonio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#17305a; --blue-2:#244a86; --blue-ink:#0f2242; --sky:#e9eff8; --sky-2:#d6e1f1;
+  --ivory:#fbfaf6; --paper:#ffffff; --line:#d9dce3; --line-soft:#e8e9ee;
+  --gold:#c19a48; --gold-text:#7a5b18; --gold-soft:#f4ecd9;
+  --ink:#1b2232; --muted:#4b5367; --season:#2e6a3e;
+  --serif:"Cormorant Garamond","Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --sans:"Source Sans 3","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --wrap:1240px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ivory);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:var(--blue-2)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.1;margin:0;color:var(--blue-ink)}
+h2{font-size:clamp(2rem,3.4vw,2.9rem)}
+h3{font-size:1.55rem}
+p{margin:0 0 1em}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media(min-width:700px){.wrap{padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}}
+.skip{position:absolute;left:-9999px;top:0;background:var(--paper);padding:8px 12px;z-index:100}
+.skip:focus{left:16px}
+.kicker{font-family:var(--sans);font-size:.84rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-text)}
+.btn{display:inline-flex;align-items:center;gap:.5em;font:600 1rem/1 var(--sans);padding:.85em 1.25em;border-radius:3px;text-decoration:none;border:1.5px solid transparent;cursor:pointer}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:var(--blue-2)}
+.btn-gold{background:var(--gold);color:var(--blue-ink)}
+.btn-gold:hover{background:#d2ad5d}
+.btn-line{border-color:currentColor;color:var(--blue);background:transparent}
+.btn-line:hover{background:var(--sky)}
+.btn-line-light{border-color:rgba(255,255,255,.75);color:#fff}
+.btn-line-light:hover{background:rgba(255,255,255,.1)}
+
+/* utility bar */
+.util{background:var(--blue-ink);color:#dfe6f2;font-size:.9rem}
+.util .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:42px}
+.season{display:flex;align-items:center;gap:.55em;white-space:nowrap}
+.season i{width:10px;height:10px;border-radius:50%;background:#4f9a62;box-shadow:0 0 0 3px rgba(79,154,98,.25)}
+.util-links{display:flex;align-items:center;gap:22px}
+.util-links a{color:#dfe6f2;text-decoration:none}
+.util-links a:hover{color:#fff;text-decoration:underline}
+.lang{display:inline-flex;border:1px solid rgba(255,255,255,.35);border-radius:3px;overflow:hidden}
+.lang button{background:transparent;color:#dfe6f2;border:0;font:600 .85rem/1 var(--sans);letter-spacing:.06em;padding:.5em .8em;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--gold);color:var(--blue-ink)}
+@media(max-width:520px){.hdr .brand .city{display:none}}
+@media(max-width:860px){.util-links a{display:none}.season span.long{display:none}}
+
+/* header */
+.hdr{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:84px}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--blue-ink)}
+.brand svg{width:46px;height:54px;flex:none}
+.brand b{display:block;font-family:var(--serif);font-weight:700;font-size:1.6rem;line-height:1}
+.brand small{display:block;font-size:.84rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:5px}
+.nav{display:flex;align-items:center;gap:26px}
+.nav a.l{color:var(--ink);text-decoration:none;font-weight:600;font-size:.98rem}
+.nav a.l:hover{color:var(--blue-2);text-decoration:underline;text-underline-offset:5px}
+.nav .acts{display:flex;gap:10px;margin-left:6px}
+.menu-btn{display:none;background:none;border:1.5px solid var(--blue);color:var(--blue);font:600 .95rem/1 var(--sans);padding:.65em .9em;border-radius:3px;cursor:pointer}
+@media(max-width:1080px){
+  .menu-btn{display:inline-flex}
+  .nav{display:none;position:absolute;left:0;right:0;top:100%;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;padding:8px max(16px,env(safe-area-inset-left,0px)) 20px}
+  .nav.open{display:flex}
+  .nav a.l{padding:14px 4px;border-bottom:1px solid var(--line-soft)}
+  .nav .acts{margin:16px 0 0}
+}
+
+/* hero */
+.hero{position:relative;background:var(--blue-ink);color:#fff;overflow:hidden}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,26,52,.92) 0%,rgba(12,26,52,.78) 42%,rgba(12,26,52,.45) 100%)}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,560px);grid-template-areas:"intro mass" "more mass";column-gap:56px;align-items:end;padding-top:64px;padding-bottom:64px}
+.hero .intro{grid-area:intro}.hero .more{grid-area:more;align-self:start}.hero .mass{grid-area:mass;align-self:center}
+.hero h1{color:#fff;font-size:clamp(2.6rem,5.2vw,4.6rem);font-weight:600;letter-spacing:-.01em}
+.hero .motto{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(1.5rem,2.4vw,2.1rem);line-height:1.2;color:#e9d39f;margin:.4em 0 0}
+.hero .kicker{color:#e9d39f}
+.hero p.lede{font-size:1.2rem;max-width:30em;color:#e8edf6;margin:22px 0 26px}
+.hero .addr{display:flex;gap:10px;align-items:flex-start;color:#dfe6f2;font-size:1rem;margin-bottom:28px}
+.hero .addr svg{flex:none;margin-top:3px}
+.hero .btns{display:flex;flex-wrap:wrap;gap:12px}
+
+/* mass panel */
+.mass{background:var(--paper);color:var(--ink);border-radius:4px;box-shadow:0 24px 60px rgba(5,14,32,.35);overflow:hidden;border-top:5px solid var(--gold)}
+.mass-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding:22px 26px 16px;border-bottom:1px solid var(--line)}
+.mass-head h2{font-size:2.1rem}
+.next{font-size:.9rem;color:var(--season);font-weight:600;text-align:right;line-height:1.3}
+.next strong{display:block;color:var(--ink);font-size:1rem}
+.mass-grid{display:grid;grid-template-columns:1fr 1fr}
+.mg{padding:16px 26px 18px;border-bottom:1px solid var(--line-soft)}
+.mg:nth-child(odd){border-right:1px solid var(--line-soft)}
+.mg h3{font-family:var(--sans);font-size:.84rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-text);margin-bottom:8px}
+.mg.wide{grid-column:1/-1;border-right:0}
+.mg dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 14px}
+.mg dt{font-weight:700;color:var(--blue-ink)}
+.mg dd{margin:0;color:var(--ink)}
+.times{display:flex;flex-wrap:wrap;gap:6px 8px}
+.t{white-space:nowrap;display:inline-flex;align-items:baseline;gap:.35em;font-variant-numeric:tabular-nums;font-weight:600;background:var(--sky);color:var(--blue-ink);border-radius:2px;padding:.18em .5em}
+.t.es{background:var(--gold-soft);color:#5d4410}
+.t.es small{font-size:.84rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.mass-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 18px;padding:14px 26px;background:var(--sky);font-size:.93rem}
+.mass-foot a{font-weight:600;color:var(--blue)}
+@media(max-width:980px){
+  .hero .wrap{grid-template-columns:1fr;grid-template-areas:"intro" "mass" "more";row-gap:28px;padding-top:40px;padding-bottom:44px}
+  .hero p.lede{margin-top:4px}
+  .hero::after{background:linear-gradient(180deg,rgba(12,26,52,.88),rgba(12,26,52,.82))}
+}
+@media(max-width:520px){
+  .mass-grid{grid-template-columns:1fr}
+  .mg:nth-child(odd){border-right:0}
+  .mass-head,.mg,.mass-foot{padding-left:18px;padding-right:18px}
+  .mass-head{flex-direction:column;align-items:flex-start}
+  .next{text-align:left}
+}
+
+/* sacraments */
+.sac{background:var(--paper);border-bottom:1px solid var(--line)}
+.sac .wrap{display:grid;grid-template-columns:220px 1fr;gap:32px;align-items:center;padding-top:34px;padding-bottom:34px}
+.sac h2{font-size:2rem}
+.sac p.sub{color:var(--muted);font-size:.95rem;margin:.4em 0 0}
+.sac ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-left:1px solid var(--line-soft)}
+.sac li a{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:10px 8px;border-right:1px solid var(--line-soft);color:var(--blue-ink);text-decoration:none;font-weight:600;font-size:.95rem;line-height:1.25;height:100%}
+.sac li a:hover{background:var(--sky)}
+.sac svg{width:34px;height:34px;stroke:var(--gold-text);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:1080px){.sac .wrap{grid-template-columns:1fr}.sac ul{grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line-soft)}.sac li a{border-bottom:1px solid var(--line-soft)}}
+@media(max-width:520px){.sac ul{grid-template-columns:repeat(2,minmax(0,1fr))}.sac li a{flex-direction:row;text-align:left;justify-content:flex-start}}
+
+section.block{padding:88px 0}
+@media(max-width:700px){section.block{padding:60px 0}}
+
+/* welcome */
+.welcome .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px;align-items:start}
+.welcome figure{margin:0;position:sticky;top:110px}
+.welcome figure img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:62% 50%;border-radius:2px}
+.welcome figcaption{font-size:.88rem;color:var(--muted);margin-top:10px;font-style:italic}
+.letter{font-size:1.12rem}
+.letter h2{margin:10px 0 20px}
+.sig{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--blue-ink);margin-bottom:34px}
+.sig small{display:block;font-family:var(--sans);font-style:normal;font-size:.88rem;color:var(--muted)}
+.steps{list-style:none;padding:0;margin:0 0 30px;border-top:1px solid var(--line)}
+.steps li{display:grid;grid-template-columns:52px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
+.steps .n{font-family:var(--serif);font-size:2.2rem;line-height:1;color:var(--gold-text);font-weight:600}
+.steps h3{font-size:1.4rem;margin-bottom:4px}
+.steps p{margin:0;color:var(--muted);font-size:1rem}
+.reg{background:var(--paper);border:1px solid var(--line);border-top:4px solid var(--blue);padding:24px}
+.reg h3{margin-bottom:6px}
+.reg p{font-size:.98rem;color:var(--muted)}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fgrid .full{grid-column:1/-1}
+label{display:block;font-weight:600;font-size:.92rem;margin-bottom:5px;color:var(--ink)}
+input,select,textarea{width:100%;font:inherit;font-size:1rem;padding:.65em .75em;border:1.5px solid #b9bfcc;border-radius:3px;background:#fff;color:var(--ink)}
+.ok{display:none;margin-top:14px;padding:12px 14px;background:#e8f2ea;color:#1d4d2b;border-left:4px solid var(--season);font-weight:600}
+.ok.show{display:block}
+@media(max-width:900px){.welcome figure{position:static}.welcome .wrap{grid-template-columns:1fr;gap:36px}.welcome figure img{aspect-ratio:16/10;object-position:60% 40%}}
+@media(max-width:520px){.fgrid{grid-template-columns:1fr}}
+
+/* this week */
+.week{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.week-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:36px;flex-wrap:wrap}
+.week-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:48px}
+.bulletin{background:var(--blue);color:#fff;padding:30px;border-radius:3px;position:relative;overflow:hidden}
+.bulletin h3{color:#fff;font-size:1.9rem;margin:8px 0 6px}
+.bulletin .kicker{color:#e9d39f}
+.bulletin p{color:#dbe3f1;font-size:.98rem}
+.bulletin .btn{margin-top:6px}
+.bulletin ul{list-style:none;padding:0;margin:22px 0 0;border-top:1px solid rgba(255,255,255,.2)}
+.bulletin li a{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.2);color:#e9eef7;text-decoration:none;font-size:.95rem}
+.bulletin li a:hover{color:#fff;text-decoration:underline}
+.news{margin-top:28px}
+.news h3{font-size:1.45rem;margin-bottom:12px}
+.news article{padding:14px 0;border-top:1px solid var(--line)}
+.news article h4{margin:0 0 4px;font-size:1.05rem}
+.news article h4 a{color:var(--blue-ink);text-decoration:none}
+.news article h4 a:hover{text-decoration:underline}
+.news article p{margin:0;font-size:.95rem;color:var(--muted)}
+.cal{list-style:none;margin:0;padding:0}
+.cal li{display:grid;grid-template-columns:86px minmax(0,1fr) auto;gap:22px;align-items:start;padding:22px 0;border-top:1px solid var(--line)}
+.cal li:last-child{border-bottom:1px solid var(--line)}
+.date{border:1px solid var(--line);text-align:center;background:var(--ivory)}
+.date .m{display:block;background:var(--blue);color:#fff;font-size:.84rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 0}
+.date .d{display:block;font-family:var(--serif);font-size:2.2rem;font-weight:700;line-height:1.1;padding:4px 0 2px;color:var(--blue-ink)}
+.date .w{display:block;font-size:.84rem;color:var(--muted);padding-bottom:6px}
+.cal h3{font-size:1.5rem;margin-bottom:4px}
+.cal p{margin:0;color:var(--muted);font-size:1rem}
+.tag{display:inline-block;font-size:.84rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.25em .6em;border-radius:2px;background:var(--sky);color:var(--blue);white-space:nowrap}
+.tag.feast{background:var(--gold-soft);color:#5d4410}
+.tag.bi{background:#e8f2ea;color:#1d4d2b}
+@media(max-width:900px){.week-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.cal li{grid-template-columns:70px minmax(0,1fr)}.cal .tag{grid-column:2;justify-self:start}}
+
+/* prayer / adoration / watch */
+.prayer{background:var(--blue-ink);color:#e6ebf4}
+.prayer .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:0;align-items:stretch}
+.adore{position:relative;min-height:560px;overflow:hidden}
+.adore img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+.adore::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,18,36,0) 30%,rgba(10,18,36,.9) 100%)}
+.adore .cap{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:32px}
+.adore h2{color:#fff;font-size:clamp(2rem,3vw,2.7rem)}
+.adore p{color:#e6ebf4;margin:12px 0 18px}
+.adore .kicker{color:#e9d39f}
+.watch{padding:56px 0 56px 56px}
+.watch h2{color:#fff;margin:8px 0 18px}
+.watch .kicker{color:#e9d39f}
+.watch>p{max-width:34em}
+.homily{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;margin:30px 0;padding:22px 0;border-top:1px solid rgba(255,255,255,.18);border-bottom:1px solid rgba(255,255,255,.18);align-items:center}
+.homily .thumb{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:2px}
+.homily .thumb img{width:100%;height:100%;object-fit:cover;object-position:50% 58%}
+.homily .thumb span{position:absolute;inset:auto auto 10px 10px;background:rgba(10,18,36,.85);color:#fff;font-size:.84rem;font-weight:600;padding:3px 8px;border-radius:2px}
+.homily h3{color:#fff;font-size:1.6rem;margin:4px 0 6px}
+.homily p{margin:0;color:#c9d3e4;font-size:.98rem}
+.live-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:14px 32px}
+.live-list li{border-left:2px solid var(--gold);padding-left:14px}
+.live-list b{display:block;color:#fff}
+.live-list span{font-size:.95rem;color:#c9d3e4}
+@media(max-width:980px){.prayer .wrap{grid-template-columns:1fr;padding-left:0;padding-right:0}.adore{min-height:440px}.watch{padding:48px max(16px,env(safe-area-inset-left,0px))}}
+@media(max-width:560px){.homily{grid-template-columns:1fr}.live-list{grid-template-columns:1fr}}
+
+/* formation */
+.form-head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:end;margin-bottom:44px}
+.form-head p{color:var(--muted);font-size:1.1rem;margin:0}
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:2px solid var(--blue)}
+.col{padding:26px 28px 6px 0}
+.col+.col{padding-left:28px;border-left:1px solid var(--line)}
+.col h3{font-size:1.65rem;margin-bottom:14px}
+.col ul{list-style:none;padding:0;margin:0}
+.col li{padding:11px 0;border-bottom:1px solid var(--line-soft)}
+.col li a{color:var(--blue-ink);font-weight:600;text-decoration:none}
+.col li a:hover{text-decoration:underline}
+.col li span{display:block;font-size:.93rem;color:var(--muted)}
+@media(max-width:900px){.form-head{grid-template-columns:1fr;gap:14px}.cols{grid-template-columns:1fr}.col,.col+.col{padding:24px 0 6px;border-left:0}.col+.col{border-top:1px solid var(--line)}}
+
+/* school */
+.school{background:var(--sky)}
+.school .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:center;padding-top:72px;padding-bottom:72px}
+.school p{font-size:1.1rem;color:#2c3448;max-width:36em}
+.school h2{margin:8px 0 18px}
+.facts{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #b7c6de;border-left:1px solid #b7c6de}
+.facts div{padding:20px;border-right:1px solid #b7c6de;border-bottom:1px solid #b7c6de;background:rgba(255,255,255,.55)}
+.facts b{display:block;font-family:var(--serif);font-size:2.3rem;line-height:1;color:var(--blue-ink)}
+.facts span{font-size:.92rem;color:var(--muted)}
+@media(max-width:900px){.school .wrap{grid-template-columns:1fr;gap:32px;padding-top:56px;padding-bottom:56px}}
+
+/* give */
+.give .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px;align-items:center}
+.give figure{margin:0}
+.give figure img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 6%;border-radius:2px}
+.give h2{margin:8px 0 16px}
+.give p.lede{font-size:1.12rem;color:#2c3448}
+.ways{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:26px 0}
+.way{border-top:2px solid var(--gold);padding-top:12px}
+.way h3{font-size:1.35rem;margin-bottom:4px}
+.way p{font-size:.96rem;color:var(--muted);margin:0}
+.campaign{background:var(--paper);border:1px solid var(--line);padding:20px 22px;margin-bottom:26px}
+.campaign .row{display:flex;justify-content:space-between;gap:10px;font-weight:600;margin-bottom:10px;flex-wrap:wrap}
+.bar{height:10px;background:var(--line-soft);border-radius:5px;overflow:hidden}
+.bar i{display:block;height:100%;width:68%;background:linear-gradient(90deg,var(--blue),var(--blue-2))}
+.campaign small{display:block;margin-top:8px;color:var(--muted);font-size:.9rem}
+@media(max-width:900px){.give .wrap{grid-template-columns:1fr;gap:32px}.give figure img{aspect-ratio:16/10;object-position:50% 30%}}
+@media(max-width:520px){.ways{grid-template-columns:1fr}}
+
+/* footer */
+footer{background:var(--blue-ink);color:#cdd6e6;font-size:.96rem}
+.ft{display:grid;grid-template-columns:minmax(0,4fr) repeat(3,minmax(0,2.6fr));gap:40px;padding-top:64px;padding-bottom:48px}
+footer h3{color:#fff;font-family:var(--sans);font-size:.84rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+footer a{color:#e8edf6}
+footer ul{list-style:none;margin:0;padding:0}
+footer li{margin-bottom:6px}
+footer .brand{color:#fff}
+footer .brand small{color:#b7c3d8}
+.social{display:flex;gap:10px;margin-top:18px}
+.social a{display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.3);border-radius:50%}
+.social a:hover{background:rgba(255,255,255,.1)}
+.social svg{width:18px;height:18px;fill:#e8edf6}
+.legal{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;padding-bottom:28px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.88rem;color:#aab6cc}
+@media(max-width:980px){.ft{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.ft{grid-template-columns:1fr}}
+
+@media(prefers-reduced-motion:no-preference){
+  .hero-img{animation:drift 30s ease-in-out infinite alternate}
+  @keyframes drift{from{transform:scale(1.02)}to{transform:scale(1.08) translateX(-1%)}}
+  .t{transition:background .2s}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#mass">Skip to Mass times</a>
+
+<div class="util">
+  <div class="wrap">
+    <div class="season"><i aria-hidden="true"></i><span data-i18n="season">Ordinary Time</span><span class="long">&nbsp;· <span data-i18n="week">29th Week</span></span></div>
+    <div class="util-links">
+      <a href="#bulletin" data-i18n="u_bulletin">This week's bulletin</a>
+      <a href="#school" data-i18n="u_school">St. Anne School</a>
+      <a href="#register" data-i18n="u_register">Register</a>
+      <a href="#contact" data-i18n="u_contact">Contact</a>
+      <div class="lang" role="group" aria-label="Language / Idioma">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="es" aria-pressed="false">ES</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<header class="hdr">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="St. Anne Catholic Parish, home">
+      <svg viewBox="0 0 46 54" aria-hidden="true">
+        <path d="M3 3h40v22c0 14-9 22-20 26C12 47 3 39 3 25z" fill="#17305a"/>
+        <path d="M3 3h40v22c0 14-9 22-20 26C12 47 3 39 3 25z" fill="none" stroke="#c19a48" stroke-width="2"/>
+        <path d="M23 10v30M15 18h16" stroke="#c19a48" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M10 33c4 4 9 6 13 6s9-2 13-6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+        <circle cx="13" cy="12" r="1.6" fill="#fff"/><circle cx="33" cy="12" r="1.6" fill="#fff"/>
+      </svg>
+      <span><b>St. Anne</b><small><span data-i18n="brand_sub1">Catholic Parish</span><span class="city"> · San Antonio</span></small></span>
+    </a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" data-i18n="menu">Menu</button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a class="l" href="#mass" data-i18n="n_mass">Mass Times</a>
+      <a class="l" href="#sacraments" data-i18n="n_sac">Sacraments</a>
+      <a class="l" href="#formation" data-i18n="n_form">Faith Formation</a>
+      <a class="l" href="#school" data-i18n="n_school">School</a>
+      <a class="l" href="#bulletin" data-i18n="n_news">News &amp; Bulletin</a>
+      <span class="acts">
+        <a class="btn btn-line" href="#register" data-i18n="new">New Parishioners</a>
+        <a class="btn btn-blue" href="#give" data-i18n="give">Give</a>
+      </span>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" aria-labelledby="hero-title">
+  <img class="hero-img" src="https://images.unsplash.com/photo-1562445735-e038b568a0a0?w=1600&q=75&fm=jpg" alt="The congregation standing in the pews as the priest and servers stand at the altar beneath a large mosaic of Christ">
+  <div class="wrap">
+    <div class="intro">
+      <div class="kicker" data-i18n="est">Parroquia Santa Ana · Founded 1921</div>
+      <h1 id="hero-title" style="margin-top:14px">St. Anne Catholic Parish</h1>
+      <p class="motto" data-i18n="h1_sub">One family at the altar, in two languages</p>
+    </div>
+    <div class="more">
+      <p class="lede" data-i18n="lede">For more than a century the families of San Antonio's West Side have gathered here to pray, to baptize their children and to bury their dead. Whether you have been coming for fifty years or this is your first Sunday, you belong at this table.</p>
+      <div class="addr">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e9d39f" stroke-width="2" aria-hidden="true"><path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        <span>815 Calle Santa Ana, San Antonio, TX 78207 · <a href="#contact" style="color:#fff" data-i18n="directions">Directions &amp; parking</a></span>
+      </div>
+      <div class="btns">
+        <a class="btn btn-gold" href="#register" data-i18n="register_btn">Register as a parishioner</a>
+        <a class="btn btn-line-light" href="#watch" data-i18n="watch_btn">Watch Mass online</a>
+      </div>
+    </div>
+
+    <div class="mass" id="mass" aria-labelledby="mass-title">
+      <div class="mass-head">
+        <h2 id="mass-title" data-i18n="mass_title">Mass Times</h2>
+        <div class="next" aria-live="polite"><span data-i18n="next_label">Next Mass</span><strong id="nextMass">Sat 5:00 p.m. Vigil</strong></div>
+      </div>
+      <div class="mass-grid">
+        <div class="mg wide">
+          <h3 data-i18n="weekend">Weekend Masses</h3>
+          <dl>
+            <dt data-i18n="sat">Saturday</dt><dd><div class="times"><span class="t">5:00 p.m. <small data-i18n="vigil">Vigil</small></span></div></dd>
+            <dt data-i18n="sun">Sunday</dt><dd><div class="times"><span class="t">8:00 a.m.</span><span class="t es">10:00 a.m. <small>Español</small></span><span class="t">12:00 p.m.</span><span class="t">6:00 p.m.</span></div></dd>
+          </dl>
+        </div>
+        <div class="mg">
+          <h3 data-i18n="weekday">Weekday Masses</h3>
+          <dl>
+            <dt data-i18n="monfri">Mon–Fri</dt><dd>7:00 a.m.</dd>
+            <dt data-i18n="wed">Wednesday</dt><dd><span class="t es">6:30 p.m. <small>Español</small></span></dd>
+          </dl>
+        </div>
+        <div class="mg">
+          <h3 data-i18n="confession">Confession</h3>
+          <dl>
+            <dt data-i18n="sat">Saturday</dt><dd>3:30–4:30 p.m.</dd>
+          </dl>
+          <p style="margin:6px 0 0;font-size:.92rem;color:var(--muted)" data-i18n="appt">or by appointment with Fr. Miguel</p>
+        </div>
+        <div class="mg wide">
+          <h3 data-i18n="adoration">Eucharistic Adoration</h3>
+          <dl>
+            <dt data-i18n="fridays">Fridays</dt><dd><span data-i18n="adore_time">8:00 a.m.–8:00 p.m., Chapel of St. Joachim</span></dd>
+          </dl>
+        </div>
+      </div>
+      <div class="mass-foot">
+        <span><b data-i18n="holyday">Immaculate Conception</b> · <span data-i18n="holyday_t">Tue Dec 8: 7 a.m., 12 p.m., 7 p.m. (bilingual)</span></span>
+        <a href="#bulletin" data-i18n="full_sched">Full schedule &amp; holy days →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sac" id="sacraments" aria-labelledby="sac-title">
+  <div class="wrap">
+    <div>
+      <h2 id="sac-title" data-i18n="sac_title">The Sacraments</h2>
+      <p class="sub" data-i18n="sac_sub">Preparation, forms and who to call, for each one.</p>
+    </div>
+    <ul>
+      <li><a href="#sacraments"><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M6 14c3-7 19-7 22 0"/><path d="M17 4v10"/><path d="M11 20c0 2 2 4 2 4M17 19v6M23 20c0 2-2 4-2 4"/><path d="M8 28h18"/></svg><span data-i18n="s1">Baptism</span></a></li>
+      <li><a href="#sacraments"><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M9 6h16v22H9z"/><path d="M17 10v12M12 15h10"/></svg><span data-i18n="s2">Reconciliation</span></a></li>
+      <li><a href="#sacraments"><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M10 6h14c0 7-3 11-7 11S10 13 10 6z"/><path d="M17 17v9M11 28h12"/><circle cx="17" cy="4" r="0"/></svg><span data-i18n="s3">First Communion</span></a></li>
+      <li><a href="#sacraments"><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M17 4c-2 4-6 6-6 11a6 6 0 0 0 12 0c0-5-4-7-6-11z"/><path d="M17 21v9"/></svg><span data-i18n="s4">Confirmation</span></a></li>
+      <li><a href="#sacraments"><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="13" cy="19" r="7"/><circle cx="21" cy="19" r="7"/><path d="M14 8l3-4 3 4"/></svg><span data-i18n="s5">Marriage</span></a></li>
+      <li><a href="#sacraments"><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M11 4v26M23 4v26"/><path d="M11 10h12M11 30h12"/><path d="M17 14v10M13 18h8"/></svg><span data-i18n="s6">Holy Orders</span></a></li>
+      <li><a href="#sacraments"><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M12 10h10l2 6v10a3 3 0 0 1-3 3h-8a3 3 0 0 1-3-3V16z"/><path d="M14 10V6h6v4"/><path d="M17 17v6M14 20h6"/></svg><span data-i18n="s7">Anointing of the Sick</span></a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="block welcome" id="register" aria-labelledby="welcome-title">
+  <div class="wrap">
+    <figure>
+      <img src="https://images.unsplash.com/photo-1720729918255-249f42cb9ff7?w=1600&q=75&fm=jpg" alt="A priest in red vestments holds a silver chalice beside an altar server in white" loading="lazy">
+      <figcaption data-i18n="fig1">The Feast of St. Luke, celebrated at the 7:00 a.m. weekday Mass.</figcaption>
+    </figure>
+    <div class="letter">
+      <div class="kicker" data-i18n="welcome_k">Welcome · Bienvenidos</div>
+      <h2 id="welcome-title" data-i18n="welcome_title">New to St. Anne? We are glad you found us.</h2>
+      <p data-i18n="letter1">Some of you were baptized at our font; others arrived last month from Laredo, Monterrey or Ohio. Our parish is made up of both, and we would not have it any other way. Come to any Mass, introduce yourself after, and let us know how we can help you settle in.</p>
+      <div class="sig">Fr. Miguel Ortega <small data-i18n="pastor">Pastor · Párroco</small></div>
+      <ol class="steps">
+        <li><span class="n">1</span><div><h3 data-i18n="st1">Come to Mass</h3><p data-i18n="st1p">Arrive ten minutes early; ushers at the main doors will help you find a seat. Parking is in the school lot on Calle Santa Ana.</p></div></li>
+        <li><span class="n">2</span><div><h3 data-i18n="st2">Register with the parish</h3><p data-i18n="st2p">Registration lets us prepare your children for the sacraments, send your offering statements and visit you when you are sick.</p></div></li>
+        <li><span class="n">3</span><div><h3 data-i18n="st3">Find your place</h3><p data-i18n="st3p">Sing in a choir, read at Mass, serve with St. Vincent de Paul or join a Bible study. There is room for everyone.</p></div></li>
+      </ol>
+      <form class="reg" id="regForm" novalidate>
+        <h3 data-i18n="reg_title">New parishioner registration</h3>
+        <p data-i18n="reg_p">Start here and the parish office will call you within the week to finish.</p>
+        <div class="fgrid">
+          <div><label for="r-name" data-i18n="f_name">Name of head of household</label><input id="r-name" name="name" autocomplete="name" required></div>
+          <div><label for="r-phone" data-i18n="f_phone">Phone</label><input id="r-phone" name="phone" type="tel" autocomplete="tel"></div>
+          <div><label for="r-email" data-i18n="f_email">Email</label><input id="r-email" name="email" type="email" autocomplete="email"></div>
+          <div><label for="r-lang" data-i18n="f_lang">Preferred language</label><select id="r-lang" name="lang"><option>English</option><option>Español</option><option data-i18n="f_both">Both</option></select></div>
+          <div class="full"><button class="btn btn-blue" type="submit" data-i18n="f_send">Send registration</button></div>
+        </div>
+        <p class="ok" id="regOk" role="status" data-i18n="f_ok">Thank you. The parish office will call you this week to welcome you and finish your registration.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="block week" id="bulletin" aria-labelledby="week-title">
+  <div class="wrap">
+    <div class="week-head">
+      <div>
+        <div class="kicker" data-i18n="week_k">Parish life</div>
+        <h2 id="week-title" style="margin-top:8px" data-i18n="week_title">This week at St. Anne</h2>
+      </div>
+      <a class="btn btn-line" href="#bulletin" data-i18n="full_cal">Full parish calendar</a>
+    </div>
+    <div class="week-grid">
+      <div>
+        <div class="bulletin">
+          <div class="kicker" data-i18n="bul_k">Weekly bulletin</div>
+          <h3 data-i18n="bul_date">October 18, 2026</h3>
+          <p data-i18n="bul_p">Twenty-ninth Sunday in Ordinary Time. Mass intentions, the Jamaica volunteer sign-up and this week's stewardship report.</p>
+          <a class="btn btn-gold" href="#bulletin" data-i18n="bul_btn">Download PDF (2.1 MB)</a>
+          <ul>
+            <li><a href="#bulletin"><span data-i18n="bul_1">October 11, 2026</span><span>PDF</span></a></li>
+            <li><a href="#bulletin"><span data-i18n="bul_2">October 4, 2026</span><span>PDF</span></a></li>
+            <li><a href="#bulletin"><span data-i18n="bul_3">Bulletin archive</span><span>→</span></a></li>
+          </ul>
+        </div>
+        <div class="news">
+          <h3 data-i18n="news_t">Parish news</h3>
+          <article><h4><a href="#bulletin" data-i18n="nw1">Ofrenda photos welcome through October 30</a></h4><p data-i18n="nw1p">Bring a framed photo of a loved one who has died for the parish altar in the narthex.</p></article>
+          <article><h4><a href="#bulletin" data-i18n="nw2">OCIA inquiry nights begin Tuesday</a></h4><p data-i18n="nw2p">Adults curious about becoming Catholic meet Tuesdays at 7 p.m. in the parish hall.</p></article>
+          <article><h4><a href="#bulletin" data-i18n="nw3">Welcome, Deacon Rubén Salinas</a></h4><p data-i18n="nw3p">Ordained in June, Deacon Rubén will preach at the 10:00 a.m. Misa this month.</p></article>
+        </div>
+      </div>
+      <ol class="cal">
+        <li>
+          <div class="date"><span class="m" data-i18n="oct">Oct</span><span class="d">24</span><span class="w" data-i18n="sat_s">Sat</span></div>
+          <div><h3 data-i18n="e1">Fall Jamaica on the parish grounds</h3><p data-i18n="e1p">Gorditas, the cakewalk, lotería and the St. Anne School mariachi. Saturday 11 a.m.–10 p.m. and Sunday after the 12:00 Mass. Proceeds go to the school tuition fund.</p></div>
+          <span class="tag" data-i18n="tag_fam">Families</span>
+        </li>
+        <li>
+          <div class="date"><span class="m" data-i18n="nov">Nov</span><span class="d">2</span><span class="w" data-i18n="mon_s">Mon</span></div>
+          <div><h3 data-i18n="e2">All Souls Mass &amp; Día de los Muertos ofrenda</h3><p data-i18n="e2p">Bilingual Mass at 7:00 p.m. with the reading of the names of parishioners who died this year, then pan de muerto and champurrado in the hall.</p></div>
+          <span class="tag bi" data-i18n="tag_bi">Bilingual</span>
+        </li>
+        <li>
+          <div class="date"><span class="m" data-i18n="nov">Nov</span><span class="d">29</span><span class="w" data-i18n="sun_s">Sun</span></div>
+          <div><h3 data-i18n="e3">First Sunday of Advent</h3><p data-i18n="e3p">Blessing of family Advent wreaths at every Mass. Wreath kits are $15 at the Jamaica booth while they last.</p></div>
+          <span class="tag" data-i18n="tag_lit">Liturgy</span>
+        </li>
+        <li>
+          <div class="date"><span class="m" data-i18n="dec">Dec</span><span class="d">12</span><span class="w" data-i18n="sat_s">Sat</span></div>
+          <div><h3 data-i18n="e4">Our Lady of Guadalupe</h3><p data-i18n="e4p">Las Mañanitas at 6:00 a.m. with mariachi, Misa at 7:00 p.m., then the procession around the block with the Guadalupanas.</p></div>
+          <span class="tag feast" data-i18n="tag_feast">Feast day</span>
+        </li>
+        <li>
+          <div class="date"><span class="m" data-i18n="dec">Dec</span><span class="d">15</span><span class="w" data-i18n="tue_s">Tue</span></div>
+          <div><h3 data-i18n="e5">Advent Penance Service</h3><p data-i18n="e5p">Six priests hearing confessions in English and Spanish from 6:30 p.m. A good time to come back if it has been a while.</p></div>
+          <span class="tag" data-i18n="tag_conf">Confession</span>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="prayer" id="watch" aria-label="Adoration and Mass online">
+  <div class="wrap">
+    <div class="adore">
+      <img src="https://images.unsplash.com/photo-1573591013318-b942d6ea1092?w=1600&q=75&fm=jpg" alt="A gold monstrance on the altar surrounded by rows of lit candles in a dark chapel" loading="lazy">
+      <div class="cap">
+        <div class="kicker" data-i18n="ad_k">Adoration Chapel</div>
+        <h2 data-i18n="ad_t">Come and rest a while.</h2>
+        <p data-i18n="ad_p">The Blessed Sacrament is exposed every Friday from 8 a.m. to 8 p.m. Commit to one holy hour a week so the chapel is never left empty.</p>
+        <a class="btn btn-gold" href="#watch" data-i18n="ad_btn">Sign up for a holy hour</a>
+      </div>
+    </div>
+    <div class="watch">
+      <div class="kicker" data-i18n="w_k">Mass online</div>
+      <h2 data-i18n="w_t">Homebound or traveling? Pray with us.</h2>
+      <p data-i18n="w_p">Sunday Masses are streamed live and stay online all week. Extraordinary ministers bring Communion to the homebound; call the office to be added to the list.</p>
+      <div class="homily">
+        <a class="thumb" href="#watch"><img src="https://images.unsplash.com/photo-1551418646-2a5254e37957?w=1600&q=75&fm=jpg" alt="Elevation of the host before a painted crucifixion scene" loading="lazy"><span>18:42</span></a>
+        <div>
+          <div class="kicker" data-i18n="h_k">Latest homily · Oct 18</div>
+          <h3 data-i18n="h_t">Give to God what belongs to God</h3>
+          <p data-i18n="h_p">Fr. Miguel on Matthew 22: the coin, the image stamped on it, and the image stamped on us.</p>
+        </div>
+      </div>
+      <ul class="live-list">
+        <li><b data-i18n="l1">Sunday 10:00 a.m.</b><span data-i18n="l1s">Misa en español, live</span></li>
+        <li><b data-i18n="l2">Sunday 12:00 p.m.</b><span data-i18n="l2s">English Mass, live</span></li>
+        <li><b data-i18n="l3">Daily Rosary</b><span data-i18n="l3s">6:40 a.m. before weekday Mass</span></li>
+        <li><b data-i18n="l4">Communion to the sick</b><span data-i18n="l4s">(210) 555-0168, ext. 2</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="formation" aria-labelledby="form-title">
+  <div class="wrap">
+    <div class="form-head">
+      <div><div class="kicker" data-i18n="fo_k">Faith formation &amp; ministries</div><h2 id="form-title" style="margin-top:8px" data-i18n="fo_t">Grow in the faith, at every age</h2></div>
+      <p data-i18n="fo_p">Classes run September through May in both languages. Registration for 2026–27 is still open for Religious Education and Confirmation.</p>
+    </div>
+    <div class="cols">
+      <div class="col">
+        <h3 data-i18n="c1">Faith Formation</h3>
+        <ul>
+          <li><a href="#formation" data-i18n="c1a">Religious Education (K–8)</a><span data-i18n="c1as">Wednesdays 6:00 p.m. or Sundays 8:45 a.m.</span></li>
+          <li><a href="#formation" data-i18n="c1b">First Communion preparation</a><span data-i18n="c1bs">Two-year program, parents attend monthly</span></li>
+          <li><a href="#formation" data-i18n="c1c">Confirmation (grades 9–10)</a><span data-i18n="c1cs">Sunday evenings after the 6:00 p.m. Mass</span></li>
+          <li><a href="#formation" data-i18n="c1d">OCIA for adults</a><span data-i18n="c1ds">Becoming Catholic, Tuesdays 7:00 p.m.</span></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3 data-i18n="c2">Worship &amp; Service</h3>
+        <ul>
+          <li><a href="#formation" data-i18n="c2a">Lectors &amp; Eucharistic Ministers</a><span data-i18n="c2as">Training this November</span></li>
+          <li><a href="#formation" data-i18n="c2b">Coro Santa Ana &amp; Parish Choir</a><span data-i18n="c2bs">Rehearsals Thursday 7:00 p.m.</span></li>
+          <li><a href="#formation" data-i18n="c2c">St. Vincent de Paul Society</a><span data-i18n="c2cs">Food pantry Saturdays 9–11 a.m.</span></li>
+          <li><a href="#formation" data-i18n="c2d">Altar Servers</a><span data-i18n="c2ds">Open to students who have received First Communion</span></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3 data-i18n="c3">Fellowship</h3>
+        <ul>
+          <li><a href="#formation" data-i18n="c3a">Sociedad Guadalupana</a><span data-i18n="c3as">First Saturday of the month, after the 8:00 a.m. Rosary</span></li>
+          <li><a href="#formation" data-i18n="c3b">Youth Ministry (grades 6–12)</a><span data-i18n="c3bs">Sunday nights 7:00 p.m. in the youth room</span></li>
+          <li><a href="#formation" data-i18n="c3c">Young Adults (18–35)</a><span data-i18n="c3cs">Theology on Tap, second Thursdays</span></li>
+          <li><a href="#formation" data-i18n="c3d">Grief support</a><span data-i18n="c3ds">Small group for the bereaved, Mondays</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="school" id="school" aria-labelledby="school-title">
+  <div class="wrap">
+    <div>
+      <div class="kicker" data-i18n="sc_k">St. Anne Catholic School</div>
+      <h2 id="school-title" data-i18n="sc_t">Faith, learning and service, PK through 8th grade</h2>
+      <p data-i18n="sc_p">Our parish school has taught the children of the West Side since 1924, in small classes with daily prayer, weekly school Mass and a bilingual program from Pre-K. Tuition assistance is available to every registered parish family.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px">
+        <a class="btn btn-blue" href="#school" data-i18n="sc_b1">Book a school tour</a>
+        <a class="btn btn-line" href="#school" data-i18n="sc_b2">Visit the school website</a>
+      </div>
+    </div>
+    <div class="facts">
+      <div><b>PK–8</b><span data-i18n="f1">grades, two classes per grade</span></div>
+      <div><b>1924</b><span data-i18n="f2">year the school opened</span></div>
+      <div><b>16</b><span data-i18n="f3">average students per class</span></div>
+      <div><b data-i18n="f4b">Tue</b><span data-i18n="f4">tours at 9 a.m. all year</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block give" id="give" aria-labelledby="give-title">
+  <div class="wrap">
+    <figure><img src="https://images.unsplash.com/photo-1576027201127-29dc2a720864?w=1600&q=75&fm=jpg" alt="A wooden crucifix above a row of candlesticks on a golden patterned wall" loading="lazy"></figure>
+    <div>
+      <div class="kicker" data-i18n="g_k">Stewardship</div>
+      <h2 id="give-title" data-i18n="g_t">Support the work of your parish</h2>
+      <p class="lede" data-i18n="g_p">Your offering keeps the lights on in the church, funds the food pantry and helps families afford a Catholic education. Thank you for your generosity.</p>
+      <div class="ways">
+        <div class="way"><h3 data-i18n="g1">Online giving</h3><p data-i18n="g1p">One-time or recurring, from your bank account or card.</p></div>
+        <div class="way"><h3 data-i18n="g2">Offertory envelopes</h3><p data-i18n="g2p">Registered families receive a monthly envelope packet.</p></div>
+        <div class="way"><h3 data-i18n="g3">Archdiocesan appeal</h3><p data-i18n="g3p">Supports seminarians, Catholic Charities and retired priests.</p></div>
+        <div class="way"><h3 data-i18n="g4">Memorials &amp; bequests</h3><p data-i18n="g4p">Talk with Fr. Miguel about a gift in your will.</p></div>
+      </div>
+      <div class="campaign">
+        <div class="row"><span data-i18n="camp">Restore the Bell Tower</span><span>$204,000 / $300,000</span></div>
+        <div class="bar" role="img" aria-label="68 percent of goal raised"><i></i></div>
+        <small data-i18n="camp_s">The 1921 bells have been silent since the spring storm. Help us ring them for Christmas Midnight Mass.</small>
+      </div>
+      <a class="btn btn-blue" href="#give" data-i18n="give_now">Give online</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer id="contact">
+  <div class="wrap ft">
+    <div>
+      <a class="brand" href="#top" aria-label="St. Anne Catholic Parish, back to top">
+        <svg viewBox="0 0 46 54" aria-hidden="true"><path d="M3 3h40v22c0 14-9 22-20 26C12 47 3 39 3 25z" fill="#244a86" stroke="#c19a48" stroke-width="2"/><path d="M23 10v30M15 18h16" stroke="#c19a48" stroke-width="2.4" stroke-linecap="round"/><path d="M10 33c4 4 9 6 13 6s9-2 13-6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <span><b>St. Anne</b><small data-i18n="brand_sub">Catholic Parish · San Antonio</small></span>
+      </a>
+      <p style="margin-top:18px">815 Calle Santa Ana<br>San Antonio, TX 78207</p>
+      <div class="social">
+        <a href="#contact" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-2.8 0-4 1.8-4 4v2H7v4h3v8h4v-8h3l1-4h-4V8.5c0-.3.2-.5.5-.5z"/></svg></a>
+        <a href="#contact" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.5A4.5 4.5 0 1 0 12 16.5 4.5 4.5 0 0 0 12 7.5zm0 7.3a2.8 2.8 0 1 1 0-5.6 2.8 2.8 0 0 1 0 5.6zM17 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2zM7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4z"/></svg></a>
+        <a href="#watch" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22 8.2a3 3 0 0 0-2.1-2.1C18 5.6 12 5.6 12 5.6s-6 0-7.9.5A3 3 0 0 0 2 8.2 31 31 0 0 0 1.6 12 31 31 0 0 0 2 15.8a3 3 0 0 0 2.1 2.1c1.9.5 7.9.5 7.9.5s6 0 7.9-.5a3 3 0 0 0 2.1-2.1c.4-1.2.4-3.8.4-3.8s0-2.6-.4-3.8zM10 15V9l5.2 3z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h3 data-i18n="ft_mass">Mass times</h3>
+      <ul>
+        <li><span data-i18n="ft_m1">Sat 5:00 p.m. (Vigil)</span></li>
+        <li><span data-i18n="ft_m2">Sun 8, 10 (Español), 12, 6 p.m.</span></li>
+        <li><span data-i18n="ft_m3">Mon–Fri 7:00 a.m.</span></li>
+        <li><span data-i18n="ft_m4">Wed 6:30 p.m. (Español)</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3 data-i18n="ft_office">Parish office</h3>
+      <ul>
+        <li><a href="#contact">(210) 555-0168</a></li>
+        <li><a href="#contact">office@stanne-sa.org</a></li>
+        <li data-i18n="ft_hours">Mon–Fri 9:00 a.m.–5:00 p.m.</li>
+        <li data-i18n="ft_closed">Closed 12–1 for lunch</li>
+      </ul>
+    </div>
+    <div>
+      <h3 data-i18n="ft_links">Quick links</h3>
+      <ul>
+        <li><a href="#bulletin" data-i18n="u_bulletin">This week's bulletin</a></li>
+        <li><a href="#register" data-i18n="u_register">Register</a></li>
+        <li><a href="#sacraments" data-i18n="ft_funeral">Funerals &amp; emergencies</a></li>
+        <li><a href="#school" data-i18n="u_school">St. Anne School</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap legal">
+    <span>© 2026 St. Anne Catholic Parish, San Antonio, Texas</span>
+    <span data-i18n="ft_emerg">For a priest in an emergency, call (210) 555-0168 and press 9.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var ES = {
+    season:"Tiempo Ordinario", week:"Semana 29", u_bulletin:"Boletín de esta semana", u_school:"Escuela Santa Ana", u_register:"Registrarse", u_contact:"Contacto",
+    brand_sub:"Parroquia Católica · San Antonio", brand_sub1:"Parroquia Católica", menu:"Menú", n_mass:"Horario de Misas", n_sac:"Sacramentos", n_form:"Formación en la Fe", n_school:"Escuela", n_news:"Noticias y Boletín",
+    "new":"Nuevos feligreses", give:"Donar", est:"St. Anne Catholic Parish · Fundada en 1921", h1_sub:"Una sola familia en el altar, en dos idiomas",
+    lede:"Por más de un siglo, las familias del West Side de San Antonio se han reunido aquí para orar, bautizar a sus hijos y despedir a sus difuntos. Si viene desde hace cincuenta años o es su primer domingo, usted tiene un lugar en esta mesa.",
+    directions:"Cómo llegar y estacionamiento", register_btn:"Registrarse en la parroquia", watch_btn:"Ver la Misa en línea",
+    mass_title:"Horario de Misas", next_label:"Próxima Misa", weekend:"Misas de fin de semana", sat:"Sábado", sun:"Domingo", vigil:"Vigilia", weekday:"Misas entre semana", monfri:"Lun–Vie", wed:"Miércoles",
+    confession:"Confesiones", appt:"o con cita con el P. Miguel", adoration:"Adoración Eucarística", fridays:"Viernes", adore_time:"8:00 a.m.–8:00 p.m., Capilla de San Joaquín",
+    holyday:"Inmaculada Concepción", holyday_t:"Mar 8 de dic: 7 a.m., 12 p.m., 7 p.m. (bilingüe)", full_sched:"Horario completo y días de precepto →",
+    sac_title:"Los Sacramentos", sac_sub:"Preparación, formularios y a quién llamar para cada uno.", s1:"Bautismo", s2:"Reconciliación", s3:"Primera Comunión", s4:"Confirmación", s5:"Matrimonio", s6:"Orden Sacerdotal", s7:"Unción de los Enfermos",
+    fig1:"Fiesta de San Lucas, en la Misa de 7:00 a.m.", welcome_k:"Bienvenidos · Welcome", welcome_title:"¿Nuevo en Santa Ana? Nos alegra que nos haya encontrado.",
+    letter1:"Algunos fueron bautizados en nuestra pila; otros llegaron el mes pasado desde Laredo, Monterrey u Ohio. Nuestra parroquia está hecha de ambos, y así nos gusta. Venga a cualquier Misa, preséntese al terminar y díganos cómo podemos ayudarle.",
+    pastor:"Párroco · Pastor", st1:"Venga a Misa", st1p:"Llegue diez minutos antes; los ujieres en la puerta principal le ayudarán a encontrar lugar. Hay estacionamiento en el lote de la escuela.",
+    st2:"Regístrese en la parroquia", st2p:"El registro nos permite preparar a sus hijos para los sacramentos, enviarle su constancia de ofrendas y visitarle cuando esté enfermo.",
+    st3:"Encuentre su lugar", st3p:"Cante en un coro, proclame las lecturas, sirva con San Vicente de Paúl o únase a un estudio bíblico. Hay lugar para todos.",
+    reg_title:"Registro de nuevos feligreses", reg_p:"Empiece aquí y la oficina parroquial le llamará esta semana para terminar.", f_name:"Nombre del jefe de familia", f_phone:"Teléfono", f_email:"Correo electrónico", f_lang:"Idioma preferido", f_both:"Ambos", f_send:"Enviar registro",
+    f_ok:"Gracias. La oficina parroquial le llamará esta semana para darle la bienvenida y completar su registro.",
+    week_k:"Vida parroquial", week_title:"Esta semana en Santa Ana", full_cal:"Calendario parroquial", bul_k:"Boletín semanal", bul_date:"18 de octubre de 2026",
+    bul_p:"Vigésimo noveno domingo del Tiempo Ordinario. Intenciones de Misa, voluntarios para la Jamaica y el informe de corresponsabilidad.", bul_btn:"Descargar PDF (2.1 MB)", bul_1:"11 de octubre de 2026", bul_2:"4 de octubre de 2026", bul_3:"Archivo de boletines",
+    news_t:"Noticias", nw1:"Fotos para la ofrenda hasta el 30 de octubre", nw1p:"Traiga una foto enmarcada de un ser querido difunto para el altar en el atrio.", nw2:"Comienzan las noches de OCIA el martes", nw2p:"Adultos interesados en hacerse católicos se reúnen los martes a las 7 p.m. en el salón.", nw3:"Bienvenido, Diácono Rubén Salinas", nw3p:"Ordenado en junio, el Diácono Rubén predicará en la Misa de 10:00 a.m. este mes.",
+    oct:"Oct", nov:"Nov", dec:"Dic", sat_s:"Sáb", sun_s:"Dom", mon_s:"Lun", tue_s:"Mar",
+    e1:"Jamaica de otoño en la parroquia", e1p:"Gorditas, cakewalk, lotería y el mariachi de la Escuela Santa Ana. Sábado de 11 a.m. a 10 p.m. y domingo después de la Misa de 12:00. Lo recaudado apoya las becas escolares.",
+    e2:"Misa de los Fieles Difuntos y ofrenda de Día de Muertos", e2p:"Misa bilingüe a las 7:00 p.m. con la lectura de los nombres de los feligreses fallecidos este año, y después pan de muerto y champurrado en el salón.",
+    e3:"Primer Domingo de Adviento", e3p:"Bendición de coronas de Adviento en todas las Misas. Los kits cuestan $15 en el puesto de la Jamaica.",
+    e4:"Nuestra Señora de Guadalupe", e4p:"Las Mañanitas a las 6:00 a.m. con mariachi, Misa a las 7:00 p.m. y procesión con las Guadalupanas.",
+    e5:"Servicio Penitencial de Adviento", e5p:"Seis sacerdotes confesando en inglés y español desde las 6:30 p.m. Un buen momento para volver si ha pasado tiempo.",
+    tag_fam:"Familias", tag_bi:"Bilingüe", tag_lit:"Liturgia", tag_feast:"Fiesta", tag_conf:"Confesión",
+    ad_k:"Capilla de Adoración", ad_t:"Venga a descansar un rato.", ad_p:"El Santísimo Sacramento está expuesto cada viernes de 8 a.m. a 8 p.m. Comprométase a una hora santa semanal para que la capilla nunca quede sola.", ad_btn:"Apartar una hora santa",
+    w_k:"Misa en línea", w_t:"¿En casa o de viaje? Ore con nosotros.", w_p:"Las Misas del domingo se transmiten en vivo y quedan en línea toda la semana. Los ministros extraordinarios llevan la Comunión a los enfermos; llame a la oficina para que le visiten.",
+    h_k:"Última homilía · 18 oct", h_t:"Den a Dios lo que es de Dios", h_p:"El P. Miguel sobre Mateo 22: la moneda, la imagen grabada en ella y la imagen grabada en nosotros.",
+    l1:"Domingo 10:00 a.m.", l1s:"Misa en español, en vivo", l2:"Domingo 12:00 p.m.", l2s:"Misa en inglés, en vivo", l3:"Rosario diario", l3s:"6:40 a.m. antes de la Misa", l4:"Comunión a los enfermos", l4s:"(210) 555-0168, ext. 2",
+    fo_k:"Formación y ministerios", fo_t:"Crecer en la fe, a toda edad", fo_p:"Las clases son de septiembre a mayo en ambos idiomas. Aún hay cupo para Educación Religiosa y Confirmación 2026–27.",
+    c1:"Formación en la Fe", c1a:"Educación Religiosa (K–8)", c1as:"Miércoles 6:00 p.m. o domingos 8:45 a.m.", c1b:"Preparación para la Primera Comunión", c1bs:"Programa de dos años, los padres asisten cada mes", c1c:"Confirmación (grados 9–10)", c1cs:"Domingos después de la Misa de 6:00 p.m.", c1d:"OCIA para adultos", c1ds:"Hacerse católico, martes 7:00 p.m.",
+    c2:"Liturgia y Servicio", c2a:"Lectores y Ministros de la Eucaristía", c2as:"Capacitación en noviembre", c2b:"Coro Santa Ana y Coro Parroquial", c2bs:"Ensayos jueves 7:00 p.m.", c2c:"Sociedad de San Vicente de Paúl", c2cs:"Despensa sábados 9–11 a.m.", c2d:"Monaguillos", c2ds:"Para estudiantes que ya hicieron la Primera Comunión",
+    c3:"Comunidad", c3a:"Sociedad Guadalupana", c3as:"Primer sábado del mes, después del Rosario de 8:00 a.m.", c3b:"Pastoral Juvenil (grados 6–12)", c3bs:"Domingos 7:00 p.m. en el salón de jóvenes", c3c:"Jóvenes Adultos (18–35)", c3cs:"Teología en el café, segundo jueves", c3d:"Apoyo en el duelo", c3ds:"Grupo para quienes han perdido a un ser querido, lunes",
+    sc_k:"Escuela Católica Santa Ana", sc_t:"Fe, aprendizaje y servicio, de PK a 8.º grado", sc_p:"Nuestra escuela parroquial educa a los niños del West Side desde 1924, con grupos pequeños, oración diaria, Misa escolar semanal y un programa bilingüe desde Pre-K. Hay ayuda de colegiatura para toda familia registrada.",
+    sc_b1:"Agendar una visita", sc_b2:"Sitio web de la escuela", f1:"grados, dos grupos por grado", f2:"año en que abrió la escuela", f3:"alumnos por grupo en promedio", f4b:"Mar", f4:"visitas a las 9 a.m. todo el año",
+    g_k:"Corresponsabilidad", g_t:"Apoye la misión de su parroquia", g_p:"Su ofrenda mantiene abierta la iglesia, sostiene la despensa y ayuda a las familias a pagar una educación católica. Gracias por su generosidad.",
+    g1:"Donar en línea", g1p:"Única o recurrente, desde su cuenta bancaria o tarjeta.", g2:"Sobres de ofrenda", g2p:"Las familias registradas reciben un paquete mensual.", g3:"Campaña arquidiocesana", g3p:"Apoya a seminaristas, Caridades Católicas y sacerdotes jubilados.", g4:"Memoriales y legados", g4p:"Hable con el P. Miguel sobre un donativo en su testamento.",
+    camp:"Restaurar el campanario", camp_s:"Las campanas de 1921 no suenan desde la tormenta de primavera. Ayúdenos a tocarlas en la Misa de Gallo.", give_now:"Donar en línea",
+    ft_mass:"Horario de Misas", ft_m1:"Sáb 5:00 p.m. (Vigilia)", ft_m2:"Dom 8, 10 (Español), 12, 6 p.m.", ft_m3:"Lun–Vie 7:00 a.m.", ft_m4:"Mié 6:30 p.m. (Español)",
+    ft_office:"Oficina parroquial", ft_hours:"Lun–Vie 9:00 a.m.–5:00 p.m.", ft_closed:"Cerrado de 12 a 1", ft_links:"Enlaces", ft_funeral:"Funerales y emergencias", ft_emerg:"Para un sacerdote en una emergencia, llame al (210) 555-0168 y marque 9."
+  };
+  var nodes = document.querySelectorAll('[data-i18n]');
+  nodes.forEach(function(n){ n.setAttribute('data-en', n.innerHTML); });
+  var cur = 'en';
+  function setLang(l){
+    cur = l;
+    nodes.forEach(function(n){
+      var k = n.getAttribute('data-i18n');
+      n.innerHTML = (l === 'es' && ES[k]) ? ES[k] : n.getAttribute('data-en');
+    });
+    document.documentElement.lang = l;
+    document.querySelectorAll('.lang button').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.lang === l ? 'true' : 'false'); });
+    updateNext();
+    try{ localStorage.setItem('stanne-lang', l); }catch(e){}
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){ b.addEventListener('click', function(){ setLang(b.dataset.lang); }); });
+
+  // next Mass
+  var sched = [
+    [0,8,0,''],[0,10,0,'es'],[0,12,0,''],[0,18,0,''],
+    [1,7,0,''],[2,7,0,''],[3,7,0,''],[3,18,30,'es'],[4,7,0,''],[5,7,0,''],
+    [6,17,0,'vigil']
+  ];
+  var dEN = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'], dES = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+  function fmt(h,m){ var ap = h < 12 ? 'a.m.' : 'p.m.'; var hh = h % 12 || 12; return hh + ':' + (m < 10 ? '0' : '') + m + ' ' + ap; }
+  function updateNext(){
+    var now = new Date(), best = null;
+    for (var add = 0; add < 8 && !best; add++){
+      var day = (now.getDay() + add) % 7;
+      sched.filter(function(s){ return s[0] === day; }).forEach(function(s){
+        if (best) return;
+        var t = new Date(now); t.setDate(now.getDate() + add); t.setHours(s[1], s[2], 0, 0);
+        if (t > now) best = {add:add, day:day, s:s};
+      });
+    }
+    if (!best) return;
+    var es = cur === 'es';
+    var dayLabel = best.add === 0 ? (es ? 'Hoy' : 'Today') : best.add === 1 ? (es ? 'Mañana' : 'Tomorrow') : (es ? dES : dEN)[best.day];
+    var note = best.s[3] === 'es' ? ' · Español' : best.s[3] === 'vigil' ? (es ? ' · Vigilia' : ' · Vigil') : '';
+    document.getElementById('nextMass').textContent = dayLabel + ' ' + fmt(best.s[1], best.s[2]) + note;
+  }
+
+  var saved = null;
+  try{ saved = localStorage.getItem('stanne-lang'); }catch(e){}
+  if (saved === 'es') setLang('es'); else updateNext();
+
+  // menu
+  var btn = document.querySelector('.menu-btn'), nav = document.getElementById('nav');
+  btn.addEventListener('click', function(){ var o = nav.classList.toggle('open'); btn.setAttribute('aria-expanded', o ? 'true' : 'false'); });
+  nav.addEventListener('click', function(e){ if (e.target.closest('a')){ nav.classList.remove('open'); btn.setAttribute('aria-expanded','false'); } });
+
+  // form
+  document.getElementById('regForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('r-name');
+    if (!name.value.trim()){ name.focus(); name.setAttribute('aria-invalid','true'); return; }
+    name.removeAttribute('aria-invalid');
+    document.getElementById('regOk').classList.add('show');
+    this.querySelector('button[type=submit]').disabled = true;
+  });
+})();
+</script>
+</body>
+</html>
