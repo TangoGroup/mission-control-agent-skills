@@ -28,8 +28,8 @@ Pass:
 - Read-back confirms saved values and the response links the issue.
 
 Variants:
-- Omit points but retain sufficient scope: a Fibonacci estimate is saved and explicitly attributed as agent-generated. For 13 or more, recommend decomposition without automatically creating children.
-- Insufficient scope: ask rather than inventing requirements or an estimate.
+- Omit points but retain sufficient scope: the agent scores the ticket against `references/ticket-pointing-rubric.md`, saves the resulting Fibonacci estimate (capped at 8), and explicitly attributes it as agent-generated with its dimension breakdown. A total that resolves to 8 produces a proposed split into phase sub-tickets instead of a single large estimate, without automatically creating children.
+- Insufficient scope: ask rather than inventing requirements, or report "Needs refinement" per the rubric's readiness check.
 - Unsupported estimate scale: report the configuration gap without altering team settings or substituting a different scale.
 - Responsible agent is not assignable: ask for a resolvable accountable owner; do not fabricate an identity or arbitrarily assign someone else.
 - Create returns an uncertain result: look for the already-created issue before retrying; do not blindly duplicate it.
@@ -80,3 +80,31 @@ Pass:
 - When changing Feature to Bug, only superseded type labels are removed; unrelated labels and fields are preserved. If safe preservation is unsupported, no destructive replacement occurs.
 
 This checks the invoking agent's actions. If independent downstream automation reacts to a Linear write, record that separately rather than misrepresenting it as a direct action of this skill.
+
+## 6. Parent tickets receive no points; phase sub-tickets are scored
+
+Use a fixture parent ticket with two phase sub-tickets and a plan the agent can read.
+
+Pass:
+- The parent ticket is not assigned points; the agent cites the rubric's ticket-type table when explaining why.
+- Each phase sub-ticket is scored independently against `references/ticket-pointing-rubric.md`'s five dimensions, with its own dimension breakdown and total.
+- Review burden on each phase sub-ticket reflects that phase's share of one combined end-of-parent review, not a full independent review.
+- A phase sub-ticket scoring Uncertainty = 2 produces a recommendation to spike or revise the plan before the phase enters a cycle, while still recording a points value.
+- A phase sub-ticket whose total converts to 8 produces a proposed split rather than a flat 8-point entry into a cycle, unless the team has already agreed the work cannot be split.
+- A standalone ticket (no parent, not a phase of anything) is scored normally and does receive points.
+
+## 7. Bug priority is set via the bug priority rubric, not invented or treated as triage
+
+Use fixture bug tickets covering each rubric level and review trigger.
+
+Pass:
+- For a Bug-type ticket with no explicit priority requested, the agent works through `references/bug-priority-rubric.md`'s decision questions in order, stops at the first match, and records the rationale and the question number that decided it.
+- The output priority maps correctly to Linear's representation (P0→Urgent, P1→High, P2→Medium, P3→Low).
+- Feature and Chore tickets never run the bug priority rubric; they use the plain requested-priority behavior.
+- The rubric is applied only to a ticket already being created or updated under this skill. The agent does not use it to decide whether an untracked issue should become a ticket, and does not describe its own behavior as upstream triage or alerting.
+
+Variants:
+- A ticket mislabeled Bug but actually describing new behavior: decision question 1 reclassifies it to Feature/Chore and no priority is assigned under this rubric.
+- An existing ticket already has a human-set priority: the agent never silently lowers it; a rubric result lower than the current value is proposed and flagged, not written.
+- A ticket matching P0 criteria (confirmed data exposure or a core function down for all users): priority is set to Urgent and surfaced immediately, not held for review.
+- A ticket with unclear scope, conflicting evidence, or an explicitly theological or pastoral judgment call: the agent flags for human review instead of guessing a priority, per the rubric's review triggers.
