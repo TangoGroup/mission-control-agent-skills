@@ -1,6 +1,6 @@
 ---
 name: ticket-authoring
-description: Create and update well-formed Linear issues with specific titles, useful descriptions, one Feature/Bug/Chore label, resolvable assignees, Fibonacci estimates, priority/cycle, and existing projects. Load when asked to create a ticket, edit a Linear issue, estimate points, clean up ticket fields, or check ticket hygiene. Hygiene checks are read-only. Does not perform board sync, accounting classification, project creation, or Completed On stamping.
+description: Create and update well-formed Linear issues with specific titles, useful descriptions, one Feature/Bug/Chore label, resolvable assignees, Fibonacci estimates, priority/cycle, and existing projects. Load when asked to create a ticket, edit a Linear issue, estimate points, set bug priority, clean up ticket fields, or check ticket hygiene. Hygiene checks are read-only. Does not perform board sync, accounting classification, project creation, or Completed On stamping.
 ---
 
 # Ticket authoring
@@ -12,6 +12,7 @@ Use this focused procedure for ticket hygiene directly in Linear, the ticket sys
 - Create a Linear issue or update its authoring fields when requested.
 - Check ticket hygiene without changing the issue.
 - Estimate missing points from the issue's title, description, and scope.
+- Set priority on a Bug-type ticket.
 - Select an explicitly identified or already-established existing Linear project.
 
 This skill does **not** create or update Mission Control board tickets, mirror tickets between systems, set accounting labels or fields, create projects, decide project identity or cross-system matching, or read/write Completed On. Those exclusions remain even if another agent or sync workflow has been retired. Do not perform downstream stamping or accounting work as a side effect of authoring.
@@ -42,14 +43,8 @@ Discover actual team-accessible labels, assignees, estimate settings, priorities
 2. **Description:** non-empty; state the problem and scope sufficiently for someone to understand the assignment. Do not fabricate missing requirements.
 3. **Type:** exactly one explicit Linear label: Feature, Bug, or Chore. Title text is not a type label. Resolve the actual accessible label before writing; do not create a missing label. If the type is ambiguous, ask rather than silently inferring it from the title.
 4. **Assignee:** a real, resolvable Linear assignee for anything expected to progress. A placeholder or unassigned value is a gap, not a completed assignment. If the responsible agent is not assignable in Linear, ask for a resolvable accountable owner; do not invent an agent identity or choose an arbitrary person.
-5. **Points:** use the Fibonacci scale: 1, 2, 3, 5, 8, 13, and subsequent Fibonacci values. During authorized creation or estimation, if points are missing and scope is sufficient, estimate from title, description, and scope. Explicitly note in the description or an authorized issue comment that the estimate was agent-generated, rather than requester-provided. Preserve valid existing estimates unless asked to revise them. During a read-only check, suggest an estimate and its provenance in the response only.
-   - 1–2: trivial or a few-hour fix.
-   - 3: approximately half a day.
-   - 5: approximately 1–2 days.
-   - 8: approximately most of a week.
-   - 13 or more: recommend breaking the work into smaller issues; do not create children unless asked.
-   These are estimation heuristics, not delivery promises. If scope is too unclear to estimate responsibly, ask for clarification.
-6. **Priority and cycle:** priority is None, Low, Medium, High, or Urgent. Set the requested priority using Linear's supported representation; do not invent urgency or a cycle commitment. Use an existing cycle belonging to the selected team when relevant and known. An omitted cycle does not mean “remove the current cycle.” Do not create cycles or change team settings to satisfy a ticket.
+5. **Points:** use the Fibonacci scale capped at 1, 2, 3, 5, 8. When points are missing and scope is sufficient, score the ticket using `references/ticket-pointing-rubric.md`: rate the five dimensions (review burden, risk, uncertainty, verification gap, coordination), convert the total to points, and apply the rubric's floors and overrides. A result of 8 means the rubric calls for proposing a split into smaller phase sub-tickets rather than issuing a single large estimate; propose the split and do not create children unless asked. Explicitly note in the description or an authorized issue comment that the estimate was agent-generated, rather than requester-provided, and record the rubric's dimension breakdown. Preserve valid existing estimates unless asked to revise them. A parent ticket — one whose points are carried by its phase sub-tickets — receives no points; do not assign them, per the rubric's ticket-type table. During a read-only check, suggest an estimate and its provenance in the response only. These are effort-and-risk estimates, not delivery-time promises. If scope is too unclear to score responsibly under the rubric's readiness check, ask for clarification or report "Needs refinement."
+6. **Priority and cycle:** priority is None, Low, Medium, High, or Urgent. For a Bug-type ticket where priority is not explicitly requested, determine it using `references/bug-priority-rubric.md` (P0→Urgent, P1→High, P2→Medium, P3→Low): work through its decision questions, apply its rules, and record the rationale. Never lower a priority a human already set; propose the change and flag it instead. Flag for human review rather than guessing when the rubric's own review triggers apply (unclear scope or workaround, conflicting evidence, a theological or pastoral call), and still surface a P0 result immediately rather than waiting on review. This rubric only sets the Priority field on a ticket already being created or updated under this skill — it is not an upstream triage, alerting, or auto-ticketing workflow, and it never decides whether a ticket should exist. For Feature and Chore tickets, set the requested priority using Linear's supported representation; do not invent urgency. Use an existing cycle belonging to the selected team when relevant and known. An omitted cycle does not mean “remove the current cycle.” Do not create cycles or change team settings to satisfy a ticket.
 7. **Project:** select an existing Linear project by its resolved identity and exact existing name. Use only an explicitly identified or already-established selection and verify it is available to the intended team. If multiple projects could apply or none matches, ask. Never invent a spelling, create a project, or decide project identity from approximate name similarity. Propose a new project only when explicitly asked; proposal is not creation.
 
 ### 3. Create or patch minimally
@@ -68,8 +63,10 @@ Read back the created or updated Linear issue. Confirm the intended fields persi
 
 ## Output
 
-Return the Linear issue reference/link, a short summary of fields created or changed, and any unresolved gaps. Identify agent-generated estimates explicitly. For checks, return findings and proposed corrections only. Distinguish proposed, saved, and verified results; do not claim verification if read-back failed.
+Return the Linear issue reference/link, a short summary of fields created or changed, and any unresolved gaps. Identify agent-generated estimates and rubric-derived priorities explicitly. For checks, return findings and proposed corrections only. Distinguish proposed, saved, and verified results; do not claim verification if read-back failed.
 
 ## Reference files
 
 - `references/acceptance-tests.md`: sanitized example and acceptance scenarios for routing, field quality, minimal updates, read-only checks, and excluded operations. Read when testing installation or reviewing a change to this skill. Use authorized Linear test issues, not real operational issues.
+- `references/ticket-pointing-rubric.md`: the five-dimension rubric used to score Points during authorized creation or estimation. Read before estimating points on any ticket.
+- `references/bug-priority-rubric.md`: the decision-question rubric used to set Priority on Bug-type tickets only. Read before setting priority on a bug.
