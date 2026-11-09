@@ -107,7 +107,7 @@ Apply these after the conversion. Where more than one applies, the highest value
 
 ## Output format
 
-The agent appends this block to the ticket description. The values below are illustrative.
+Produce this block for every scored ticket. The values below are illustrative. Append it to the ticket description only when the procedure that loaded this rubric authorizes a save.
 
 ```
 Estimate (agent-generated, rubric v1.1)
