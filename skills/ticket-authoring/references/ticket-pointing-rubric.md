@@ -42,17 +42,17 @@ Score each dimension 0, 1 or 2, and cite the evidence from the ticket in one lin
 
 How much this phase adds to the human review. All phases of a parent share one PR, and a person other than the orchestrator reviews the whole work once at the end, so score each phase on its share of that combined review.
 
-- 0: A small, contained change in one area; a reviewer can approve it in a single short read.
-- 1: A moderate change across several files or one feature area.
+- 0: A small, contained change in one area; a reviewer can approve it in a single short read. Unit testing is sufficient for coverage.
+- 1: A moderate change across several files or one feature area. Minor manual verification is required to review locally.
 - 2: A large or cross-cutting change, or generated code that a reviewer must check for intent as well as correctness.
 
 ### 2. Risk
 
 The cost of a mistake that both the verifier and the reviewer miss.
 
-- 0: Internal and easily reverted, with no user-facing or data impact.
+- 0: Internal and easily reverted, with no user-facing impact, or a non-blocking data migration.
 - 1: User-facing behavior or shared components, recoverable by a revert.
-- 2: Authentication, permissions, security, payments, data migrations, public APIs, or anything difficult to roll back.
+- 2: Authentication, permissions, security, payments, database schema overhauls or rewrites, public APIs, or anything difficult to roll back.
 
 ### 3. Uncertainty
 
@@ -74,7 +74,7 @@ How much checking falls to a human because the agentic verifier cannot cover it.
 
 Dependence on people or systems outside the ticket.
 
-- 0: The assignee can finish without anyone else.
+- 0: The assignee can finish without anyone else. Automated CI/CD will handle most rollout.
 - 1: One input or handoff is required, such as a design, a review from another sub-team or a configuration change.
 - 2: Several parties, another team's release or a staged rollout are required.
 
