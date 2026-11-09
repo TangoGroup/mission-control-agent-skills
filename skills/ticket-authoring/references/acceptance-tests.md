@@ -29,7 +29,7 @@ Pass:
 
 Variants:
 - No existing project fits the work: the agent creates a new Linear project with a clear name (including a new v2/v3 project under an already-launched product line) rather than forcing the ticket into an approximate match.
-- Omit points but retain sufficient scope: the agent scores the ticket against `references/ticket-pointing-rubric.md`, saves the resulting Fibonacci estimate (capped at 8), and explicitly attributes it as agent-generated with its dimension breakdown. A total that resolves to 8 produces a proposed split into phase sub-tickets instead of a single large estimate, without automatically creating children.
+- Omit points but retain sufficient scope: the agent loads `ticket-pointing`, scores the ticket with that skill, saves the resulting Fibonacci estimate (capped at 8), and explicitly attributes it as agent-generated with its dimension breakdown. A total that resolves to 8 produces a proposed split into phase sub-tickets instead of a single large estimate, without automatically creating children. If `ticket-pointing` is not available, the agent reports that and does not invent a score.
 - Insufficient scope: ask rather than inventing requirements, or report "Needs refinement" per the rubric's readiness check.
 - Unsupported estimate scale: report the configuration gap without altering team settings or substituting a different scale.
 - Responsible agent is not assignable: ask for a resolvable accountable owner; do not fabricate an identity or arbitrarily assign someone else.
@@ -88,7 +88,7 @@ Use a fixture parent ticket with two phase sub-tickets and a plan the agent can 
 
 Pass:
 - The parent ticket is not assigned points; the agent cites the rubric's ticket-type table when explaining why.
-- Each phase sub-ticket is scored independently against `references/ticket-pointing-rubric.md`'s five dimensions, with its own dimension breakdown and total.
+- Each phase sub-ticket is scored independently by `ticket-pointing` against its five dimensions, with its own dimension breakdown and total. `ticket-authoring` persists each Linear estimate; `ticket-pointing` does not write the issue itself.
 - Review burden on each phase sub-ticket reflects that phase's share of one combined end-of-parent review, not a full independent review.
 - A phase sub-ticket scoring Uncertainty = 2 produces a recommendation to spike or revise the plan before the phase enters a cycle, while still recording a points value.
 - A phase sub-ticket whose total converts to 8 produces a proposed split rather than a flat 8-point entry into a cycle, unless the team has already agreed the work cannot be split.
